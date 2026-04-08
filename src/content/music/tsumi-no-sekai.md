@@ -1,20 +1,19 @@
 ---
-title: "Tsumi no Sekai ni Modoritaina"
-slug: "tsumi-no-sekai-ni-modoritaina"
+title: "罪の世界に戻りたいな"
 sortOrder: 3
 featured: true
 category: "original"
-kind: "Vocaloid / Video"
+kind: "ボカロ / 動画"
 responsibilities:
-  - "Compose"
-  - "Lyrics"
-  - "Video"
-theme: "A song lamenting the decline of the Vocaloid scene, presented with visible piano MIDI imagery."
-playCount: "6000 plays"
+  - "作曲"
+  - "作詞"
+  - "動画"
+theme: "ボカロ界の衰退を嘆いた曲。ピアノ MIDI が流れる映像として構成。"
+playCount: "6000再生"
 thumbnail: "/images/music/tsumi-thumb.svg"
 externalLinks:
-  - label: "Niconico"
+  - label: "ニコニコ"
     url: "https://www.nicovideo.jp/"
-    note: "Replace with the real video URL"
+    note: "実際の動画 URL に差し替え"
 ---
-Lead with concept first, then use the visuals to echo the feeling of the song.
+コンセプトを先に置き、その不穏さを映像と音の両方から支える楽曲です。

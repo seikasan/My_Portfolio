@@ -6,37 +6,52 @@ import { projectPath, withBase } from "@utils/paths";
 
 interface Props {
   project: CollectionEntry<"projects">;
+  variant?: "primary" | "secondary";
+  delayMs?: number;
 }
 
-const { project } = Astro.props as Props;
+const { project, variant = "secondary", delayMs } = Astro.props as Props;
 const href = projectPath(project.slug);
 const primaryDeliverable = project.data.deliverables[0];
+const roleSummary = project.data.roles.join(" / ");
+const variantClass = variant === "primary" ? styles.primary : styles.secondary;
 ---
 
-<article class={styles.card}>
+<article
+  class={`${styles.card} ${variantClass}`}
+  data-reveal
+  style={delayMs ? `--reveal-delay: ${delayMs}ms;` : undefined}
+>
   <a class={styles.imageLink} href={href} aria-label={`${project.data.title} の詳細を見る`}>
     <img src={withBase(project.data.thumbnail)} alt={`${project.data.title} のサムネイル`} loading="lazy" />
-  </a>
-  <div class={styles.body}>
-    <div class={styles.meta}>
+    <div class={styles.imageShade}></div>
+    <div class={styles.imageMeta}>
       <span>{project.data.engine}</span>
       <span>{project.data.teamType}</span>
     </div>
-    <a class={styles.titleLink} href={href}>
-      <h3>{project.data.title}</h3>
-    </a>
+  </a>
+  <div class={styles.body}>
+    <div class={styles.header}>
+      <div>
+        <p class={styles.eyebrow}>{variant === "primary" ? "Main Feature" : "Featured"}</p>
+        <a class={styles.titleLink} href={href}>
+          <h3>{project.data.title}</h3>
+        </a>
+      </div>
+      <span class={styles.roleSummary}>{roleSummary}</span>
+    </div>
     <p class={styles.summary}>{project.data.summaryShort}</p>
     <RoleBadges roles={project.data.roles} />
-    <dl class={styles.detail}>
-      <div>
+    <dl class={styles.detailGrid}>
+      <div class={styles.detailCard}>
         <dt>担当範囲</dt>
         <dd>{project.data.myContribution}</dd>
       </div>
-      <div>
-        <dt>成果物</dt>
+      <div class={styles.detailCard}>
+        <dt>主要成果</dt>
         <dd>{primaryDeliverable}</dd>
       </div>
     </dl>
-    <a class="button button--secondary" href={href}>詳細を見る</a>
+    <a class="button button--secondary" href={href}>作品詳細へ</a>
   </div>
 </article>

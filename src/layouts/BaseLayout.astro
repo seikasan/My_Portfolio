@@ -13,11 +13,11 @@ const { title = siteMeta.title, description = siteMeta.description } = Astro.pro
 const pageTitle = title === siteMeta.title ? title : `${title} | ${siteMeta.title}`;
 const homeHref = withBase("");
 const navLinks = [
-  { label: "Top", href: homeHref },
-  { label: "Games", href: `${homeHref}#games` },
-  { label: "Music", href: musicPath() },
-  { label: "Skills", href: `${homeHref}#skills` },
-  { label: "Contact", href: `${homeHref}#contact` }
+  { label: "トップ", href: homeHref },
+  { label: "ゲーム", href: `${homeHref}#games` },
+  { label: "音楽", href: musicPath() },
+  { label: "スキル", href: `${homeHref}#skills` },
+  { label: "連絡先", href: `${homeHref}#contact` }
 ];
 const normalizedContactLinks = contactLinks.map((link) => ({
   label: link.label,
@@ -32,9 +32,16 @@ const normalizedContactLinks = contactLinks.map((link) => ({
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#f6efe8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <title>{pageTitle}</title>
   </head>
-  <body>
+  <body class="theme-gallery">
     <div class="site-shell">
       <header class="site-header">
         <div class="site-header__inner">
@@ -83,5 +90,45 @@ const normalizedContactLinks = contactLinks.map((link) => ({
         </div>
       </footer>
     </div>
+    <script is:inline>
+      if (!window.__portfolioRevealInit) {
+        window.__portfolioRevealInit = true;
+
+        const nodes = Array.from(document.querySelectorAll("[data-reveal]"));
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        const markVisible = (element) => {
+          if (element instanceof HTMLElement) {
+            element.classList.add("is-visible");
+          }
+        };
+
+        if (reduceMotion || !("IntersectionObserver" in window)) {
+          nodes.forEach(markVisible);
+        } else {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  markVisible(entry.target);
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            {
+              threshold: 0.18,
+              rootMargin: "0px 0px -8% 0px"
+            }
+          );
+
+          nodes.forEach((node, index) => {
+            if (node instanceof HTMLElement && !node.style.getPropertyValue("--reveal-delay")) {
+              node.style.setProperty("--reveal-delay", `${Math.min(index, 6) * 70}ms`);
+            }
+            observer.observe(node);
+          });
+        }
+      }
+    </script>
   </body>
 </html>

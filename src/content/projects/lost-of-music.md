@@ -1,27 +1,26 @@
 ---
 title: "Lost of music"
-slug: "lost-of-music"
 year: 2024
 sortOrder: 99
 engine: "Unity"
-teamType: "Team project"
+teamType: "チーム制作"
 roles:
-  - "Sound"
+  - "サウンド"
 featured: false
 archived: true
-summaryShort: "A 2D action game set in a world that has lost sound."
-summaryLong: "An early team project where I joined as a sound member. The main idea was a BGM structure that adds more instruments as the player advances."
-myContribution: "I created the main BGM concept and its progression-based arrangement."
+summaryShort: "音が失われた世界を舞台にした 2D アクションゲーム。"
+summaryLong: "初期作としてサウンドで参加した作品です。ステージ進行に応じて楽器が増えていくメイン BGM の発想を軸にしています。"
+myContribution: "メイン BGM の設計と制作を担当しました。"
 contributionSummary:
-  - "Main BGM that gains instrumentation over time"
+  - "進行に応じて楽器が増えるメイン BGM"
 deliverables:
-  - "Main BGM"
+  - "メインBGM"
 technicalHighlights:
-  - title: "Progress-linked arrangement"
-    description: "The composition was designed so the recovering world could be felt through the soundtrack itself."
+  - title: "進行とサウンドの連動"
+    description: "ステージが進むほど編成が増える構造にし、世界の回復を音からも感じられるようにしました。"
 thumbnail: "/images/projects/lost-of-music-thumb.svg"
 gallery: []
 warnings: []
 externalLinks: []
 ---
-This work is kept as an archive entry instead of a full project page.
+初期作のため詳細ページは作らず、発想の核だけをアーカイブとして残しています。

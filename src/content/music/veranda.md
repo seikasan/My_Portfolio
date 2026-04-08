@@ -1,20 +1,19 @@
 ---
-title: "Veranda"
-slug: "veranda"
+title: "ベランダ"
 sortOrder: 1
 featured: true
 category: "original"
-kind: "Vocaloid / Video"
+kind: "ボカロ / 動画"
 responsibilities:
-  - "Compose"
-  - "Lyrics"
-  - "Video"
-theme: "A song about someone grieving a partner and remembering a veranda that once felt like a secret base."
-playCount: "6000 plays"
+  - "作曲"
+  - "作詞"
+  - "動画"
+theme: "冬のある日、恋人を亡くした人の歌。ベランダで語り合っていた記憶を軸にした楽曲。"
+playCount: "6000再生"
 thumbnail: "/images/music/veranda-thumb.svg"
 externalLinks:
   - label: "Apple Music"
     url: "https://music.apple.com/"
-    note: "Replace with the real track URL"
+    note: "実際の配信 URL に差し替え"
 ---
-One of the strongest personal works to feature near the top of the music page.
+個人制作の代表作として、感情の温度が映像込みで伝わる作品です。

@@ -35,18 +35,18 @@ const isReady = Boolean(embedUrl && externalUrl);
     {note && <p>{note}</p>}
     {isReady ? (
       <button type="button" class="button button--primary" data-embed-button>
-        再生プレーヤーを表示
+        プレーヤーを表示
       </button>
     ) : (
       <p class={styles.pending}>
-        埋め込み URL を設定すると、ここに {providerLabel[provider]} プレーヤーが表示されます。
+        埋め込み URL を設定すると、ここに {providerLabel[provider]} のプレーヤーが表示されます。
       </p>
     )}
   </div>
   <div class={styles.frameArea} data-embed-target hidden></div>
   {externalUrl && (
     <a class={styles.external} href={externalUrl} target="_blank" rel="noreferrer">
-      {providerLabel[provider]}で開く
+      {providerLabel[provider]} で開く
     </a>
   )}
 </div>

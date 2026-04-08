@@ -1,19 +1,18 @@
 ---
-title: "Game Sound Selection"
-slug: "game-sound-selection"
+title: "ゲームサウンドセレクション"
 sortOrder: 1
 featured: true
 category: "game-sound"
-kind: "Game soundtrack"
+kind: "ゲームサウンドトラック"
 responsibilities:
-  - "Compose"
-  - "Sound direction"
-theme: "A SoundCloud-based entry point for selected tracks used in team-developed games."
-playCount: "Published on SoundCloud"
+  - "作曲"
+  - "サウンド設計"
+theme: "チーム制作ゲームで使用した BGM をまとめて聴ける SoundCloud 導線。"
+playCount: "SoundCloudで公開"
 thumbnail: "/images/music/game-sound-thumb.svg"
 externalLinks:
   - label: "SoundCloud"
     url: "https://soundcloud.com/"
-    note: "Replace with the real playlist URL"
+    note: "実際のプレイリスト URL に差し替え"
 ---
-Use this card to group soundtrack links without crowding the top page.
+ゲームごとの空気感の違いをまとめて見せるためのプレイリスト枠です。

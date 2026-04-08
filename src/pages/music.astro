@@ -4,31 +4,36 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import EmbedFrame from "@components/EmbedFrame.astro";
 import { withBase } from "@utils/paths";
 
-const musicEntries = (await getCollection("music"))
-  .sort((left, right) => left.data.sortOrder - right.data.sortOrder);
+const musicEntries = (await getCollection("music")).sort(
+  (left, right) => left.data.sortOrder - right.data.sortOrder
+);
 const originalWorks = musicEntries.filter((entry) => entry.data.category === "original");
 const gameSoundWorks = musicEntries.filter((entry) => entry.data.category === "game-sound");
 ---
 
-<BaseLayout title="Music" description="個人音楽作品とゲームサウンドをまとめたページ。">
-  <section class="section-card">
+<BaseLayout title="音楽作品" description="個人音楽作品とゲームサウンドをまとめたページ。">
+  <section class="section-card music-page-hero" data-reveal>
     <div class="section-heading">
       <p class="section-heading__eyebrow">Original Music</p>
       <h1>音楽・動画作品</h1>
       <p class="section-heading__lead">
-        Apple Music と SoundCloud の埋め込みに対応しています。URL 未設定の項目はそのまま差し替えられるようにしてあります。
+        個人制作の楽曲と、ゲームに使ったサウンドトラックを分けて見られるように整理しています。
       </p>
     </div>
   </section>
 
-  <section class="section-card">
+  <section class="section-card" data-reveal>
     <div class="section-heading">
       <p class="section-heading__eyebrow">Original</p>
       <h2>個人楽曲</h2>
     </div>
-    <div class="music-page-grid">
-      {originalWorks.map((work) => (
-        <article class="music-page-card">
+    <div class="album-grid">
+      {originalWorks.map((work, index) => (
+        <article
+          class={`music-page-card ${index === 0 ? "music-page-card--feature" : ""}`}
+          style={`--reveal-delay: ${80 + index * 80}ms;`}
+          data-reveal
+        >
           <img src={withBase(work.data.thumbnail)} alt={`${work.data.title} のサムネイル`} loading="lazy" />
           <div class="music-page-card__body">
             <div class="music-page-card__meta">
@@ -69,14 +74,18 @@ const gameSoundWorks = musicEntries.filter((entry) => entry.data.category === "g
     </div>
   </section>
 
-  <section class="section-card">
+  <section class="section-card section-card--quiet" data-reveal>
     <div class="section-heading">
       <p class="section-heading__eyebrow">Game Sound</p>
       <h2>ゲームサウンド</h2>
     </div>
-    <div class="music-page-grid">
-      {gameSoundWorks.map((work) => (
-        <article class="music-page-card">
+    <div class="sound-grid">
+      {gameSoundWorks.map((work, index) => (
+        <article
+          class="music-page-card music-page-card--wide"
+          style={`--reveal-delay: ${100 + index * 90}ms;`}
+          data-reveal
+        >
           <img src={withBase(work.data.thumbnail)} alt={`${work.data.title} のサムネイル`} loading="lazy" />
           <div class="music-page-card__body">
             <div class="music-page-card__meta">

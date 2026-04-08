@@ -6,34 +6,68 @@ interface Metric {
   value: string;
 }
 
+interface Preview {
+  title: string;
+  href: string;
+  image: string;
+  engine: string;
+  roles: string;
+}
+
 interface Props {
   name: string;
   roleLine: string;
   summary: string;
   metrics: readonly Metric[];
+  previews: readonly Preview[];
   primaryHref: string;
   secondaryHref: string;
 }
 
-const { name, roleLine, summary, metrics, primaryHref, secondaryHref } = Astro.props as Props;
+const { name, roleLine, summary, metrics, previews, primaryHref, secondaryHref } =
+  Astro.props as Props;
 ---
 
-<section class={styles.hero}>
+<section class={styles.hero} data-reveal>
   <div class={styles.copy}>
-    <p class={styles.kicker}>{name}</p>
+    <p class={styles.kicker}>Game Creator Portfolio</p>
+    <p class={styles.name}>{name}</p>
     <h1>{roleLine}</h1>
     <p class={styles.summary}>{summary}</p>
     <div class={styles.actions}>
       <a class="button button--primary" href={primaryHref}>代表作を見る</a>
-      <a class="button button--secondary" href={secondaryHref}>音楽を見る</a>
+      <a class="button button--secondary" href={secondaryHref}>音楽を聴く</a>
+    </div>
+    <div class={styles.metrics}>
+      {metrics.map((metric) => (
+        <article class={styles.metricCard}>
+          <span>{metric.label}</span>
+          <strong>{metric.value}</strong>
+        </article>
+      ))}
     </div>
   </div>
-  <div class={styles.metrics}>
-    {metrics.map((metric) => (
-      <article class={styles.metricCard}>
-        <span>{metric.label}</span>
-        <strong>{metric.value}</strong>
-      </article>
+  <div class={styles.previewWall} aria-label="代表作品プレビュー">
+    {previews.map((preview, index) => (
+      <a
+        class={styles.previewCard}
+        href={preview.href}
+        style={`--preview-index: ${index}; --reveal-delay: ${100 + index * 90}ms;`}
+      >
+        <img src={preview.image} alt={`${preview.title} のプレビュー`} loading="eager" />
+        <div class={styles.previewShade}></div>
+        <div class={styles.previewBody}>
+          <div class={styles.previewMeta}>
+            <span>{preview.engine}</span>
+            <span>{preview.roles}</span>
+          </div>
+          <strong>{preview.title}</strong>
+        </div>
+      </a>
     ))}
+    <div class={styles.previewLabel}>
+      <span>Featured Games</span>
+      <p>チーム開発で担当した範囲を、作品ごとに切り分けて見せています。</p>
+    </div>
   </div>
 </section>

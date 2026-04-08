@@ -1,59 +1,58 @@
 ---
 title: "Access to your 5 Girls"
-slug: "access-to-your-5-girls"
 year: 2025
 sortOrder: 2
 engine: "Unity"
-teamType: "Team project"
+teamType: "チーム制作"
 roles:
-  - "Sound"
-  - "Scenario"
+  - "サウンド"
+  - "シナリオ"
 featured: true
 archived: false
-summaryShort: "A scenario-heavy ADV where five heroine routes and hidden tension overlap."
-summaryLong: "A Unity team project where I handled both soundtrack and scenario. I wrote about 100,000 characters of scenario text and composed one main BGM plus five heroine themes."
-myContribution: "I wrote the core scenario while also composing music that reflected each heroine's surface impression and hidden subtext. The sound and writing were designed to reinforce each other rather than work separately."
+summaryShort: "5 人のヒロインとの関係が絡み合う、設定の強い長編 ADV。"
+summaryLong: "Unity 製のチーム制作作品で、サウンドとシナリオを担当しました。メイン BGM とヒロイン別 BGM を通じて物語の裏側を支え、総文字数 10 万字規模のシナリオを制作しています。"
+myContribution: "シナリオ全体のテキストを担当しつつ、6 曲の BGM で各キャラクターの表面と裏面を表現しました。音楽とテキストを分断せず、互いに補強し合う設計を意識しています。"
 contributionSummary:
-  - "Wrote roughly 100,000 characters of scenario"
-  - "Composed one main BGM and five heroine-specific BGMs"
-  - "Linked character writing and musical motifs together"
+  - "総文字数 10 万字のシナリオを担当"
+  - "メイン BGM 1 曲とヒロイン固有 BGM 5 曲を制作"
+  - "キャラクターの設定や含意を音楽にも反映"
 deliverables:
-  - "Scenario text"
-  - "Main BGM"
-  - "Mashiro theme"
-  - "Himari theme"
-  - "Ramune theme"
-  - "Hagika theme"
-  - "Shion theme"
+  - "シナリオ 10万字"
+  - "mainBGM"
+  - "白夜"
+  - "黄昏アンダーグラウンド"
+  - "シュガーピンク・オーバードーズ"
+  - "アクア・レギア"
+  - "月下美人"
 technicalHighlights:
-  - title: "Sound and writing reinforce each other"
-    description: "The BGM layer carries character subtext so the player senses tension before it is stated directly."
-  - title: "Long-form scenario control"
-    description: "Even at large text volume, each heroine needed a consistent emotional axis and reveal order."
-  - title: "Role-specific music design"
-    description: "Each theme was written to reflect both the visible personality and the darker premise underneath."
+  - title: "音楽とテキストの相互補強"
+    description: "BGM に物語上の含意を持たせ、シナリオだけではなく音からも人物像が滲むように構成しました。"
+  - title: "長編シナリオの制御"
+    description: "10 万字規模でもキャラクターごとの軸がぶれないよう、展開整理と情報配置を意識しました。"
+  - title: "曲ごとの役割設計"
+    description: "各ヒロインに個別 BGM を持たせ、表面の印象と裏側の設定が同居するようにアレンジしました。"
 heroStats:
-  - label: "Scenario"
-    value: "100k chars"
+  - label: "シナリオ"
+    value: "10万字"
   - label: "BGM"
-    value: "6 tracks"
-  - label: "Engine"
+    value: "6曲"
+  - label: "エンジン"
     value: "Unity"
 thumbnail: "/images/projects/access-thumb.svg"
 gallery:
   - src: "/images/projects/access-shot-1.svg"
-    alt: "Placeholder ADV scene for Access to your 5 Girls"
-    caption: "Replace with dialogue or event scene capture"
+    alt: "Access to your 5 Girls のイベントシーンを想定したプレースホルダー"
+    caption: "会話画面やイベントシーンのスクリーンショットに差し替え"
   - src: "/images/projects/access-shot-2.svg"
-    alt: "Placeholder motif chart for Access to your 5 Girls"
-    caption: "Replace with music or character-related visual"
+    alt: "Access to your 5 Girls の音楽モチーフ解説を想定したプレースホルダー"
+    caption: "BGM 解説や人物相関が見える画像に差し替え"
 warnings:
-  - "Contains spoiler-aware music notes."
-  - "Sensitive story elements should stay inside the foldout area."
+  - "ネタバレを含む音楽解説があります。"
+  - "刺激の強い設定に触れるため、詳細は折りたたみ内で表示します。"
 externalLinks:
-  - label: "Download page"
+  - label: "ダウンロードページ"
     url: "https://example.com/access-to-your-5-girls"
-    note: "Replace with the real distribution URL"
+    note: "実際の頒布 URL に差し替え"
 ---
-This page should present sound and scenario as equal pillars.  
-Use the foldout section for spoiler-aware notes and stronger story details.
+サウンドとシナリオの両方を担当した作品として、役割の広さが最もわかりやすい代表作です。  
+詳細ページでは、各楽曲がどう人物像と結びついているかを、ネタバレに配慮しながら説明できる構成にしています。

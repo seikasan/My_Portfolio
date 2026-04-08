@@ -14,16 +14,30 @@ import {
   skillGroups,
   strengths
 } from "@content/site";
-import { musicPath, withBase } from "@utils/paths";
+import { musicPath, projectPath, withBase } from "@utils/paths";
 
-const projects = (await getCollection("projects"))
-  .sort((left, right) => left.data.sortOrder - right.data.sortOrder);
+const projects = (await getCollection("projects")).sort(
+  (left, right) => left.data.sortOrder - right.data.sortOrder
+);
 const featuredProjects = projects.filter((project) => project.data.featured && !project.data.archived);
 const earlyWorks = projects.filter((project) => project.data.archived);
 const musicWorks = (await getCollection("music"))
   .filter((item) => item.data.featured)
   .sort((left, right) => left.data.sortOrder - right.data.sortOrder)
   .slice(0, 3);
+
+const heroPreviews = featuredProjects.slice(0, 3).map((project) => ({
+  title: project.data.title,
+  href: projectPath(project.slug),
+  image: withBase(project.data.thumbnail),
+  engine: project.data.engine,
+  roles: project.data.roles.join(" / ")
+}));
+
+const [primaryProject, ...secondaryProjects] = featuredProjects;
+const leadStrength = strengths[0];
+const supportingStrengths = strengths.slice(1);
+
 const normalizedContactLinks = contactLinks.map((link) => ({
   label: link.label,
   url: "url" in link ? link.url : undefined,
@@ -37,45 +51,57 @@ const normalizedContactLinks = contactLinks.map((link) => ({
     roleLine={siteMeta.roleLine}
     summary={siteMeta.heroSummary}
     metrics={heroMetrics}
+    previews={heroPreviews}
     primaryHref="#games"
     secondaryHref={musicPath()}
   />
 
-  <section class="section-card" id="strengths">
+  <section class="section-card section-card--quiet" id="strengths" data-reveal>
     <div class="section-heading">
       <p class="section-heading__eyebrow">Strengths</p>
-      <h2>何を担当できるか</h2>
+      <h2>ゲーム制作の中で、何を担えるか</h2>
       <p class="section-heading__lead">
-        幅広さを並べるのではなく、ゲーム制作の中でどのように役立ててきたかが分かるように整理しています。
+        幅広さをただ並べるのではなく、どの作品でどの役割を果たしたかが伝わるように整理しています。
       </p>
     </div>
-    <div class="insight-grid">
-      {strengths.map((item) => (
-        <article class="insight-card">
-          <h3>{item.title}</h3>
-          <p>{item.summary}</p>
-          <small>{item.proof}</small>
-        </article>
-      ))}
+    <div class="strengths-layout">
+      <article class="insight-card insight-card--feature">
+        <p class="insight-card__eyebrow">Main Strength</p>
+        <h3>{leadStrength.title}</h3>
+        <p>{leadStrength.summary}</p>
+        <small>{leadStrength.proof}</small>
+      </article>
+      <div class="insight-stack">
+        {supportingStrengths.map((item, index) => (
+          <article class="insight-card" style={`--reveal-delay: ${120 + index * 70}ms;`} data-reveal>
+            <h3>{item.title}</h3>
+            <p>{item.summary}</p>
+            <small>{item.proof}</small>
+          </article>
+        ))}
+      </div>
     </div>
   </section>
 
-  <section class="section-card" id="games">
+  <section class="section-card section-card--spotlight" id="games" data-reveal>
     <div class="section-heading">
       <p class="section-heading__eyebrow">Featured Games</p>
       <h2>代表ゲーム作品</h2>
       <p class="section-heading__lead">
-        画像・タイトル・ボタンのいずれからも詳細ページへ遷移できます。チーム開発の中で自分が担当した範囲を先に見せる構成にしています。
+        作品ごとに担当範囲を分けて見せることを優先し、主役の 3 本だけを強く見せています。
       </p>
     </div>
-    <div class="stack-grid">
-      {featuredProjects.map((project) => (
-        <FeaturedGameCard project={project} />
-      ))}
+    <div class="featured-cluster">
+      {primaryProject && <FeaturedGameCard project={primaryProject} variant="primary" delayMs={60} />}
+      <div class="featured-cluster__grid">
+        {secondaryProjects.map((project, index) => (
+          <FeaturedGameCard project={project} variant="secondary" delayMs={140 + index * 90} />
+        ))}
+      </div>
     </div>
   </section>
 
-  <section class="section-card">
+  <section class="section-card section-card--quiet" data-reveal>
     <div class="section-heading">
       <p class="section-heading__eyebrow">Early Works</p>
       <h2>アーカイブ</h2>
@@ -97,22 +123,22 @@ const normalizedContactLinks = contactLinks.map((link) => ({
     </div>
   </section>
 
-  <section class="section-card">
+  <section class="section-card section-card--music" data-reveal>
     <div class="section-heading">
       <p class="section-heading__eyebrow">Music & Video</p>
       <h2>個人音楽作品</h2>
       <p class="section-heading__lead">
-        トップページでは埋め込みを使わず、代表作と導線だけを見せています。再生プレーヤーは音楽ページで表示します。
+        ここでは棚見せに徹し、再生プレーヤーは音楽ページでまとめて扱います。
       </p>
     </div>
-    <div class="music-grid">
-      {musicWorks.map((work) => (
-        <article class="music-card">
+    <div class="music-strip">
+      {musicWorks.map((work, index) => (
+        <article class="music-tile" style={`--reveal-delay: ${80 + index * 80}ms;`} data-reveal>
           <img src={withBase(work.data.thumbnail)} alt={`${work.data.title} のサムネイル`} loading="lazy" />
-          <div>
+          <div class="music-tile__body">
             <h3>{work.data.title}</h3>
             <p>{work.data.theme}</p>
-            <div class="music-card__meta">
+            <div class="music-tile__meta">
               <span>{work.data.kind}</span>
               <span>{work.data.playCount}</span>
             </div>
@@ -123,7 +149,7 @@ const normalizedContactLinks = contactLinks.map((link) => ({
     <a class="button button--secondary" href={musicPath()}>音楽ページを見る</a>
   </section>
 
-  <section class="section-card" id="skills">
+  <section class="section-card section-card--quiet" id="skills" data-reveal>
     <div class="section-heading">
       <p class="section-heading__eyebrow">Skills</p>
       <h2>言語・ツール</h2>
@@ -131,27 +157,27 @@ const normalizedContactLinks = contactLinks.map((link) => ({
     <SkillGrid groups={skillGroups} />
   </section>
 
-  <section class="section-card">
+  <section class="section-card section-card--quiet" data-reveal>
     <div class="section-heading">
       <p class="section-heading__eyebrow">Activity</p>
-      <h2>展示 / 頒布歴</h2>
+      <h2>展示・頒布歴</h2>
     </div>
     <Timeline items={activities} />
   </section>
 
-  <section class="section-card">
+  <section class="section-card section-card--quiet" data-reveal>
     <div class="section-heading">
       <p class="section-heading__eyebrow">Profile</p>
       <h2>創作の流れ</h2>
     </div>
     <div class="profile-stack">
-      {profileTimeline.map((line) => (
-        <p>{line}</p>
+      {profileTimeline.map((line, index) => (
+        <p style={`--reveal-delay: ${90 + index * 70}ms;`} data-reveal>{line}</p>
       ))}
     </div>
   </section>
 
-  <section class="section-card" id="contact">
+  <section class="section-card section-card--quiet" id="contact" data-reveal>
     <div class="section-heading">
       <p class="section-heading__eyebrow">Contact</p>
       <h2>連絡先 / 外部リンク</h2>
