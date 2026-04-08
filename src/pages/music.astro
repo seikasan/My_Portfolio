@@ -1,0 +1,119 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import EmbedFrame from "@components/EmbedFrame.astro";
+import { withBase } from "@utils/paths";
+
+const musicEntries = (await getCollection("music"))
+  .sort((left, right) => left.data.sortOrder - right.data.sortOrder);
+const originalWorks = musicEntries.filter((entry) => entry.data.category === "original");
+const gameSoundWorks = musicEntries.filter((entry) => entry.data.category === "game-sound");
+---
+
+<BaseLayout title="Music" description="個人音楽作品とゲームサウンドをまとめたページ。">
+  <section class="section-card">
+    <div class="section-heading">
+      <p class="section-heading__eyebrow">Original Music</p>
+      <h1>音楽・動画作品</h1>
+      <p class="section-heading__lead">
+        Apple Music と SoundCloud の埋め込みに対応しています。URL 未設定の項目はそのまま差し替えられるようにしてあります。
+      </p>
+    </div>
+  </section>
+
+  <section class="section-card">
+    <div class="section-heading">
+      <p class="section-heading__eyebrow">Original</p>
+      <h2>個人楽曲</h2>
+    </div>
+    <div class="music-page-grid">
+      {originalWorks.map((work) => (
+        <article class="music-page-card">
+          <img src={withBase(work.data.thumbnail)} alt={`${work.data.title} のサムネイル`} loading="lazy" />
+          <div class="music-page-card__body">
+            <div class="music-page-card__meta">
+              <span>{work.data.kind}</span>
+              <span>{work.data.playCount}</span>
+            </div>
+            <h3>{work.data.title}</h3>
+            <p>{work.data.theme}</p>
+            <ul class="tag-list">
+              {work.data.responsibilities.map((role) => (
+                <li>{role}</li>
+              ))}
+            </ul>
+            {work.data.embedProvider && work.data.embedUrl ? (
+              <EmbedFrame
+                provider={work.data.embedProvider}
+                title={work.data.title}
+                embedUrl={work.data.embedUrl}
+                externalUrl={work.data.externalLinks[0]?.url}
+              />
+            ) : (
+              <p class="empty-state">
+                Apple Music などの埋め込み URL を設定すると、ここにプレーヤーが表示されます。
+              </p>
+            )}
+            {work.data.externalLinks.length > 0 && (
+              <div class="inline-links">
+                {work.data.externalLinks.map((link) => (
+                  <a href={link.url} target="_blank" rel="noreferrer">
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section-card">
+    <div class="section-heading">
+      <p class="section-heading__eyebrow">Game Sound</p>
+      <h2>ゲームサウンド</h2>
+    </div>
+    <div class="music-page-grid">
+      {gameSoundWorks.map((work) => (
+        <article class="music-page-card">
+          <img src={withBase(work.data.thumbnail)} alt={`${work.data.title} のサムネイル`} loading="lazy" />
+          <div class="music-page-card__body">
+            <div class="music-page-card__meta">
+              <span>{work.data.kind}</span>
+              <span>{work.data.playCount}</span>
+            </div>
+            <h3>{work.data.title}</h3>
+            <p>{work.data.theme}</p>
+            <ul class="tag-list">
+              {work.data.responsibilities.map((role) => (
+                <li>{role}</li>
+              ))}
+            </ul>
+            {work.data.embedProvider && work.data.embedUrl ? (
+              <EmbedFrame
+                provider={work.data.embedProvider}
+                title={work.data.title}
+                embedUrl={work.data.embedUrl}
+                externalUrl={work.data.externalLinks[0]?.url}
+              />
+            ) : (
+              <p class="empty-state">
+                SoundCloud の埋め込み URL を設定すると、ここにプレーヤーが表示されます。
+              </p>
+            )}
+            {work.data.externalLinks.length > 0 && (
+              <div class="inline-links">
+                {work.data.externalLinks.map((link) => (
+                  <a href={link.url} target="_blank" rel="noreferrer">
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

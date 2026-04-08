@@ -1,0 +1,224 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import ContributionList from "@components/ContributionList.astro";
+import EmbedFrame from "@components/EmbedFrame.astro";
+import RoleBadges from "@components/RoleBadges.astro";
+import SpoilerBlock from "@components/SpoilerBlock.astro";
+import styles from "./ProjectLayout.module.css";
+import { withBase } from "@utils/paths";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+  Content: any;
+}
+
+const { project, Content } = Astro.props as Props;
+const {
+  title,
+  summaryShort,
+  summaryLong,
+  engine,
+  teamType,
+  roles,
+  myContribution,
+  contributionSummary,
+  deliverables,
+  technicalHighlights,
+  heroStats,
+  thumbnail,
+  gallery,
+  videoEmbed,
+  audioEmbeds,
+  warnings,
+  externalLinks,
+  downloadLink,
+  publicCodeLink
+} = project.data;
+
+const projectLinks = [
+  ...(downloadLink ? [{ label: "ダウンロード", url: downloadLink }] : []),
+  ...(publicCodeLink ? [{ label: "GitHub", url: publicCodeLink }] : []),
+  ...externalLinks.map((item) => ({ label: item.label, url: item.url, note: item.note }))
+];
+---
+
+<BaseLayout title={title} description={summaryLong}>
+  <article class={styles.project}>
+    <section class={styles.hero}>
+      <div class={styles.heroCopy}>
+        <p class={styles.eyebrow}>Game Project</p>
+        <h1>{title}</h1>
+        <p class={styles.summary}>{summaryShort}</p>
+        <p class={styles.lead}>{summaryLong}</p>
+        <div class={styles.meta}>
+          <div>
+            <span>Engine</span>
+            <strong>{engine}</strong>
+          </div>
+          <div>
+            <span>Type</span>
+            <strong>{teamType}</strong>
+          </div>
+        </div>
+        <RoleBadges roles={roles} />
+      </div>
+      <div class={styles.heroVisual}>
+        <img src={withBase(thumbnail)} alt={`${title} のメインビジュアル`} loading="eager" />
+        {heroStats.length > 0 && (
+          <dl class={styles.stats}>
+            {heroStats.map((stat) => (
+              <div>
+                <dt>{stat.label}</dt>
+                <dd>{stat.value}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
+      </div>
+    </section>
+
+    <section class="section-card">
+      <div class="section-heading">
+        <p class="section-heading__eyebrow">Overview</p>
+        <h2>チーム制作の中での担当</h2>
+      </div>
+      <div class={styles.columns}>
+        <div class={styles.panel}>
+          <p>{myContribution}</p>
+        </div>
+        <ContributionList title="担当範囲の要点" items={contributionSummary} />
+      </div>
+    </section>
+
+    <section class="section-card">
+      <div class="section-heading">
+        <p class="section-heading__eyebrow">Deliverables</p>
+        <h2>自分が作ったもの</h2>
+      </div>
+      <ContributionList items={deliverables} />
+    </section>
+
+    <section class="section-card">
+      <div class="section-heading">
+        <p class="section-heading__eyebrow">Highlights</p>
+        <h2>技術的な見どころ</h2>
+      </div>
+      <div class={styles.highlightGrid}>
+        {technicalHighlights.map((item) => (
+          <article class={styles.highlightCard}>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section-card">
+      <div class="section-heading">
+        <p class="section-heading__eyebrow">Gallery</p>
+        <h2>スクリーンショット</h2>
+      </div>
+      {gallery.length > 0 ? (
+        <div class={styles.gallery}>
+          {gallery.map((image) => (
+            <figure class={styles.galleryItem}>
+              <img src={withBase(image.src)} alt={image.alt} loading="lazy" />
+              {image.caption && <figcaption>{image.caption}</figcaption>}
+            </figure>
+          ))}
+        </div>
+      ) : (
+        <p class="empty-state">スクリーンショットを追加するとここに表示されます。</p>
+      )}
+    </section>
+
+    <section class="section-card">
+      <div class="section-heading">
+        <p class="section-heading__eyebrow">Play Video</p>
+        <h2>プレイ映像</h2>
+      </div>
+      {videoEmbed ? (
+        <EmbedFrame
+          provider={videoEmbed.provider}
+          title={videoEmbed.title}
+          embedUrl={videoEmbed.embedUrl}
+          externalUrl={videoEmbed.externalUrl}
+          note={videoEmbed.note}
+        />
+      ) : (
+        <p class="empty-state">
+          YouTube 限定公開の埋め込み URL を設定すると、詳細ページに遅延読み込みで表示されます。
+        </p>
+      )}
+    </section>
+
+    <section class="section-card">
+      <div class="section-heading">
+        <p class="section-heading__eyebrow">Supplement</p>
+        <h2>音楽 / シナリオ / 3D の補足</h2>
+      </div>
+      {warnings.length > 0 ? (
+        <SpoilerBlock title="注意書きと補足を表示">
+          <ul class={styles.warningList}>
+            {warnings.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+          <div class={styles.markdownBody}>
+            <Content />
+          </div>
+        </SpoilerBlock>
+      ) : (
+        <div class={styles.markdownBody}>
+          <Content />
+        </div>
+      )}
+    </section>
+
+    <section class="section-card">
+      <div class="section-heading">
+        <p class="section-heading__eyebrow">Audio</p>
+        <h2>関連音源</h2>
+      </div>
+      {audioEmbeds.length > 0 ? (
+        <div class={styles.embedStack}>
+          {audioEmbeds.map((item) => (
+            <EmbedFrame
+              provider={item.provider}
+              title={item.title}
+              embedUrl={item.embedUrl}
+              externalUrl={item.externalUrl}
+              note={item.note}
+            />
+          ))}
+        </div>
+      ) : (
+        <p class="empty-state">
+          SoundCloud や Apple Music の埋め込み URL を設定するとここに表示されます。
+        </p>
+      )}
+    </section>
+
+    <section class="section-card">
+      <div class="section-heading">
+        <p class="section-heading__eyebrow">Links</p>
+        <h2>ダウンロード / 外部リンク</h2>
+      </div>
+      {projectLinks.length > 0 ? (
+        <ul class={styles.linkList}>
+          {projectLinks.map((item) => (
+            <li>
+              <a href={item.url} target="_blank" rel="noreferrer">
+                {item.label}
+              </a>
+              {"note" in item && item.note && <small>{item.note}</small>}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="empty-state">URL を設定するとここにリンクが表示されます。</p>
+      )}
+    </section>
+  </article>
+</BaseLayout>

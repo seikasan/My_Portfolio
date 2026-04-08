@@ -1,0 +1,42 @@
+---
+import type { CollectionEntry } from "astro:content";
+import RoleBadges from "./RoleBadges.astro";
+import styles from "./FeaturedGameCard.module.css";
+import { projectPath, withBase } from "@utils/paths";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props as Props;
+const href = projectPath(project.slug);
+const primaryDeliverable = project.data.deliverables[0];
+---
+
+<article class={styles.card}>
+  <a class={styles.imageLink} href={href} aria-label={`${project.data.title} の詳細を見る`}>
+    <img src={withBase(project.data.thumbnail)} alt={`${project.data.title} のサムネイル`} loading="lazy" />
+  </a>
+  <div class={styles.body}>
+    <div class={styles.meta}>
+      <span>{project.data.engine}</span>
+      <span>{project.data.teamType}</span>
+    </div>
+    <a class={styles.titleLink} href={href}>
+      <h3>{project.data.title}</h3>
+    </a>
+    <p class={styles.summary}>{project.data.summaryShort}</p>
+    <RoleBadges roles={project.data.roles} />
+    <dl class={styles.detail}>
+      <div>
+        <dt>担当範囲</dt>
+        <dd>{project.data.myContribution}</dd>
+      </div>
+      <div>
+        <dt>成果物</dt>
+        <dd>{primaryDeliverable}</dd>
+      </div>
+    </dl>
+    <a class="button button--secondary" href={href}>詳細を見る</a>
+  </div>
+</article>

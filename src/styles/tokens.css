@@ -1,0 +1,22 @@
+:root {
+  --bg: #f7f0e8;
+  --bg-accent: #e9fff6;
+  --surface: rgba(255, 255, 255, 0.76);
+  --surface-strong: rgba(255, 252, 247, 0.92);
+  --ink: #4b4037;
+  --ink-strong: #2b221d;
+  --ink-soft: #62574c;
+  --ink-faint: #8a7d71;
+  --accent: #6dd6b2;
+  --accent-strong: #2f8d70;
+  --accent-alt: #f28a73;
+  --border-soft: rgba(133, 109, 89, 0.18);
+  --border-strong: rgba(133, 109, 89, 0.28);
+  --radius-xl: 28px;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --shadow-soft: 0 24px 60px rgba(66, 43, 25, 0.08);
+  --container: min(1120px, calc(100vw - 2rem));
+  --font-heading: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --font-body: "Aptos", "Segoe UI", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+}

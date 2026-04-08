@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#eef4ff" />
+  <circle cx="300" cy="310" r="140" fill="#d9e3ff" />
+  <circle cx="820" cy="260" r="120" fill="#f3d6ff" />
+  <rect x="170" y="430" width="860" height="120" rx="60" fill="#5d6ea6" opacity=".82" />
+  <text x="130" y="180" fill="#33415f" font-family="Georgia, serif" font-size="64">Lost of music</text>
+  <text x="130" y="245" fill="#60729d" font-family="Segoe UI, sans-serif" font-size="30">Early work / Sound</text>
+</svg>

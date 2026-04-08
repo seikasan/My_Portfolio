@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#111111" />
+  <circle cx="360" cy="340" r="120" fill="#ffffff" opacity=".14" />
+  <rect x="560" y="220" width="220" height="220" rx="24" fill="#ffffff" opacity=".08" />
+  <path d="M860 240 L980 460 L760 460 Z" fill="#ffffff" opacity=".1" />
+  <text x="140" y="660" fill="#f3f3f3" font-family="Georgia, serif" font-size="58">存在感覚実行</text>
+</svg>

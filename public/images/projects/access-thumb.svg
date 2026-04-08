@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#fff7f8" />
+  <rect x="0" y="0" width="1200" height="800" fill="url(#g)" />
+  <defs>
+    <linearGradient id="g" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff4f0" />
+      <stop offset="100%" stop-color="#f2f3ff" />
+    </linearGradient>
+  </defs>
+  <rect x="150" y="150" width="900" height="500" rx="38" fill="#ffffff" opacity=".84" />
+  <circle cx="300" cy="310" r="120" fill="#ffd4d4" />
+  <circle cx="560" cy="290" r="110" fill="#f0d7ff" />
+  <circle cx="820" cy="320" r="120" fill="#d8e1ff" />
+  <text x="130" y="120" fill="#452d31" font-family="Georgia, serif" font-size="62">Access to your 5 Girls</text>
+  <text x="130" y="690" fill="#725661" font-family="Segoe UI, sans-serif" font-size="30">Scenario / Sound</text>
+</svg>

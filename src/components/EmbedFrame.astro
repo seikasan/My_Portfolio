@@ -1,0 +1,91 @@
+---
+import styles from "./EmbedFrame.module.css";
+
+type Provider = "youtube" | "soundcloud" | "apple-music";
+
+interface Props {
+  provider: Provider;
+  title: string;
+  embedUrl?: string;
+  externalUrl?: string;
+  note?: string;
+}
+
+const { provider, title, embedUrl, externalUrl, note } = Astro.props as Props;
+
+const providerLabel: Record<Provider, string> = {
+  youtube: "YouTube",
+  soundcloud: "SoundCloud",
+  "apple-music": "Apple Music"
+};
+
+const isReady = Boolean(embedUrl && externalUrl);
+---
+
+<div
+  class={styles.embed}
+  data-embed-root={isReady ? "true" : "false"}
+  data-provider={provider}
+  data-embed-url={embedUrl}
+  data-title={title}
+>
+  <div class={styles.placeholder} data-embed-placeholder>
+    <span class={styles.provider}>{providerLabel[provider]}</span>
+    <h3>{title}</h3>
+    {note && <p>{note}</p>}
+    {isReady ? (
+      <button type="button" class="button button--primary" data-embed-button>
+        再生プレーヤーを表示
+      </button>
+    ) : (
+      <p class={styles.pending}>
+        埋め込み URL を設定すると、ここに {providerLabel[provider]} プレーヤーが表示されます。
+      </p>
+    )}
+  </div>
+  <div class={styles.frameArea} data-embed-target hidden></div>
+  {externalUrl && (
+    <a class={styles.external} href={externalUrl} target="_blank" rel="noreferrer">
+      {providerLabel[provider]}で開く
+    </a>
+  )}
+</div>
+
+<script is:inline>
+  if (!window.__portfolioEmbedHandler) {
+    window.__portfolioEmbedHandler = true;
+
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!(target instanceof HTMLElement)) return;
+
+      const button = target.closest("[data-embed-button]");
+      if (!button) return;
+
+      const root = button.closest("[data-embed-root='true']");
+      if (!(root instanceof HTMLElement)) return;
+
+      const mount = root.querySelector("[data-embed-target]");
+      if (!(mount instanceof HTMLElement) || mount.childElementCount > 0) return;
+
+      const iframe = document.createElement("iframe");
+      iframe.src = root.dataset.embedUrl || "";
+      iframe.title = root.dataset.title || "Embedded media";
+      iframe.loading = "lazy";
+      iframe.referrerPolicy = "strict-origin-when-cross-origin";
+      iframe.allow =
+        root.dataset.provider === "youtube"
+          ? "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          : "autoplay; clipboard-write; encrypted-media; picture-in-picture";
+      iframe.allowFullscreen = true;
+
+      mount.hidden = false;
+      mount.appendChild(iframe);
+
+      const placeholder = root.querySelector("[data-embed-placeholder]");
+      if (placeholder instanceof HTMLElement) {
+        placeholder.style.display = "none";
+      }
+    });
+  }
+</script>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#f6f5ff" />
+  <rect x="125" y="125" width="950" height="550" rx="40" fill="#ffffff" stroke="#d6d1ef" stroke-width="8" />
+  <rect x="200" y="250" width="70" height="250" fill="#232323" />
+  <rect x="300" y="220" width="70" height="280" fill="#232323" />
+  <rect x="400" y="280" width="70" height="220" fill="#232323" />
+  <rect x="500" y="180" width="70" height="320" fill="#232323" />
+  <text x="170" y="180" fill="#423d60" font-family="Georgia, serif" font-size="52">罪の世界に戻りたいな</text>
+</svg>

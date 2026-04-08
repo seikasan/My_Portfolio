@@ -1,0 +1,15 @@
+---
+import styles from "./RoleBadges.module.css";
+
+interface Props {
+  roles: string[];
+}
+
+const { roles } = Astro.props as Props;
+---
+
+<ul class={styles.list} aria-label="担当ロール">
+  {roles.map((role) => (
+    <li>{role}</li>
+  ))}
+</ul>

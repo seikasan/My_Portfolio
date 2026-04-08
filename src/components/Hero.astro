@@ -1,0 +1,39 @@
+---
+import styles from "./Hero.module.css";
+
+interface Metric {
+  label: string;
+  value: string;
+}
+
+interface Props {
+  name: string;
+  roleLine: string;
+  summary: string;
+  metrics: readonly Metric[];
+  primaryHref: string;
+  secondaryHref: string;
+}
+
+const { name, roleLine, summary, metrics, primaryHref, secondaryHref } = Astro.props as Props;
+---
+
+<section class={styles.hero}>
+  <div class={styles.copy}>
+    <p class={styles.kicker}>{name}</p>
+    <h1>{roleLine}</h1>
+    <p class={styles.summary}>{summary}</p>
+    <div class={styles.actions}>
+      <a class="button button--primary" href={primaryHref}>代表作を見る</a>
+      <a class="button button--secondary" href={secondaryHref}>音楽を見る</a>
+    </div>
+  </div>
+  <div class={styles.metrics}>
+    {metrics.map((metric) => (
+      <article class={styles.metricCard}>
+        <span>{metric.label}</span>
+        <strong>{metric.value}</strong>
+      </article>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#fff7f0" />
+  <rect x="120" y="120" width="960" height="560" rx="40" fill="#ffffff" stroke="#dfccbf" stroke-width="8" />
+  <rect x="220" y="260" width="760" height="260" rx="28" fill="#d8edf5" />
+  <text x="180" y="215" fill="#514238" font-family="Georgia, serif" font-size="62">ベランダ</text>
+</svg>

@@ -1,0 +1,87 @@
+---
+import { contactLinks, siteMeta } from "@content/site";
+import { musicPath, withBase } from "@utils/paths";
+import "@styles/tokens.css";
+import "@styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = siteMeta.title, description = siteMeta.description } = Astro.props as Props;
+const pageTitle = title === siteMeta.title ? title : `${title} | ${siteMeta.title}`;
+const homeHref = withBase("");
+const navLinks = [
+  { label: "Top", href: homeHref },
+  { label: "Games", href: `${homeHref}#games` },
+  { label: "Music", href: musicPath() },
+  { label: "Skills", href: `${homeHref}#skills` },
+  { label: "Contact", href: `${homeHref}#contact` }
+];
+const normalizedContactLinks = contactLinks.map((link) => ({
+  label: link.label,
+  url: "url" in link ? link.url : undefined,
+  note: link.note
+}));
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header__inner">
+          <a class="site-brand" href={homeHref}>
+            <span class="site-brand__name">{siteMeta.name}</span>
+            <span class="site-brand__role">{siteMeta.roleLine}</span>
+          </a>
+          <nav class="site-nav" aria-label="Primary">
+            <ul>
+              {navLinks.map((item) => (
+                <li>
+                  <a href={item.href}>{item.label}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <main class="page-main">
+        <slot />
+      </main>
+
+      <footer class="site-footer">
+        <div class="site-footer__inner">
+          <div>
+            <p class="site-footer__eyebrow">Contact</p>
+            <a href={`mailto:${siteMeta.contactEmail}`} class="site-footer__mail">
+              {siteMeta.contactEmail}
+            </a>
+          </div>
+          <ul class="site-footer__links">
+            {normalizedContactLinks.map((item) => (
+              <li>
+                {item.url ? (
+                  <a href={item.url} target="_blank" rel="noreferrer">
+                    {item.label}
+                  </a>
+                ) : (
+                  <span>{item.label}</span>
+                )}
+                {item.note && <small>{item.note}</small>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

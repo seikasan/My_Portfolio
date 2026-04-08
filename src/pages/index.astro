@@ -1,0 +1,182 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import FeaturedGameCard from "@components/FeaturedGameCard.astro";
+import Hero from "@components/Hero.astro";
+import SkillGrid from "@components/SkillGrid.astro";
+import Timeline from "@components/Timeline.astro";
+import {
+  activities,
+  contactLinks,
+  heroMetrics,
+  profileTimeline,
+  siteMeta,
+  skillGroups,
+  strengths
+} from "@content/site";
+import { musicPath, withBase } from "@utils/paths";
+
+const projects = (await getCollection("projects"))
+  .sort((left, right) => left.data.sortOrder - right.data.sortOrder);
+const featuredProjects = projects.filter((project) => project.data.featured && !project.data.archived);
+const earlyWorks = projects.filter((project) => project.data.archived);
+const musicWorks = (await getCollection("music"))
+  .filter((item) => item.data.featured)
+  .sort((left, right) => left.data.sortOrder - right.data.sortOrder)
+  .slice(0, 3);
+const normalizedContactLinks = contactLinks.map((link) => ({
+  label: link.label,
+  url: "url" in link ? link.url : undefined,
+  note: link.note
+}));
+---
+
+<BaseLayout>
+  <Hero
+    name={siteMeta.name}
+    roleLine={siteMeta.roleLine}
+    summary={siteMeta.heroSummary}
+    metrics={heroMetrics}
+    primaryHref="#games"
+    secondaryHref={musicPath()}
+  />
+
+  <section class="section-card" id="strengths">
+    <div class="section-heading">
+      <p class="section-heading__eyebrow">Strengths</p>
+      <h2>何を担当できるか</h2>
+      <p class="section-heading__lead">
+        幅広さを並べるのではなく、ゲーム制作の中でどのように役立ててきたかが分かるように整理しています。
+      </p>
+    </div>
+    <div class="insight-grid">
+      {strengths.map((item) => (
+        <article class="insight-card">
+          <h3>{item.title}</h3>
+          <p>{item.summary}</p>
+          <small>{item.proof}</small>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section-card" id="games">
+    <div class="section-heading">
+      <p class="section-heading__eyebrow">Featured Games</p>
+      <h2>代表ゲーム作品</h2>
+      <p class="section-heading__lead">
+        画像・タイトル・ボタンのいずれからも詳細ページへ遷移できます。チーム開発の中で自分が担当した範囲を先に見せる構成にしています。
+      </p>
+    </div>
+    <div class="stack-grid">
+      {featuredProjects.map((project) => (
+        <FeaturedGameCard project={project} />
+      ))}
+    </div>
+  </section>
+
+  <section class="section-card">
+    <div class="section-heading">
+      <p class="section-heading__eyebrow">Early Works</p>
+      <h2>アーカイブ</h2>
+      <p class="section-heading__lead">
+        初期作は主役にせず、発想の核だけを短く残しています。
+      </p>
+    </div>
+    <div class="archive-grid">
+      {earlyWorks.map((project) => (
+        <article class="archive-card">
+          <img src={withBase(project.data.thumbnail)} alt={`${project.data.title} のサムネイル`} loading="lazy" />
+          <div>
+            <h3>{project.data.title}</h3>
+            <p>{project.data.summaryShort}</p>
+            <small>{project.data.contributionSummary[0]}</small>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section-card">
+    <div class="section-heading">
+      <p class="section-heading__eyebrow">Music & Video</p>
+      <h2>個人音楽作品</h2>
+      <p class="section-heading__lead">
+        トップページでは埋め込みを使わず、代表作と導線だけを見せています。再生プレーヤーは音楽ページで表示します。
+      </p>
+    </div>
+    <div class="music-grid">
+      {musicWorks.map((work) => (
+        <article class="music-card">
+          <img src={withBase(work.data.thumbnail)} alt={`${work.data.title} のサムネイル`} loading="lazy" />
+          <div>
+            <h3>{work.data.title}</h3>
+            <p>{work.data.theme}</p>
+            <div class="music-card__meta">
+              <span>{work.data.kind}</span>
+              <span>{work.data.playCount}</span>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+    <a class="button button--secondary" href={musicPath()}>音楽ページを見る</a>
+  </section>
+
+  <section class="section-card" id="skills">
+    <div class="section-heading">
+      <p class="section-heading__eyebrow">Skills</p>
+      <h2>言語・ツール</h2>
+    </div>
+    <SkillGrid groups={skillGroups} />
+  </section>
+
+  <section class="section-card">
+    <div class="section-heading">
+      <p class="section-heading__eyebrow">Activity</p>
+      <h2>展示 / 頒布歴</h2>
+    </div>
+    <Timeline items={activities} />
+  </section>
+
+  <section class="section-card">
+    <div class="section-heading">
+      <p class="section-heading__eyebrow">Profile</p>
+      <h2>創作の流れ</h2>
+    </div>
+    <div class="profile-stack">
+      {profileTimeline.map((line) => (
+        <p>{line}</p>
+      ))}
+    </div>
+  </section>
+
+  <section class="section-card" id="contact">
+    <div class="section-heading">
+      <p class="section-heading__eyebrow">Contact</p>
+      <h2>連絡先 / 外部リンク</h2>
+    </div>
+    <div class="contact-panel">
+      <div>
+        <p class="contact-panel__label">Mail</p>
+        <a class="contact-panel__mail" href={`mailto:${siteMeta.contactEmail}`}>
+          {siteMeta.contactEmail}
+        </a>
+      </div>
+      <ul class="contact-list">
+        {normalizedContactLinks.map((item) => (
+          <li>
+            {item.url ? (
+              <a href={item.url} target="_blank" rel="noreferrer">
+                {item.label}
+              </a>
+            ) : (
+              <span>{item.label}</span>
+            )}
+            {item.note && <small>{item.note}</small>}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

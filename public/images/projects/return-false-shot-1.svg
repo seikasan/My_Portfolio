@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#f7f5f1" />
+  <rect x="90" y="100" width="1020" height="600" rx="40" fill="#ffffff" stroke="#d0c7be" stroke-width="8" />
+  <rect x="150" y="180" width="900" height="310" rx="28" fill="#ded5cb" />
+  <rect x="150" y="530" width="900" height="110" rx="20" fill="#edf9f5" />
+  <text x="150" y="690" fill="#5d544b" font-family="Segoe UI, sans-serif" font-size="38">Puzzle scene placeholder</text>
+</svg>
