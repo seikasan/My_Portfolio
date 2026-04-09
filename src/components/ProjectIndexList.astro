@@ -52,7 +52,7 @@ const initialProject = items[0];
                 data-project-id={row.left.slug}
                 data-row-index={String(rowIndex)}
                 data-side="left"
-                aria-pressed={rowIndex === 0 ? "true" : "false"}
+                aria-pressed="false"
                 aria-label={`${row.left.data.title} を選択`}
               >
                 <img
@@ -306,7 +306,7 @@ const initialProject = items[0];
       const mobileTriggers = allTriggers.filter((trigger) => trigger.dataset.layout === "mobile");
 
       let pinnedId = initialProjectId;
-      let previewId = initialProjectId;
+      let desktopActiveId = null;
 
       const clearOverlayHost = (host) => {
         if (!(host instanceof HTMLElement)) return;
@@ -331,7 +331,7 @@ const initialProject = items[0];
       };
 
       const renderDesktop = () => {
-        const activeId = previewId || pinnedId;
+        const activeId = desktopActiveId;
         const activeMeta = activeId ? rowMeta.get(activeId) : undefined;
 
         root.querySelectorAll("[data-preview-row]").forEach((row) => {
@@ -349,7 +349,7 @@ const initialProject = items[0];
           }
 
           overlayHost.dataset.overlaySide = activeMeta.side === "left" ? "right" : "left";
-          overlayHost.dataset.overlayState = activeId === pinnedId ? "pinned" : "preview";
+          overlayHost.dataset.overlayState = "preview";
           mountDetail(overlayHost, activeId);
         });
       };
@@ -360,13 +360,15 @@ const initialProject = items[0];
       };
 
       const renderTriggerState = () => {
-        const activeId = previewId || pinnedId;
-
         allTriggers.forEach((trigger) => {
           if (!(trigger instanceof HTMLButtonElement)) return;
 
-          const isPinned = trigger.dataset.projectId === pinnedId;
-          const isActive = trigger.dataset.projectId === activeId;
+          const isDesktop = trigger.dataset.layout === "desktop";
+          const isActive = isDesktop
+            ? trigger.dataset.projectId === desktopActiveId
+            : trigger.dataset.projectId === pinnedId;
+          const isPinned = !isDesktop && trigger.dataset.projectId === pinnedId;
+
           trigger.setAttribute("aria-pressed", String(isPinned));
           trigger.dataset.activeState = isActive ? "active" : "inactive";
 
@@ -389,27 +391,30 @@ const initialProject = items[0];
         if (!projectId) return;
 
         trigger.addEventListener("pointerenter", () => {
-          previewId = projectId;
+          desktopActiveId = projectId;
+          render();
+        });
+
+        trigger.addEventListener("pointerleave", () => {
+          desktopActiveId = null;
           render();
         });
 
         trigger.addEventListener("focus", () => {
-          previewId = projectId;
+          desktopActiveId = projectId;
           render();
         });
 
         trigger.addEventListener("click", (event) => {
           event.preventDefault();
-          pinnedId = projectId;
-          previewId = projectId;
+          desktopActiveId = projectId;
           render();
         });
 
         trigger.addEventListener("keydown", (event) => {
           if (event.key !== "Enter" && event.key !== " ") return;
           event.preventDefault();
-          pinnedId = projectId;
-          previewId = projectId;
+          desktopActiveId = projectId;
           render();
         });
       });
@@ -421,7 +426,6 @@ const initialProject = items[0];
         trigger.addEventListener("click", (event) => {
           event.preventDefault();
           pinnedId = projectId;
-          previewId = projectId;
           render();
         });
 
@@ -429,21 +433,15 @@ const initialProject = items[0];
           if (event.key !== "Enter" && event.key !== " ") return;
           event.preventDefault();
           pinnedId = projectId;
-          previewId = projectId;
           render();
         });
       });
 
       if (desktop instanceof HTMLElement) {
-        desktop.addEventListener("pointerleave", () => {
-          previewId = pinnedId;
-          render();
-        });
-
         desktop.addEventListener("focusout", (event) => {
           const next = event.relatedTarget;
           if (next instanceof Node && desktop.contains(next)) return;
-          previewId = pinnedId;
+          desktopActiveId = null;
           render();
         });
       }
