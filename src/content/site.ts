@@ -1,6 +1,7 @@
 export const siteMeta = {
   title: "seikasan Portfolio",
-  description: "ゲーム実装を軸に、サウンド・シナリオ・3Dまで担当する学生ゲーム制作者のポートフォリオ。",
+  description:
+    "ゲーム実装を軸に、サウンド・シナリオ・3Dまで担当する学生ゲーム制作者のポートフォリオ。",
   name: "seikasan",
   roleLine: "ゲーム実装 / サウンド / シナリオ / 3D",
   heroSummary:

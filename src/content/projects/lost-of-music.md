@@ -1,5 +1,5 @@
 ---
-title: "Lost of music"
+title: "Lost of Music"
 year: 2024
 sortOrder: 99
 periodLabel: "2024/08 - 2024/12"

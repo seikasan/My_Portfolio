@@ -1,36 +1,73 @@
-.layout {
+.root {
   display: grid;
   gap: 1rem;
 }
 
+.desktop {
+  display: grid;
+  gap: 1rem;
+}
+
+.row {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+}
+
+.slot {
+  min-width: 0;
+}
+
+.cardShell,
+.detailSlot {
+  min-width: 0;
+}
+
 .card {
   display: grid;
-  gap: 0.9rem;
-  padding: 1rem;
-  border-radius: var(--radius-lg);
+  gap: 0.8rem;
+  padding: 0.95rem;
+  border-radius: var(--radius-xl);
   border: 1px solid rgba(123, 89, 83, 0.12);
   background: rgba(255, 255, 255, 0.84);
-  text-decoration: none;
+  box-shadow: 0 12px 24px rgba(48, 31, 27, 0.06);
   transition:
     transform 220ms ease,
     box-shadow 220ms ease,
     border-color 220ms ease;
 }
 
-.card:hover {
-  transform: translateY(-4px);
+.card[data-active-state="active"] {
+  transform: translateY(-3px);
   border-color: rgba(123, 89, 83, 0.24);
   box-shadow: 0 18px 36px rgba(48, 31, 27, 0.1);
 }
 
-.cardHeader {
+.cardButton {
   display: grid;
-  gap: 0.55rem;
+  gap: 0.9rem;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
 }
 
-.cardHeader h3 {
-  margin: 0;
-  font-size: 1.26rem;
+.thumbnail {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(123, 89, 83, 0.1);
+  object-fit: cover;
+}
+
+.cardBody {
+  display: grid;
+  gap: 0.7rem;
 }
 
 .metaRow {
@@ -69,21 +106,25 @@
   color: #195846;
 }
 
+.cardBody h3 {
+  margin: 0;
+  font-size: 1.26rem;
+}
+
 .summary {
   margin: 0;
   color: var(--ink-soft);
-  max-width: 60ch;
 }
 
 .specGrid {
   display: grid;
-  gap: 0.7rem;
+  gap: 0.6rem;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   margin: 0;
 }
 
 .specGrid div {
-  padding: 0.8rem 0.85rem;
+  padding: 0.75rem 0.8rem;
   border-radius: var(--radius-lg);
   border: 1px solid rgba(123, 89, 83, 0.1);
   background: rgba(252, 247, 242, 0.9);
@@ -101,18 +142,38 @@
   color: var(--ink-strong);
 }
 
-.linkLabel {
+.cardLink {
+  display: inline-flex;
+  width: fit-content;
   color: var(--rose-strong);
   font-weight: 700;
 }
 
-.empty {
-  margin: 0;
-  padding: 1rem;
-  border-radius: var(--radius-lg);
-  border: 1px dashed var(--border-soft);
-  background: rgba(255, 255, 255, 0.72);
-  color: var(--ink-soft);
+.detailSlot[hidden] {
+  display: none;
+}
+
+.mobile {
+  display: none;
+}
+
+.mobileList {
+  display: grid;
+  gap: 1rem;
+}
+
+.mobileDetail {
+  margin-top: 1rem;
+}
+
+@media (max-width: 900px) {
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
+  }
 }
 
 @media (max-width: 720px) {

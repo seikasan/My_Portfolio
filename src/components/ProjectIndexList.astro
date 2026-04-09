@@ -1,13 +1,22 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import ProjectPreviewDetail from "./ProjectPreviewDetail.astro";
 import styles from "./ProjectIndexList.module.css";
-import { projectPath } from "@utils/paths";
+import { projectPath, withBase } from "@utils/paths";
 
 interface Props {
   items: readonly CollectionEntry<"projects">[];
 }
 
 const { items } = Astro.props as Props;
+
+const rows = Array.from({ length: Math.ceil(items.length / 2) }, (_, index) => ({
+  left: items[index * 2],
+  right: items[index * 2 + 1]
+}));
+
+const cardTeamLabel = (project: CollectionEntry<"projects">) =>
+  typeof project.data.members === "number" ? `${project.data.members}人` : project.data.members;
 
 const getStatusLabel = (status: CollectionEntry<"projects">["data"]["status"]) => {
   if (status === "archive") {
@@ -20,59 +29,444 @@ const getStatusLabel = (status: CollectionEntry<"projects">["data"]["status"]) =
 
   return undefined;
 };
+
+const initialProject = items[0];
 ---
 
-<div class={styles.layout}>
-  {items.length > 0 ? (
-    items.map((project, index) => {
-      const statusLabel = getStatusLabel(project.data.status);
-
-      return (
-        <a
-          class={styles.card}
-          href={projectPath(project.slug)}
-          style={`--reveal-delay: ${70 + index * 60}ms;`}
-          data-reveal
-        >
-          <div class={styles.cardHeader}>
-            <div class={styles.metaRow}>
-              <span class={styles.metaChip}>{project.data.periodLabel}</span>
-              <span class={styles.metaChip}>{project.data.engine}</span>
-              {statusLabel && (
-                <span
-                  class={`${styles.statusChip} ${
-                    project.data.status === "archive" ? styles.archive : styles.inProgress
-                  }`}
+<div
+  class={styles.root}
+  data-project-preview-root
+  data-initial-project-id={initialProject?.slug}
+>
+  <div class={styles.desktop} data-preview-desktop>
+    {rows.map((row, rowIndex) => (
+      <div class={styles.row} data-preview-row data-row-index={String(rowIndex)}>
+        <div class={styles.slot}>
+          {row.left && (
+            <div class={styles.cardShell} data-card-shell="left">
+              <article class={styles.card} data-card-article>
+                <button
+                  type="button"
+                  class={styles.cardButton}
+                  data-project-trigger
+                  data-layout="desktop"
+                  data-project-id={row.left.slug}
+                  data-row-index={String(rowIndex)}
+                  data-side="left"
+                  aria-pressed={rowIndex === 0 ? "true" : "false"}
+                  aria-label={`${row.left.data.title} を選択`}
                 >
-                  {statusLabel}
-                </span>
-              )}
+                  <img
+                    class={styles.thumbnail}
+                    src={withBase(row.left.data.thumbnail)}
+                    alt={`${row.left.data.title} のサムネイル`}
+                    loading="lazy"
+                  />
+                  <div class={styles.cardBody}>
+                    <div class={styles.metaRow}>
+                      <span class={styles.metaChip}>{row.left.data.periodLabel}</span>
+                      <span class={styles.metaChip}>{row.left.data.engine}</span>
+                      {getStatusLabel(row.left.data.status) && (
+                        <span
+                          class={`${styles.statusChip} ${
+                            row.left.data.status === "archive" ? styles.archive : styles.inProgress
+                          }`}
+                        >
+                          {getStatusLabel(row.left.data.status)}
+                        </span>
+                      )}
+                    </div>
+                    <h3>{row.left.data.title}</h3>
+                    <p class={styles.summary}>{row.left.data.summaryShort}</p>
+                    <dl class={styles.specGrid}>
+                      <div>
+                        <dt>担当</dt>
+                        <dd>{row.left.data.primaryRole}</dd>
+                      </div>
+                      <div>
+                        <dt>形式</dt>
+                        <dd>{row.left.data.format}</dd>
+                      </div>
+                      <div>
+                        <dt>体制</dt>
+                        <dd>{cardTeamLabel(row.left)}</dd>
+                      </div>
+                    </dl>
+                  </div>
+                </button>
+                <a class={styles.cardLink} href={projectPath(row.left.slug)}>
+                  作品詳細へ
+                </a>
+              </article>
             </div>
-            <h3>{project.data.title}</h3>
-          </div>
+          )}
+          <div class={styles.detailSlot} data-detail-slot="left" hidden></div>
+        </div>
 
-          <p class={styles.summary}>{project.data.summaryShort}</p>
+        <div class={styles.slot}>
+          {row.right && (
+            <div class={styles.cardShell} data-card-shell="right">
+              <article class={styles.card} data-card-article>
+                <button
+                  type="button"
+                  class={styles.cardButton}
+                  data-project-trigger
+                  data-layout="desktop"
+                  data-project-id={row.right.slug}
+                  data-row-index={String(rowIndex)}
+                  data-side="right"
+                  aria-pressed="false"
+                  aria-label={`${row.right.data.title} を選択`}
+                >
+                  <img
+                    class={styles.thumbnail}
+                    src={withBase(row.right.data.thumbnail)}
+                    alt={`${row.right.data.title} のサムネイル`}
+                    loading="lazy"
+                  />
+                  <div class={styles.cardBody}>
+                    <div class={styles.metaRow}>
+                      <span class={styles.metaChip}>{row.right.data.periodLabel}</span>
+                      <span class={styles.metaChip}>{row.right.data.engine}</span>
+                      {getStatusLabel(row.right.data.status) && (
+                        <span
+                          class={`${styles.statusChip} ${
+                            row.right.data.status === "archive" ? styles.archive : styles.inProgress
+                          }`}
+                        >
+                          {getStatusLabel(row.right.data.status)}
+                        </span>
+                      )}
+                    </div>
+                    <h3>{row.right.data.title}</h3>
+                    <p class={styles.summary}>{row.right.data.summaryShort}</p>
+                    <dl class={styles.specGrid}>
+                      <div>
+                        <dt>担当</dt>
+                        <dd>{row.right.data.primaryRole}</dd>
+                      </div>
+                      <div>
+                        <dt>形式</dt>
+                        <dd>{row.right.data.format}</dd>
+                      </div>
+                      <div>
+                        <dt>体制</dt>
+                        <dd>{cardTeamLabel(row.right)}</dd>
+                      </div>
+                    </dl>
+                  </div>
+                </button>
+                <a class={styles.cardLink} href={projectPath(row.right.slug)}>
+                  作品詳細へ
+                </a>
+              </article>
+            </div>
+          )}
+          <div class={styles.detailSlot} data-detail-slot="right" hidden></div>
+        </div>
+      </div>
+    ))}
+  </div>
 
-          <dl class={styles.specGrid}>
-            <div>
-              <dt>担当</dt>
-              <dd>{project.data.primaryRole}</dd>
+  <div class={styles.mobile} data-preview-mobile>
+    <div class={styles.mobileList}>
+      {items.map((project) => (
+        <article class={styles.card} data-card-article>
+          <button
+            type="button"
+            class={styles.cardButton}
+            data-project-trigger
+            data-layout="mobile"
+            data-project-id={project.slug}
+            aria-pressed={project.slug === initialProject?.slug ? "true" : "false"}
+            aria-label={`${project.data.title} を選択`}
+          >
+            <img
+              class={styles.thumbnail}
+              src={withBase(project.data.thumbnail)}
+              alt={`${project.data.title} のサムネイル`}
+              loading="lazy"
+            />
+            <div class={styles.cardBody}>
+              <div class={styles.metaRow}>
+                <span class={styles.metaChip}>{project.data.periodLabel}</span>
+                <span class={styles.metaChip}>{project.data.engine}</span>
+                {getStatusLabel(project.data.status) && (
+                  <span
+                    class={`${styles.statusChip} ${
+                      project.data.status === "archive" ? styles.archive : styles.inProgress
+                    }`}
+                  >
+                    {getStatusLabel(project.data.status)}
+                  </span>
+                )}
+              </div>
+              <h3>{project.data.title}</h3>
+              <p class={styles.summary}>{project.data.summaryShort}</p>
+              <dl class={styles.specGrid}>
+                <div>
+                  <dt>担当</dt>
+                  <dd>{project.data.primaryRole}</dd>
+                </div>
+                <div>
+                  <dt>形式</dt>
+                  <dd>{project.data.format}</dd>
+                </div>
+                <div>
+                  <dt>体制</dt>
+                  <dd>{cardTeamLabel(project)}</dd>
+                </div>
+              </dl>
             </div>
-            <div>
-              <dt>形式</dt>
-              <dd>{project.data.format}</dd>
-            </div>
-            <div>
-              <dt>技術</dt>
-              <dd>{project.data.engine}</dd>
-            </div>
-          </dl>
+          </button>
+          <a class={styles.cardLink} href={projectPath(project.slug)}>
+            作品詳細へ
+          </a>
+        </article>
+      ))}
+    </div>
 
-          <span class={styles.linkLabel}>詳細を見る</span>
-        </a>
-      );
-    })
-  ) : (
-    <p class={styles.empty}>現在掲載中の作品はありません。</p>
-  )}
+    <div class={styles.mobileDetail} data-mobile-detail>
+      {initialProject && <ProjectPreviewDetail project={initialProject} />}
+    </div>
+  </div>
+
+  <div hidden aria-hidden="true">
+    {items.map((project) => (
+      <template data-detail-template={project.slug}>
+        <ProjectPreviewDetail project={project} />
+      </template>
+    ))}
+  </div>
 </div>
+
+<script is:inline>
+  (() => {
+    const roots = document.querySelectorAll("[data-project-preview-root]");
+
+    const mountEmbed = (button) => {
+      const embedRoot = button.closest("[data-embed-root='true']");
+      if (!(embedRoot instanceof HTMLElement)) return;
+
+      const mount = embedRoot.querySelector("[data-embed-target]");
+      if (!(mount instanceof HTMLElement) || mount.childElementCount > 0) return;
+
+      const iframe = document.createElement("iframe");
+      iframe.src = embedRoot.dataset.embedUrl || "";
+      iframe.title = embedRoot.dataset.title || "Embedded media";
+      iframe.loading = "lazy";
+      iframe.referrerPolicy = "strict-origin-when-cross-origin";
+      iframe.allow =
+        embedRoot.dataset.provider === "youtube"
+          ? "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          : "autoplay; clipboard-write; encrypted-media; picture-in-picture";
+      iframe.allowFullscreen = true;
+
+      mount.hidden = false;
+      mount.appendChild(iframe);
+
+      const placeholder = embedRoot.querySelector("[data-embed-placeholder]");
+      if (placeholder instanceof HTMLElement) {
+        placeholder.style.display = "none";
+      }
+    };
+
+    roots.forEach((root) => {
+      if (!(root instanceof HTMLElement) || root.dataset.previewInit === "true") return;
+      root.dataset.previewInit = "true";
+
+      const initialProjectId = root.dataset.initialProjectId;
+      if (!initialProjectId) return;
+
+      const desktop = root.querySelector("[data-preview-desktop]");
+      const mobileDetail = root.querySelector("[data-mobile-detail]");
+      const rowMeta = new Map();
+      const detailTemplates = new Map();
+
+      root.querySelectorAll("[data-project-trigger][data-layout='desktop']").forEach((trigger) => {
+        if (!(trigger instanceof HTMLButtonElement)) return;
+
+        rowMeta.set(trigger.dataset.projectId, {
+          rowIndex: trigger.dataset.rowIndex,
+          side: trigger.dataset.side
+        });
+      });
+
+      root.querySelectorAll("template[data-detail-template]").forEach((template) => {
+        if (!(template instanceof HTMLTemplateElement)) return;
+        detailTemplates.set(template.dataset.detailTemplate, template);
+      });
+
+      const allTriggers = Array.from(root.querySelectorAll("[data-project-trigger]")).filter(
+        (trigger) => trigger instanceof HTMLButtonElement
+      );
+      const desktopTriggers = allTriggers.filter((trigger) => trigger.dataset.layout === "desktop");
+      const mobileTriggers = allTriggers.filter((trigger) => trigger.dataset.layout === "mobile");
+
+      let pinnedId = initialProjectId;
+      let previewId = initialProjectId;
+
+      const clearDetailSlot = (slot) => {
+        if (!(slot instanceof HTMLElement)) return;
+        slot.innerHTML = "";
+        slot.hidden = true;
+      };
+
+      const mountDetail = (slot, projectId) => {
+        if (!(slot instanceof HTMLElement)) return;
+        slot.innerHTML = "";
+
+        const template = detailTemplates.get(projectId);
+        if (!(template instanceof HTMLTemplateElement)) {
+          slot.hidden = true;
+          return;
+        }
+
+        slot.appendChild(template.content.cloneNode(true));
+        slot.hidden = false;
+      };
+
+      const setCardVisibility = (row, side, visible) => {
+        const shell = row.querySelector(`[data-card-shell='${side}']`);
+        if (shell instanceof HTMLElement) {
+          shell.hidden = !visible;
+        }
+      };
+
+      const renderDesktop = () => {
+        const activeId = previewId || pinnedId;
+        const activeMeta = activeId ? rowMeta.get(activeId) : undefined;
+
+        root.querySelectorAll("[data-preview-row]").forEach((row) => {
+          if (!(row instanceof HTMLElement)) return;
+
+          const leftDetail = row.querySelector("[data-detail-slot='left']");
+          const rightDetail = row.querySelector("[data-detail-slot='right']");
+
+          clearDetailSlot(leftDetail);
+          clearDetailSlot(rightDetail);
+          setCardVisibility(row, "left", true);
+          setCardVisibility(row, "right", true);
+
+          if (!activeMeta || row.dataset.rowIndex !== activeMeta.rowIndex) {
+            return;
+          }
+
+          if (activeMeta.side === "left") {
+            setCardVisibility(row, "right", false);
+            mountDetail(rightDetail, activeId);
+          } else {
+            setCardVisibility(row, "left", false);
+            mountDetail(leftDetail, activeId);
+          }
+        });
+      };
+
+      const renderMobile = () => {
+        if (!(mobileDetail instanceof HTMLElement)) return;
+        mountDetail(mobileDetail, pinnedId);
+      };
+
+      const renderTriggerState = () => {
+        const activeId = previewId || pinnedId;
+
+        allTriggers.forEach((trigger) => {
+          if (!(trigger instanceof HTMLButtonElement)) return;
+
+          const isPinned = trigger.dataset.projectId === pinnedId;
+          const isActive = trigger.dataset.projectId === activeId;
+          trigger.setAttribute("aria-pressed", String(isPinned));
+          trigger.dataset.activeState = isActive ? "active" : "inactive";
+
+          const article = trigger.closest("[data-card-article]");
+          if (article instanceof HTMLElement) {
+            article.dataset.activeState = isActive ? "active" : "inactive";
+            article.dataset.pinnedState = isPinned ? "true" : "false";
+          }
+        });
+      };
+
+      const render = () => {
+        renderDesktop();
+        renderMobile();
+        renderTriggerState();
+      };
+
+      desktopTriggers.forEach((trigger) => {
+        const projectId = trigger.dataset.projectId;
+        if (!projectId) return;
+
+        trigger.addEventListener("pointerenter", () => {
+          previewId = projectId;
+          render();
+        });
+
+        trigger.addEventListener("focus", () => {
+          previewId = projectId;
+          render();
+        });
+
+        trigger.addEventListener("click", (event) => {
+          event.preventDefault();
+          pinnedId = projectId;
+          previewId = projectId;
+          render();
+        });
+
+        trigger.addEventListener("keydown", (event) => {
+          if (event.key !== "Enter" && event.key !== " ") return;
+          event.preventDefault();
+          pinnedId = projectId;
+          previewId = projectId;
+          render();
+        });
+      });
+
+      mobileTriggers.forEach((trigger) => {
+        const projectId = trigger.dataset.projectId;
+        if (!projectId) return;
+
+        trigger.addEventListener("click", (event) => {
+          event.preventDefault();
+          pinnedId = projectId;
+          previewId = projectId;
+          render();
+        });
+
+        trigger.addEventListener("keydown", (event) => {
+          if (event.key !== "Enter" && event.key !== " ") return;
+          event.preventDefault();
+          pinnedId = projectId;
+          previewId = projectId;
+          render();
+        });
+      });
+
+      if (desktop instanceof HTMLElement) {
+        desktop.addEventListener("pointerleave", () => {
+          previewId = pinnedId;
+          render();
+        });
+
+        desktop.addEventListener("focusout", (event) => {
+          const next = event.relatedTarget;
+          if (next instanceof Node && desktop.contains(next)) return;
+          previewId = pinnedId;
+          render();
+        });
+      }
+
+      root.addEventListener("click", (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLElement)) return;
+
+        const button = target.closest("[data-embed-button]");
+        if (!(button instanceof HTMLButtonElement)) return;
+
+        mountEmbed(button);
+      });
+
+      render();
+    });
+  })();
+</script>

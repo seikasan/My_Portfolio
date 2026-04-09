@@ -4,7 +4,7 @@ year: 2025
 sortOrder: 2
 periodLabel: "2025"
 engine: "Unity"
-members: "チーム制作"
+members: "人数非公開"
 teamType: "チーム制作"
 workCategory: "team"
 format: "ADV"

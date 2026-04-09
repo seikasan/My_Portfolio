@@ -25,6 +25,28 @@ const embedSchema = z.object({
   note: z.string().optional()
 });
 
+const previewTextBlockSchema = z.object({
+  type: z.literal("text"),
+  title: z.string().optional(),
+  body: z.string()
+});
+
+const previewImageBlockSchema = z.object({
+  type: z.literal("image"),
+  src: z.string(),
+  alt: z.string(),
+  caption: z.string().optional()
+});
+
+const previewEmbedBlockSchema = z.object({
+  type: z.literal("embed"),
+  provider: z.enum(["youtube", "soundcloud", "apple-music"]),
+  title: z.string(),
+  embedUrl: z.string().url(),
+  externalUrl: z.string().url(),
+  note: z.string().optional()
+});
+
 const statSchema = z.object({
   label: z.string(),
   value: z.string()
@@ -56,6 +78,9 @@ const projectCollection = defineCollection({
     heroStats: z.array(statSchema).default([]),
     thumbnail: z.string(),
     gallery: z.array(galleryItemSchema).default([]),
+    previewBlocks: z
+      .array(z.union([previewTextBlockSchema, previewImageBlockSchema, previewEmbedBlockSchema]))
+      .default([]),
     videoEmbed: embedSchema.optional(),
     audioEmbeds: z.array(embedSchema).default([]),
     warnings: z.array(z.string()).default([]),
