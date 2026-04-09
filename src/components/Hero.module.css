@@ -39,16 +39,18 @@
 .name {
   margin: 0.55rem 0 0;
   color: var(--ink-faint);
-  font-size: 0.98rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
 }
 
 .copy h1 {
   position: relative;
   z-index: 1;
   margin: 0.8rem 0 1.1rem;
-  max-width: 9ch;
-  font-size: clamp(2.8rem, 5vw, 5rem);
-  line-height: 0.9;
+  max-width: 12ch;
+  font-size: clamp(2.4rem, 4.8vw, 4.4rem);
+  line-height: 0.96;
 }
 
 .summary {
@@ -60,11 +62,37 @@
   font-size: 1.04rem;
 }
 
+.techList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 1.2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.techList li {
+  padding: 0.38rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(117, 93, 76, 0.12);
+  background: rgba(255, 255, 255, 0.74);
+  color: var(--ink-strong);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
 .actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.85rem;
   margin-top: 1.55rem;
+}
+
+.musicLink {
+  display: inline-flex;
+  margin-top: 0.9rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
 }
 
 .metrics {
@@ -95,7 +123,8 @@
   display: block;
   margin-top: 0.3rem;
   color: var(--ink-strong);
-  font-size: 1.4rem;
+  font-size: 1.2rem;
+  line-height: 1.35;
 }
 
 .previewWall {
@@ -197,7 +226,8 @@
   }
 
   .copy h1 {
-    font-size: clamp(2.2rem, 11vw, 3.6rem);
+    max-width: none;
+    font-size: clamp(2.1rem, 10vw, 3.3rem);
   }
 
   .previewCard {

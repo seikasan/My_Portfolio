@@ -2,13 +2,19 @@
 title: "return false;"
 year: 2024
 sortOrder: 3
+periodLabel: "2025/03 - 2025/08"
 engine: "Siv3D"
+members: 7
 teamType: "チーム制作"
+workCategory: "circle"
+format: "2Dミステリー"
 roles:
   - "サウンド"
   - "シナリオ"
+primaryRole: "サウンド / シナリオ"
 featured: true
 archived: false
+status: "released"
 summaryShort: "大学サークルで起きた開発データ消失事件を追う、約 1 時間の謎解きゲーム。"
 summaryLong: "Siv3D を用いたチーム制作作品で、サウンドとシナリオを担当しました。部室の空気やキャラクター性を支える 2 曲の BGM と、約 1 時間の謎解きシナリオを制作しています。"
 myContribution: "ゲーム全体のトーンを支えるシナリオと BGM 2 曲を担当しました。日常感とコミカルな異物感を、文章と音の両面から整えています。"

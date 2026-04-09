@@ -2,13 +2,19 @@
 title: "Access to your 5 Girls"
 year: 2025
 sortOrder: 2
+periodLabel: "2025"
 engine: "Unity"
+members: "チーム制作"
 teamType: "チーム制作"
+workCategory: "team"
+format: "ADV"
 roles:
   - "サウンド"
   - "シナリオ"
+primaryRole: "サウンド / シナリオ"
 featured: true
 archived: false
+status: "released"
 summaryShort: "5 人のヒロインとの関係が絡み合う、設定の強い長編 ADV。"
 summaryLong: "Unity 製のチーム制作作品で、サウンドとシナリオを担当しました。メイン BGM とヒロイン別 BGM を通じて物語の裏側を支え、総文字数 10 万字規模のシナリオを制作しています。"
 myContribution: "シナリオ全体のテキストを担当しつつ、6 曲の BGM で各キャラクターの表面と裏面を表現しました。音楽とテキストを分断せず、互いに補強し合う設計を意識しています。"

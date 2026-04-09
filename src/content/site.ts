@@ -1,44 +1,46 @@
 export const siteMeta = {
   title: "seikasan Portfolio",
   description:
-    "Unity を中心に、ゲームの実装・サウンド・シナリオ・3Dモデリングを横断して制作する大学3年生のポートフォリオ。",
+    "ゲーム実装を軸に、サウンド・シナリオ・3Dまで横断して担当する学生ゲーム制作者のポートフォリオ。",
   name: "seikasan",
-  roleLine: "ゲームプログラマー / サウンド / シナリオ / 3Dモデリング",
+  roleLine: "ゲーム実装 / サウンド / シナリオ / 3D",
   heroSummary:
-    "Unity を中心に、ゲームの実装・音楽・物語・3D モデリングを横断して制作しています。チーム開発では担当範囲を明確にしながら、作品全体の完成度を引き上げる役割を担ってきました。",
+    "Unity と Siv3D を中心に、チーム制作の中で実装を主軸としながらサウンド、シナリオ、3D まで横断して担当しています。作品ごとの担当範囲と成果物が短時間で伝わる構成に整理しています。",
   contactEmail: "your-mail@example.com"
 } as const;
 
+export const heroTechStack = ["Unity", "C#", "Siv3D", "C++", "Blender", "Studio One"] as const;
+
 export const heroMetrics = [
-  { label: "チーム制作", value: "4本" },
-  { label: "シナリオ", value: "10万字" },
-  { label: "頒布実績", value: "コミケ展示" }
+  { label: "Game Works", value: "4本" },
+  { label: "Main Roles", value: "実装 / 音楽 / シナリオ" },
+  { label: "Exhibition", value: "文化祭・コミケ" }
 ] as const;
 
 export const strengths = [
   {
     title: "Program",
     summary:
-      "Unity でゲームプレイの基盤を設計し、敵やギミックを量産しやすい形に落とし込めます。",
-    proof: "『ちょこ旅』で敵制作をノーコード化する共通基盤を構築。"
+      "ゲームプレイの基盤を共通化し、敵やギミックを追加しやすい形まで設計してから実装します。",
+    proof: "『ちょこ旅』で敵制作をノーコードに近づける共通基盤を構築。"
   },
   {
     title: "Sound",
     summary:
-      "BGM を雰囲気づくりだけでなく、設定や進行を支えるレイヤーとして設計します。",
-    proof: "『Access to your 5 Girls』でメイン BGM とキャラ別 BGM を制作。"
+      "BGM を雰囲気づくりだけで終わらせず、設定や進行を補強する情報として組み込みます。",
+    proof: "『Access to your 5 Girls』でメイン BGM とキャラ別 BGM を含む 6 曲を制作。"
   },
   {
     title: "Scenario",
     summary:
-      "短編謎解きから長編 ADV まで、ゲーム体験に合わせたテキスト量と展開設計を行えます。",
-    proof: "『Access to your 5 Girls』で総文字数 10 万字のシナリオを担当。"
+      "短編ミステリーから長編 ADV まで、プレイ体験に合わせて情報量と展開速度を調整できます。",
+    proof: "『return false;』と『Access to your 5 Girls』で謎解き短編と 10 万字規模の ADV を担当。"
   },
   {
     title: "3D",
     summary:
-      "Blender でモデルを作るだけでなく、ゲーム内での見え方や運用まで見越して組み込みます。",
-    proof: "『ちょこ旅』でお菓子モデル、ボーン設定、アニメーション対応を担当。"
+      "Blender で見た目を作るだけでなく、ゲーム内の可読性や運用まで考えて組み込みます。",
+    proof: "『ちょこ旅』でお菓子モデル、ボーン設定、アニメーション対応まで担当。"
   }
 ] as const;
 
@@ -55,11 +57,11 @@ export const skillGroups = [
     ]
   },
   {
-    label: "授業・短期使用",
+    label: "Sub / Exposure",
     items: [
       { name: "VBA", years: "1m" },
-      { name: "Java", years: "授業で使用" },
-      { name: "HTML / CSS / JavaScript", years: "授業で使用" },
+      { name: "Java", years: "授業利用" },
+      { name: "HTML / CSS / JavaScript", years: "授業利用" },
       { name: "Siv3D", years: "1作品" }
     ]
   }
@@ -74,9 +76,9 @@ export const activities = [
 ] as const;
 
 export const profileTimeline = [
-  "幼稚園では漫画を描き、小学生からプログラミングと作曲を始めました。",
-  "中学生で小説執筆と 3D モデリングを始め、高校では音楽制作に集中しました。",
-  "大学ではそれまでの経験を統合し、チームでのゲーム制作に取り組んでいます。"
+  "ゲーム実装を軸に、作品ごとに必要な役割を引き受けながら完成度を上げる形で制作しています。",
+  "サウンドとシナリオは単独要素ではなく、演出と進行を支えるレイヤーとして設計しています。",
+  "3D は見た目づくりに留めず、ゲーム内の可読性や運用まで実装側と往復しながら扱っています。"
 ] as const;
 
 export const contactLinks = [

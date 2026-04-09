@@ -3,12 +3,14 @@ import { getCollection } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import FeaturedGameCard from "@components/FeaturedGameCard.astro";
 import Hero from "@components/Hero.astro";
+import ProjectIndexList from "@components/ProjectIndexList.astro";
 import SkillGrid from "@components/SkillGrid.astro";
 import Timeline from "@components/Timeline.astro";
 import {
   activities,
   contactLinks,
   heroMetrics,
+  heroTechStack,
   profileTimeline,
   siteMeta,
   skillGroups,
@@ -19,8 +21,9 @@ import { musicPath, projectPath, withBase } from "@utils/paths";
 const projects = (await getCollection("projects")).sort(
   (left, right) => left.data.sortOrder - right.data.sortOrder
 );
-const featuredProjects = projects.filter((project) => project.data.featured && !project.data.archived);
-const earlyWorks = projects.filter((project) => project.data.archived);
+const featuredProjects = projects.filter((project) => project.data.featured).slice(0, 3);
+const circleWorks = projects.filter((project) => project.data.workCategory === "circle");
+const otherWorks = projects.filter((project) => project.data.workCategory !== "circle");
 const musicWorks = (await getCollection("music"))
   .filter((item) => item.data.featured)
   .sort((left, right) => left.data.sortOrder - right.data.sortOrder)
@@ -30,13 +33,26 @@ const heroPreviews = featuredProjects.slice(0, 3).map((project) => ({
   title: project.data.title,
   href: projectPath(project.slug),
   image: withBase(project.data.thumbnail),
+  period: project.data.periodLabel,
   engine: project.data.engine,
-  roles: project.data.roles.join(" / ")
+  role: project.data.primaryRole
 }));
 
 const [primaryProject, ...secondaryProjects] = featuredProjects;
 const leadStrength = strengths[0];
 const supportingStrengths = strengths.slice(1);
+const workGroups = [
+  {
+    title: "大学・サークル制作",
+    description: "学内チームやサークルで担当した作品を、制作期間と役割がすぐ分かる形で整理しています。",
+    items: circleWorks
+  },
+  {
+    title: "個人制作 / その他",
+    description: "個人制作や別チームの作品を、今後追加しやすい形で同じ一覧にまとめています。",
+    items: otherWorks
+  }
+] as const;
 
 const normalizedContactLinks = contactLinks.map((link) => ({
   label: link.label,
@@ -50,18 +66,20 @@ const normalizedContactLinks = contactLinks.map((link) => ({
     name={siteMeta.name}
     roleLine={siteMeta.roleLine}
     summary={siteMeta.heroSummary}
+    techStack={heroTechStack}
     metrics={heroMetrics}
     previews={heroPreviews}
     primaryHref="#games"
-    secondaryHref={musicPath()}
+    secondaryHref="#works"
+    musicHref={musicPath()}
   />
 
   <section class="section-card section-card--quiet" id="strengths" data-reveal>
     <div class="section-heading">
-      <p class="section-heading__eyebrow">Strengths</p>
-      <h2>ゲーム制作の中で、何を担えるか</h2>
+      <p class="section-heading__eyebrow">Role Proof</p>
+      <h2>作品で証明できる担当領域</h2>
       <p class="section-heading__lead">
-        幅広さをただ並べるのではなく、どの作品でどの役割を果たしたかが伝わるように整理しています。
+        できることを広く並べるのではなく、どの作品で何を作ったかが伝わる証拠ベースで整理しています。
       </p>
     </div>
     <div class="strengths-layout">
@@ -86,9 +104,9 @@ const normalizedContactLinks = contactLinks.map((link) => ({
   <section class="section-card section-card--spotlight" id="games" data-reveal>
     <div class="section-heading">
       <p class="section-heading__eyebrow">Featured Games</p>
-      <h2>代表ゲーム作品</h2>
+      <h2>代表作 3 本</h2>
       <p class="section-heading__lead">
-        作品ごとに担当範囲を分けて見せることを優先し、主役の 3 本だけを強く見せています。
+        採用・審査向けに、何を担当した作品なのかが一目で分かる 3 本だけを先に強く見せています。
       </p>
     </div>
     <div class="featured-cluster">
@@ -101,45 +119,36 @@ const normalizedContactLinks = contactLinks.map((link) => ({
     </div>
   </section>
 
-  <section class="section-card section-card--quiet" data-reveal>
+  <section class="section-card section-card--quiet" id="works" data-reveal>
     <div class="section-heading">
-      <p class="section-heading__eyebrow">Early Works</p>
-      <h2>アーカイブ</h2>
+      <p class="section-heading__eyebrow">All Works</p>
+      <h2>全ゲーム作品</h2>
       <p class="section-heading__lead">
-        初期作は主役にせず、発想の核だけを短く残しています。
+        代表作以外も含めて、制作履歴を短時間で俯瞰できる一覧にまとめています。
       </p>
     </div>
-    <div class="archive-grid">
-      {earlyWorks.map((project) => (
-        <article class="archive-card">
-          <img src={withBase(project.data.thumbnail)} alt={`${project.data.title} のサムネイル`} loading="lazy" />
-          <div>
-            <h3>{project.data.title}</h3>
-            <p>{project.data.summaryShort}</p>
-            <small>{project.data.contributionSummary[0]}</small>
-          </div>
-        </article>
-      ))}
-    </div>
+    <ProjectIndexList groups={workGroups} />
   </section>
 
   <section class="section-card section-card--music" data-reveal>
     <div class="section-heading">
-      <p class="section-heading__eyebrow">Music & Video</p>
-      <h2>個人音楽作品</h2>
+      <p class="section-heading__eyebrow">Sound Portfolio</p>
+      <h2>音楽作品への導線</h2>
       <p class="section-heading__lead">
-        ここでは棚見せに徹し、再生プレーヤーは音楽ページでまとめて扱います。
+        ゲームサウンドと個人音楽は別ページにまとめ、トップでは担当できる領域だけを短く示しています。
       </p>
     </div>
-    <div class="music-strip">
+    <div class="sound-proof-grid">
       {musicWorks.map((work, index) => (
-        <article class="music-tile" style={`--reveal-delay: ${80 + index * 80}ms;`} data-reveal>
-          <img src={withBase(work.data.thumbnail)} alt={`${work.data.title} のサムネイル`} loading="lazy" />
-          <div class="music-tile__body">
+        <article class="sound-proof-card" style={`--reveal-delay: ${80 + index * 80}ms;`} data-reveal>
+          <p class="sound-proof-card__eyebrow">{work.data.kind}</p>
+          <div class="sound-proof-card__body">
             <h3>{work.data.title}</h3>
             <p>{work.data.theme}</p>
-            <div class="music-tile__meta">
-              <span>{work.data.kind}</span>
+            <div class="sound-proof-card__meta">
+              {work.data.responsibilities.slice(0, 3).map((role) => (
+                <span>{role}</span>
+              ))}
               <span>{work.data.playCount}</span>
             </div>
           </div>
@@ -153,6 +162,9 @@ const normalizedContactLinks = contactLinks.map((link) => ({
     <div class="section-heading">
       <p class="section-heading__eyebrow">Skills</p>
       <h2>言語・ツール</h2>
+      <p class="section-heading__lead">
+        主戦力の技術と、授業・短期使用に留まる技術を分けて記載しています。
+      </p>
     </div>
     <SkillGrid groups={skillGroups} />
   </section>
@@ -168,7 +180,7 @@ const normalizedContactLinks = contactLinks.map((link) => ({
   <section class="section-card section-card--quiet" data-reveal>
     <div class="section-heading">
       <p class="section-heading__eyebrow">Profile</p>
-      <h2>創作の流れ</h2>
+      <h2>制作の軸</h2>
     </div>
     <div class="profile-stack">
       {profileTimeline.map((line, index) => (

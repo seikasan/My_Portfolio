@@ -10,34 +10,43 @@ interface Preview {
   title: string;
   href: string;
   image: string;
+  period: string;
   engine: string;
-  roles: string;
+  role: string;
 }
 
 interface Props {
   name: string;
   roleLine: string;
   summary: string;
+  techStack: readonly string[];
   metrics: readonly Metric[];
   previews: readonly Preview[];
   primaryHref: string;
   secondaryHref: string;
+  musicHref: string;
 }
 
-const { name, roleLine, summary, metrics, previews, primaryHref, secondaryHref } =
+const { name, roleLine, summary, techStack, metrics, previews, primaryHref, secondaryHref, musicHref } =
   Astro.props as Props;
 ---
 
 <section class={styles.hero} data-reveal>
   <div class={styles.copy}>
-    <p class={styles.kicker}>Game Creator Portfolio</p>
+    <p class={styles.kicker}>Portfolio for Game Production</p>
     <p class={styles.name}>{name}</p>
     <h1>{roleLine}</h1>
     <p class={styles.summary}>{summary}</p>
+    <ul class={styles.techList} aria-label="主要技術">
+      {techStack.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
     <div class={styles.actions}>
       <a class="button button--primary" href={primaryHref}>代表作を見る</a>
-      <a class="button button--secondary" href={secondaryHref}>音楽を聴く</a>
+      <a class="button button--secondary" href={secondaryHref}>作品一覧を見る</a>
     </div>
+    <a class={styles.musicLink} href={musicHref}>音楽作品ページを見る</a>
     <div class={styles.metrics}>
       {metrics.map((metric) => (
         <article class={styles.metricCard}>
@@ -58,8 +67,9 @@ const { name, roleLine, summary, metrics, previews, primaryHref, secondaryHref }
         <div class={styles.previewShade}></div>
         <div class={styles.previewBody}>
           <div class={styles.previewMeta}>
+            <span>{preview.period}</span>
             <span>{preview.engine}</span>
-            <span>{preview.roles}</span>
+            <span>{preview.role}</span>
           </div>
           <strong>{preview.title}</strong>
         </div>
@@ -67,7 +77,7 @@ const { name, roleLine, summary, metrics, previews, primaryHref, secondaryHref }
     ))}
     <div class={styles.previewLabel}>
       <span>Featured Games</span>
-      <p>チーム開発で担当した範囲を、作品ごとに切り分けて見せています。</p>
+      <p>代表作 3 本で、作品ごとの担当範囲と成果物がすぐ分かる構成にしています。</p>
     </div>
   </div>
 </section>

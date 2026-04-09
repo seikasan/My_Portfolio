@@ -2,14 +2,20 @@
 title: "ちょこ旅"
 year: 2025
 sortOrder: 1
+periodLabel: "2025"
 engine: "Unity"
+members: "チーム制作"
 teamType: "チーム制作"
+workCategory: "team"
+format: "3Dアクション"
 roles:
   - "プログラマー"
   - "サウンド"
   - "3Dモデラー"
+primaryRole: "プログラム"
 featured: true
 archived: false
+status: "released"
 summaryShort: "お菓子の世界を舞台にした、軽やかな空気感の 3D アクションゲーム。"
 summaryLong: "Unity を用いたチーム制作の中で、プログラム・3D モデル・サウンドを担当した作品です。最も力を入れたのは、敵やギミックを共通基盤で扱い、ノーコードに近い感覚で量産できる設計づくりでした。"
 myContribution: "作品全体では軽さとかわいさを支えつつ、プログラム面ではプレイヤー・敵・ギミックを共通の見方で扱える仕組みを構築しました。さらに、お菓子モチーフの 3D モデル制作、敵へのボーン設定、アニメーション対応、サウンド制作も担当しました。"

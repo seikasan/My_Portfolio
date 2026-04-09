@@ -429,6 +429,58 @@ p {
   grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
 }
 
+.sound-proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.sound-proof-card {
+  display: grid;
+  gap: 0.8rem;
+  padding: 1.1rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(123, 89, 83, 0.12);
+  background: linear-gradient(180deg, rgba(255, 254, 252, 0.96), rgba(247, 241, 236, 0.84));
+}
+
+.sound-proof-card__eyebrow {
+  margin: 0;
+  color: var(--rose-strong);
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sound-proof-card__body {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.sound-proof-card__body h3,
+.sound-proof-card__body p {
+  margin: 0;
+}
+
+.sound-proof-card__body p {
+  color: var(--ink-soft);
+}
+
+.sound-proof-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.sound-proof-card__meta span {
+  padding: 0.28rem 0.54rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.88);
+  font-size: 0.78rem;
+}
+
 .tag-list,
 .inline-links,
 .contact-list,
@@ -590,6 +642,7 @@ p {
 
   .featured-cluster__grid,
   .music-strip,
+  .sound-proof-grid,
   .album-grid {
     grid-template-columns: 1fr;
   }
