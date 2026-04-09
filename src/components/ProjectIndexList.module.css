@@ -9,8 +9,10 @@
 }
 
 .row {
+  position: relative;
+  --row-gap: 1rem;
   display: grid;
-  gap: 1rem;
+  gap: var(--row-gap);
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: start;
 }
@@ -19,8 +21,8 @@
   min-width: 0;
 }
 
-.cardShell,
-.detailSlot {
+.card,
+.emptySlot {
   min-width: 0;
 }
 
@@ -35,13 +37,22 @@
   transition:
     transform 220ms ease,
     box-shadow 220ms ease,
-    border-color 220ms ease;
+    border-color 220ms ease,
+    opacity 220ms ease;
 }
 
 .card[data-active-state="active"] {
   transform: translateY(-3px);
   border-color: rgba(123, 89, 83, 0.24);
   box-shadow: 0 18px 36px rgba(48, 31, 27, 0.1);
+}
+
+.card[data-pinned-state="true"] {
+  border-color: rgba(123, 89, 83, 0.2);
+}
+
+.emptySlot {
+  min-height: 1px;
 }
 
 .cardButton {
@@ -149,8 +160,36 @@
   font-weight: 700;
 }
 
-.detailSlot[hidden] {
+.overlayHost {
+  position: absolute;
+  top: 0;
+  z-index: 8;
+  width: calc((100% - var(--row-gap)) / 2);
+  pointer-events: none;
+}
+
+.overlayHost[data-overlay-side="left"] {
+  left: 0;
+}
+
+.overlayHost[data-overlay-side="right"] {
+  right: 0;
+}
+
+.overlayHost[hidden] {
   display: none;
+}
+
+.overlayPanel {
+  margin: 0.35rem;
+  pointer-events: auto;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: overlay-enter 220ms ease forwards;
+}
+
+.overlayHost[data-overlay-state="preview"] .overlayPanel {
+  pointer-events: none;
 }
 
 .mobile {
@@ -164,6 +203,25 @@
 
 .mobileDetail {
   margin-top: 1rem;
+}
+
+.mobileDetail > .overlayPanel {
+  margin: 0;
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+@keyframes overlay-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 900px) {
