@@ -1,34 +1,16 @@
 ---
 import styles from "./Hero.module.css";
 
-interface Metric {
-  label: string;
-  value: string;
-}
-
-interface Preview {
-  title: string;
-  href: string;
-  image: string;
-  period: string;
-  engine: string;
-  role: string;
-}
-
 interface Props {
   name: string;
   roleLine: string;
   summary: string;
   techStack: readonly string[];
-  metrics: readonly Metric[];
-  previews: readonly Preview[];
   primaryHref: string;
-  secondaryHref: string;
   musicHref: string;
 }
 
-const { name, roleLine, summary, techStack, metrics, previews, primaryHref, secondaryHref, musicHref } =
-  Astro.props as Props;
+const { name, roleLine, summary, techStack, primaryHref, musicHref } = Astro.props as Props;
 ---
 
 <section class={styles.hero} data-reveal>
@@ -43,41 +25,8 @@ const { name, roleLine, summary, techStack, metrics, previews, primaryHref, seco
       ))}
     </ul>
     <div class={styles.actions}>
-      <a class="button button--primary" href={primaryHref}>代表作を見る</a>
-      <a class="button button--secondary" href={secondaryHref}>作品一覧を見る</a>
+      <a class="button button--primary" href={primaryHref}>作品を見る</a>
     </div>
     <a class={styles.musicLink} href={musicHref}>音楽作品ページを見る</a>
-    <div class={styles.metrics}>
-      {metrics.map((metric) => (
-        <article class={styles.metricCard}>
-          <span>{metric.label}</span>
-          <strong>{metric.value}</strong>
-        </article>
-      ))}
-    </div>
-  </div>
-  <div class={styles.previewWall} aria-label="代表作品プレビュー">
-    {previews.map((preview, index) => (
-      <a
-        class={styles.previewCard}
-        href={preview.href}
-        style={`--preview-index: ${index}; --reveal-delay: ${100 + index * 90}ms;`}
-      >
-        <img src={preview.image} alt={`${preview.title} のプレビュー`} loading="eager" />
-        <div class={styles.previewShade}></div>
-        <div class={styles.previewBody}>
-          <div class={styles.previewMeta}>
-            <span>{preview.period}</span>
-            <span>{preview.engine}</span>
-            <span>{preview.role}</span>
-          </div>
-          <strong>{preview.title}</strong>
-        </div>
-      </a>
-    ))}
-    <div class={styles.previewLabel}>
-      <span>Featured Games</span>
-      <p>代表作 3 本で、作品ごとの担当範囲と成果物がすぐ分かる構成にしています。</p>
-    </div>
   </div>
 </section>

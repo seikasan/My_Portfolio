@@ -1,35 +1,6 @@
 .layout {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.group {
-  display: grid;
-  gap: 1rem;
-  padding: 1.15rem;
-  border-radius: var(--radius-xl);
-  border: 1px solid rgba(123, 89, 83, 0.12);
-  background: linear-gradient(180deg, rgba(255, 254, 251, 0.95), rgba(247, 241, 236, 0.82));
-}
-
-.groupHeader h3,
-.groupHeader p {
-  margin: 0;
-}
-
-.groupHeader h3 {
-  font-size: 1.35rem;
-}
-
-.groupHeader p {
-  margin-top: 0.4rem;
-  color: var(--ink-soft);
-}
-
-.cardList {
-  display: grid;
-  gap: 0.85rem;
 }
 
 .card {
@@ -57,9 +28,9 @@
   gap: 0.55rem;
 }
 
-.cardHeader h4 {
+.cardHeader h3 {
   margin: 0;
-  font-size: 1.18rem;
+  font-size: 1.26rem;
 }
 
 .metaRow {
@@ -101,6 +72,7 @@
 .summary {
   margin: 0;
   color: var(--ink-soft);
+  max-width: 60ch;
 }
 
 .specGrid {
@@ -141,12 +113,6 @@
   border: 1px dashed var(--border-soft);
   background: rgba(255, 255, 255, 0.72);
   color: var(--ink-soft);
-}
-
-@media (max-width: 960px) {
-  .layout {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 720px) {

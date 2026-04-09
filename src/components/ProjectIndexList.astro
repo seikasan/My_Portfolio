@@ -3,20 +3,11 @@ import type { CollectionEntry } from "astro:content";
 import styles from "./ProjectIndexList.module.css";
 import { projectPath } from "@utils/paths";
 
-interface Group {
-  title: string;
-  description: string;
-  items: CollectionEntry<"projects">[];
-}
-
 interface Props {
-  groups: readonly Group[];
+  items: readonly CollectionEntry<"projects">[];
 }
 
-const { groups } = Astro.props as Props;
-
-const formatMembers = (members: string | number) =>
-  typeof members === "number" ? `${members}人` : members;
+const { items } = Astro.props as Props;
 
 const getStatusLabel = (status: CollectionEntry<"projects">["data"]["status"]) => {
   if (status === "archive") {
@@ -32,67 +23,56 @@ const getStatusLabel = (status: CollectionEntry<"projects">["data"]["status"]) =
 ---
 
 <div class={styles.layout}>
-  {groups.map((group, groupIndex) => (
-    <section class={styles.group} style={`--reveal-delay: ${60 + groupIndex * 80}ms;`} data-reveal>
-      <div class={styles.groupHeader}>
-        <h3>{group.title}</h3>
-        <p>{group.description}</p>
-      </div>
+  {items.length > 0 ? (
+    items.map((project, index) => {
+      const statusLabel = getStatusLabel(project.data.status);
 
-      {group.items.length > 0 ? (
-        <div class={styles.cardList}>
-          {group.items.map((project, index) => {
-            const statusLabel = getStatusLabel(project.data.status);
+      return (
+        <a
+          class={styles.card}
+          href={projectPath(project.slug)}
+          style={`--reveal-delay: ${70 + index * 60}ms;`}
+          data-reveal
+        >
+          <div class={styles.cardHeader}>
+            <div class={styles.metaRow}>
+              <span class={styles.metaChip}>{project.data.periodLabel}</span>
+              <span class={styles.metaChip}>{project.data.engine}</span>
+              {statusLabel && (
+                <span
+                  class={`${styles.statusChip} ${
+                    project.data.status === "archive" ? styles.archive : styles.inProgress
+                  }`}
+                >
+                  {statusLabel}
+                </span>
+              )}
+            </div>
+            <h3>{project.data.title}</h3>
+          </div>
 
-            return (
-              <a
-                class={styles.card}
-                href={projectPath(project.slug)}
-                style={`--reveal-delay: ${110 + groupIndex * 90 + index * 70}ms;`}
-                data-reveal
-              >
-                <div class={styles.cardHeader}>
-                  <div class={styles.metaRow}>
-                    <span class={styles.metaChip}>{project.data.format}</span>
-                    <span class={styles.metaChip}>{project.data.engine}</span>
-                    {statusLabel && (
-                      <span
-                        class={`${styles.statusChip} ${
-                          project.data.status === "archive" ? styles.archive : styles.inProgress
-                        }`}
-                      >
-                        {statusLabel}
-                      </span>
-                    )}
-                  </div>
-                  <h4>{project.data.title}</h4>
-                </div>
+          <p class={styles.summary}>{project.data.summaryShort}</p>
 
-                <p class={styles.summary}>{project.data.summaryShort}</p>
+          <dl class={styles.specGrid}>
+            <div>
+              <dt>担当</dt>
+              <dd>{project.data.primaryRole}</dd>
+            </div>
+            <div>
+              <dt>形式</dt>
+              <dd>{project.data.format}</dd>
+            </div>
+            <div>
+              <dt>技術</dt>
+              <dd>{project.data.engine}</dd>
+            </div>
+          </dl>
 
-                <dl class={styles.specGrid}>
-                  <div>
-                    <dt>期間</dt>
-                    <dd>{project.data.periodLabel}</dd>
-                  </div>
-                  <div>
-                    <dt>担当</dt>
-                    <dd>{project.data.primaryRole}</dd>
-                  </div>
-                  <div>
-                    <dt>制作体制</dt>
-                    <dd>{`${project.data.teamType} / ${formatMembers(project.data.members)}`}</dd>
-                  </div>
-                </dl>
-
-                <span class={styles.linkLabel}>詳細を見る</span>
-              </a>
-            );
-          })}
-        </div>
-      ) : (
-        <p class={styles.empty}>現在掲載中のゲームはサークル制作が中心です。</p>
-      )}
-    </section>
-  ))}
+          <span class={styles.linkLabel}>詳細を見る</span>
+        </a>
+      );
+    })
+  ) : (
+    <p class={styles.empty}>現在掲載中の作品はありません。</p>
+  )}
 </div>

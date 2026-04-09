@@ -16,13 +16,11 @@ const navLinks = [
   { label: "トップ", href: homeHref },
   { label: "作品", href: `${homeHref}#works` },
   { label: "音楽", href: musicPath() },
-  { label: "スキル", href: `${homeHref}#skills` },
   { label: "連絡先", href: `${homeHref}#contact` }
 ];
 const normalizedContactLinks = contactLinks.map((link) => ({
   label: link.label,
-  url: "url" in link ? link.url : undefined,
-  note: link.note
+  url: "url" in link ? link.url : undefined
 }));
 ---
 
@@ -83,9 +81,11 @@ const normalizedContactLinks = contactLinks.map((link) => ({
                 ) : (
                   <span>{item.label}</span>
                 )}
-                {item.note && <small>{item.note}</small>}
               </li>
             ))}
+            <li>
+              <a href={musicPath()}>音楽ページ</a>
+            </li>
           </ul>
         </div>
       </footer>
