@@ -11,8 +11,9 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  background: var(--color-bg);
+  background: var(--color-bg-strong);
   color: var(--color-text);
+  line-height: 1.6;
 }
 
 body,
@@ -30,6 +31,8 @@ video {
 
 button {
   border: 0;
+  background: none;
+  color: inherit;
 }
 
 a {
@@ -42,7 +45,7 @@ a {
 }
 
 ::selection {
-  background: rgba(224, 169, 91, 0.28);
+  background: rgba(49, 95, 134, 0.18);
   color: var(--color-text);
 }
 

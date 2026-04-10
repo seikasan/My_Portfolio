@@ -1,238 +1,166 @@
 .page {
   display: grid;
-  gap: 5rem;
+  gap: 4rem;
 }
 
-.hero {
+.profile {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.7fr);
-  gap: 1.25rem;
-  min-height: min(76vh, 48rem);
-  align-items: end;
+  grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.8fr);
+  gap: 2.5rem;
+  padding: 0 0 2rem;
+  border-bottom: 1px solid var(--color-line);
 }
 
-.heroPanel,
-.statCard,
-.introStrip,
-.contactCard {
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-xl);
-  backdrop-filter: blur(18px);
-  background:
-    linear-gradient(180deg, rgba(255, 250, 244, 0.08), rgba(255, 250, 244, 0.03)),
-    rgba(16, 15, 15, 0.56);
-  box-shadow: 0 18px 48px var(--color-shadow);
-}
-
-.heroPanel {
+.profileMain,
+.profileAside {
   display: grid;
-  align-content: end;
-  gap: 1rem;
-  min-height: 100%;
-  padding: clamp(1.5rem, 4vw, 3rem);
+  align-content: start;
+  gap: 0.9rem;
 }
 
-.heroEyebrow {
+.profileAside {
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--color-line);
+}
+
+.profileEyebrow {
   margin: 0;
   color: var(--color-accent);
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
   font-size: 0.82rem;
-}
-
-.heroName {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 9vw, 6.8rem);
-  line-height: 0.98;
-  letter-spacing: 0.04em;
-}
-
-.heroTitle {
-  margin: 0;
-  color: var(--color-text-muted);
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  letter-spacing: 0.08em;
-}
-
-.heroBody {
-  margin: 0;
-  max-width: 48rem;
-  color: var(--color-text-muted);
-  line-height: 1.95;
-}
-
-.heroButton {
-  width: fit-content;
-  margin-top: 0.35rem;
-  cursor: pointer;
-  padding: 0.95rem 1.35rem;
-  border-radius: 999px;
-  color: #20160d;
-  background: linear-gradient(135deg, #f0c987, var(--color-accent));
-  box-shadow: 0 18px 36px rgba(224, 169, 91, 0.2);
-  transition:
-    transform 180ms ease,
-    box-shadow 180ms ease,
-    filter 180ms ease;
-}
-
-.heroButton:hover,
-.heroButton:focus-visible {
-  transform: translateY(-2px);
-  filter: brightness(1.04);
-  outline: none;
-}
-
-.heroStats {
-  display: grid;
-  gap: 1rem;
-}
-
-.statCard {
-  display: grid;
-  gap: 0.35rem;
-  align-content: center;
-  min-height: 10rem;
-  padding: 1.5rem;
-}
-
-.statValue {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3rem);
-  color: var(--color-text);
-}
-
-.statLabel {
-  color: var(--color-text-faint);
-  letter-spacing: 0.14em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
-.introStrip {
-  padding: 1.5rem 1.8rem;
+.profileName {
+  margin: 0;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
 }
 
-.introStrip p {
+.profileTitle {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.profileBody,
+.profileAsideText {
   margin: 0;
   color: var(--color-text-muted);
   line-height: 1.9;
+}
+
+.profileAsideTitle {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.profileActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 0.3rem;
+}
+
+.inlineButton {
+  width: fit-content;
+  padding: 0;
+  border-bottom: 1px solid transparent;
+  color: var(--color-text);
+  font-size: 0.96rem;
+  transition:
+    color 180ms ease,
+    border-color 180ms ease;
+}
+
+.inlineButton:hover,
+.inlineButton:focus-visible {
+  border-color: var(--color-text);
+  color: var(--color-accent);
+  outline: none;
 }
 
 .section {
   display: grid;
-  gap: 1.5rem;
-  scroll-margin-top: 7rem;
+  gap: 1.25rem;
+  scroll-margin-top: 5.5rem;
 }
 
 .sectionHeader {
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.1rem;
 }
 
-.featuredGrid,
-.worksGrid {
+.worksList {
   display: grid;
   gap: 1rem;
 }
 
-.worksGrid {
+.contactList {
+  display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.contactCard {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.7fr);
-  gap: 1.5rem;
-  padding: clamp(1.4rem, 3vw, 2rem);
-  align-items: center;
-}
-
-.contactBody {
-  display: grid;
-  gap: 0.7rem;
-}
-
-.contactEyebrow {
-  margin: 0;
-  color: var(--color-accent);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  font-size: 0.82rem;
-}
-
-.contactTitle {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3rem);
-}
-
-.contactText {
-  margin: 0;
-  color: var(--color-text-muted);
-  line-height: 1.9;
-}
-
-.contactLinks {
-  display: grid;
-  gap: 0.9rem;
-}
-
-.contactLink {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   gap: 1rem;
+}
+
+.contactItem {
+  display: grid;
+  gap: 0.35rem;
   padding: 1rem 1.1rem;
   border: 1px solid var(--color-line);
   border-radius: var(--radius-md);
-  background: rgba(255, 250, 244, 0.05);
-  color: var(--color-text);
+  background: var(--color-surface);
   transition:
-    transform 180ms ease,
     border-color 180ms ease,
     background-color 180ms ease;
 }
 
-.contactLink:hover,
-.contactLink:focus-visible {
-  transform: translateY(-2px);
+.contactItem:hover,
+.contactItem:focus-visible {
   border-color: var(--color-line-strong);
-  background: rgba(255, 250, 244, 0.08);
+  background: var(--color-surface-strong);
   outline: none;
 }
 
-.contactArrow {
-  color: var(--color-accent);
+.contactItemLabel {
+  color: var(--color-text-faint);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
-@media (max-width: 1024px) {
-  .hero,
-  .contactCard,
-  .worksGrid {
+.contactItemValue {
+  color: var(--color-text);
+  font-size: 1rem;
+  word-break: break-word;
+}
+
+@media (max-width: 900px) {
+  .profile {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
-  .hero {
-    min-height: auto;
+  .profileAside {
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px solid var(--color-line);
+    padding-top: 1.5rem;
+  }
+
+  .contactList {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 768px) {
   .page {
-    gap: 4rem;
+    gap: 3rem;
   }
 
-  .heroPanel,
-  .introStrip,
-  .contactCard {
-    padding: 1.15rem;
-  }
-
-  .heroName {
-    letter-spacing: 0.02em;
-  }
-
-  .statCard {
-    min-height: 8.5rem;
+  .profile {
+    padding-bottom: 1.5rem;
   }
 }

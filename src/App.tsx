@@ -1,5 +1,4 @@
 import { HashRouter, Route, Routes } from 'react-router-dom';
-import { AmbientCanvas } from './components/AmbientCanvas';
 import { SiteHeader } from './components/SiteHeader';
 import { HomePage } from './pages/HomePage';
 import { WorkDetailPage } from './pages/WorkDetailPage';
@@ -9,9 +8,6 @@ function App() {
   return (
     <HashRouter>
       <div className={styles.shell}>
-        <div className={styles.backdrop} aria-hidden="true" />
-        <div className={styles.glow} aria-hidden="true" />
-        <AmbientCanvas />
         <SiteHeader />
         <main className={styles.main}>
           <Routes>

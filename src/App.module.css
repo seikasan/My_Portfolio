@@ -1,44 +1,18 @@
 .shell {
-  position: relative;
   min-height: 100vh;
-  overflow-x: clip;
-}
-
-.backdrop,
-.glow {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-}
-
-.backdrop {
-  z-index: -3;
-  background:
-    radial-gradient(circle at top left, rgba(124, 198, 211, 0.08), transparent 32%),
-    radial-gradient(circle at top right, rgba(224, 169, 91, 0.12), transparent 30%),
-    linear-gradient(180deg, var(--color-bg-strong) 0%, var(--color-bg) 55%, #0d0c0c 100%);
-}
-
-.glow {
-  z-index: -2;
-  background:
-    radial-gradient(circle at 18% 22%, rgba(224, 169, 91, 0.15), transparent 0 24rem),
-    radial-gradient(circle at 82% 18%, rgba(124, 198, 211, 0.12), transparent 0 28rem),
-    radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.04), transparent 0 24rem);
-  filter: blur(18px);
+  background: var(--color-bg-strong);
 }
 
 .main {
-  position: relative;
-  width: min(1180px, calc(100% - 2rem));
+  width: min(var(--content-width), calc(100% - 2rem));
   margin: 0 auto;
-  padding: 6rem 0 5rem;
+  padding: 2.25rem 0 4rem;
 }
 
 @media (max-width: 768px) {
   .main {
-    width: min(100% - 1rem, 1180px);
-    padding-top: 5rem;
+    width: min(var(--content-width), calc(100% - 1.25rem));
+    padding-top: 1.5rem;
     padding-bottom: 4rem;
   }
 }

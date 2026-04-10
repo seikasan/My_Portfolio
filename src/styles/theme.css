@@ -1,29 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&family=Zen+Old+Mincho:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap');
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
   font-family: 'Noto Sans JP', sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  --color-bg-strong: #141212;
-  --color-bg: #100f0f;
-  --color-surface: rgba(255, 250, 244, 0.06);
-  --color-surface-strong: rgba(255, 250, 244, 0.1);
-  --color-line: rgba(255, 250, 244, 0.14);
-  --color-line-strong: rgba(255, 250, 244, 0.22);
-  --color-text: #f5efe7;
-  --color-text-muted: #d0c4b7;
-  --color-text-faint: #a29587;
-  --color-accent: #e0a95b;
-  --color-accent-soft: rgba(224, 169, 91, 0.16);
-  --color-cool: #7cc6d3;
-  --color-cool-soft: rgba(124, 198, 211, 0.16);
-  --color-shadow: rgba(0, 0, 0, 0.32);
-  --font-display: 'Zen Old Mincho', serif;
-  --radius-xl: 28px;
-  --radius-lg: 20px;
-  --radius-md: 14px;
-  --content-width: 1180px;
+  --color-bg-strong: #ffffff;
+  --color-bg: #f7f7f4;
+  --color-surface: #ffffff;
+  --color-surface-strong: #f3f4f1;
+  --color-line: #d7dcd4;
+  --color-line-strong: #b8c0b6;
+  --color-text: #1f252d;
+  --color-text-muted: #48525c;
+  --color-text-faint: #6b7480;
+  --color-accent: #315f86;
+  --color-accent-soft: rgba(49, 95, 134, 0.08);
+  --color-shadow: rgba(21, 28, 38, 0.05);
+  --font-display: 'Noto Sans JP', sans-serif;
+  --radius-xl: 18px;
+  --radius-lg: 14px;
+  --radius-md: 10px;
+  --content-width: 1040px;
 }

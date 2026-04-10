@@ -13,7 +13,6 @@ interface LocationState {
 }
 
 export function HomePage() {
-  const featuredWorks = works.filter((work) => work.featured);
   const location = useLocation();
   const navigate = useNavigate();
   const reducedMotion = useReducedMotion();
@@ -38,8 +37,8 @@ export function HomePage() {
     return () => window.clearTimeout(timer);
   }, [location.pathname, location.state, navigate, reducedMotion]);
 
-  const scrollToWorks = () => {
-    document.getElementById('works')?.scrollIntoView({
+  const scrollToSection = (sectionId: string) => {
+    document.getElementById(sectionId)?.scrollIntoView({
       behavior: reducedMotion ? 'auto' : 'smooth',
       block: 'start',
     });
@@ -47,60 +46,44 @@ export function HomePage() {
 
   return (
     <div className={styles.page}>
-      <Reveal as="section" className={styles.hero}>
-        <div className={styles.heroPanel}>
-          <p className={styles.heroEyebrow}>Creative Portfolio</p>
-          <h1 className={styles.heroName}>{siteProfile.name}</h1>
-          <p className={styles.heroTitle}>{siteProfile.heroTitle}</p>
-          <p className={styles.heroBody}>{siteProfile.heroBody}</p>
-          <button type="button" className={styles.heroButton} onClick={scrollToWorks}>
-            代表作品を見る
-          </button>
+      <Reveal as="section" className={styles.profile}>
+        <div className={styles.profileMain}>
+          <p className={styles.profileEyebrow}>Profile</p>
+          <h1 className={styles.profileName}>{siteProfile.name}</h1>
+          <p className={styles.profileTitle}>{siteProfile.heroTitle}</p>
+          <p className={styles.profileBody}>{siteProfile.heroBody}</p>
         </div>
-        <div className={styles.heroStats}>
-          <article className={styles.statCard}>
-            <span className={styles.statValue}>{works.length.toString().padStart(2, '0')}</span>
-            <span className={styles.statLabel}>Works</span>
-          </article>
-          <article className={styles.statCard}>
-            <span className={styles.statValue}>{galleryItems.length.toString().padStart(2, '0')}</span>
-            <span className={styles.statLabel}>Gallery</span>
-          </article>
-          <article className={styles.statCard}>
-            <span className={styles.statValue}>{siteProfile.links.length.toString().padStart(2, '0')}</span>
-            <span className={styles.statLabel}>Contact</span>
-          </article>
+        <div className={styles.profileAside}>
+          <h2 className={styles.profileAsideTitle}>About</h2>
+          <p className={styles.profileAsideText}>{siteProfile.intro}</p>
+          <div className={styles.profileActions}>
+            <button
+              type="button"
+              className={styles.inlineButton}
+              onClick={() => scrollToSection('works')}
+            >
+              作品一覧へ
+            </button>
+            <button
+              type="button"
+              className={styles.inlineButton}
+              onClick={() => scrollToSection('contact')}
+            >
+              連絡先を見る
+            </button>
+          </div>
         </div>
-      </Reveal>
-
-      <Reveal as="section" className={styles.introStrip}>
-        <p>{siteProfile.intro}</p>
       </Reveal>
 
       <section id="works" className={styles.section}>
         <Reveal className={styles.sectionHeader}>
           <SectionHeading
-            eyebrow="Featured"
-            title="作品の魅力を先に見せる"
-            description="最初に視線を集める代表作を大きく配置し、その下に一覧を続けることで、体験型とカタログ型の中間を狙っています。"
-          />
-        </Reveal>
-        <div className={styles.featuredGrid}>
-          {featuredWorks.map((work) => (
-            <Reveal key={work.slug}>
-              <WorkCard work={work} featured />
-            </Reveal>
-          ))}
-        </div>
-
-        <Reveal className={styles.sectionHeader}>
-          <SectionHeading
             eyebrow="Works"
-            title="一覧から詳細へ自然につなぐ"
-            description="カードでは比較しやすく、詳細ページでは役割と工夫が読めるように整理しています。画像や文言は `src/data/siteContent.ts` から差し替えられます。"
+            title="作品"
+            description="タイトル、期間、区分、使用技術、概要が一覧で比較できる構成です。詳細ページでは担当範囲と工夫を確認できます。"
           />
         </Reveal>
-        <div className={styles.worksGrid}>
+        <div className={styles.worksList}>
           {works.map((work) => (
             <Reveal key={work.slug}>
               <WorkCard work={work} />
@@ -113,8 +96,8 @@ export function HomePage() {
         <Reveal className={styles.sectionHeader}>
           <SectionHeading
             eyebrow="Gallery"
-            title="Illustration / 3DCG を分けて見せる"
-            description="画像だけを並べるのではなく、カテゴリごとに切り替えて視線を整理しています。実画像へ差し替えても構造はそのまま使えます。"
+            title="Illustration / 3DCG"
+            description="Gallery も Works と同じ重要度で残し、カテゴリを隠さず常時一覧できる構成にしています。"
           />
         </Reveal>
         <Reveal>
@@ -123,26 +106,26 @@ export function HomePage() {
       </section>
 
       <section id="contact" className={styles.section}>
-        <Reveal className={styles.contactCard}>
-          <div className={styles.contactBody}>
-            <p className={styles.contactEyebrow}>Contact</p>
-            <h2 className={styles.contactTitle}>連絡先</h2>
-            <p className={styles.contactText}>{siteProfile.contactNote}</p>
-          </div>
-          <div className={styles.contactLinks}>
-            {siteProfile.links.map((link) => (
-              <a
-                key={link.label}
-                href={link.url}
-                className={styles.contactLink}
-                target={link.url.startsWith('mailto:') ? undefined : '_blank'}
-                rel={link.url.startsWith('mailto:') ? undefined : 'noreferrer'}
-              >
-                <span>{link.label}</span>
-                <span className={styles.contactArrow}>↗</span>
-              </a>
-            ))}
-          </div>
+        <Reveal className={styles.sectionHeader}>
+          <SectionHeading
+            eyebrow="Contact"
+            title="連絡先"
+            description={siteProfile.contactNote}
+          />
+        </Reveal>
+        <Reveal className={styles.contactList}>
+          {siteProfile.links.map((link) => (
+            <a
+              key={link.label}
+              href={link.url}
+              className={styles.contactItem}
+              target={link.url.startsWith('mailto:') ? undefined : '_blank'}
+              rel={link.url.startsWith('mailto:') ? undefined : 'noreferrer'}
+            >
+              <span className={styles.contactItemLabel}>{link.label}</span>
+              <span className={styles.contactItemValue}>{link.url.replace('mailto:', '')}</span>
+            </a>
+          ))}
         </Reveal>
       </section>
     </div>

@@ -4,15 +4,11 @@ import styles from './WorkCard.module.css';
 
 interface WorkCardProps {
   work: WorkEntry;
-  featured?: boolean;
 }
 
-export function WorkCard({ work, featured = false }: WorkCardProps) {
+export function WorkCard({ work }: WorkCardProps) {
   return (
-    <Link
-      to={`/works/${work.slug}`}
-      className={`${styles.card} ${featured ? styles.featured : ''}`}
-    >
+    <Link to={`/works/${work.slug}`} className={styles.card}>
       <div className={styles.imageWrap}>
         <img
           src={work.coverImage.src}
@@ -23,22 +19,17 @@ export function WorkCard({ work, featured = false }: WorkCardProps) {
         />
       </div>
       <div className={styles.body}>
-        <div className={styles.meta}>
-          <span className={styles.category}>{work.category}</span>
+        <div className={styles.titleRow}>
+          <h3 className={styles.title}>{work.title}</h3>
           <span className={styles.period}>{work.period}</span>
         </div>
-        <h3 className={styles.title}>{work.title}</h3>
-        <p className={styles.summary}>{work.summary}</p>
-        <dl className={styles.details}>
-          <div>
-            <dt>Role</dt>
-            <dd>{work.role.join(' / ')}</dd>
-          </div>
-          <div>
-            <dt>Tools</dt>
-            <dd>{work.tools.join(' / ')}</dd>
-          </div>
+        <p className={styles.category}>{work.category}</p>
+        <dl className={styles.infoRow}>
+          <dt>使用技術</dt>
+          <dd>{work.tools.join(' / ')}</dd>
         </dl>
+        <p className={styles.summary}>{work.summary}</p>
+        <span className={styles.linkLabel}>詳細を見る</span>
       </div>
     </Link>
   );
