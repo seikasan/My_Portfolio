@@ -19,20 +19,6 @@ const root = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       <p class="hero-role">{siteMeta.role}</p>
       <p class="hero-tagline">{siteMeta.tagline}</p>
       <p class="hero-description">{siteMeta.intro}</p>
-      <ul class="hero-meta">
-        <li>
-          <span>Games</span>
-          <strong>{games.length}</strong>
-        </li>
-        <li>
-          <span>Music / Video</span>
-          <strong>{musicEntries.length}</strong>
-        </li>
-        <li>
-          <span>Roles</span>
-          <strong>4</strong>
-        </li>
-      </ul>
       <div class="hero-actions">
         <a class="button" href="#works-games">View games</a>
         <a class="button button--ghost" href="#works-music">View music / video</a>
