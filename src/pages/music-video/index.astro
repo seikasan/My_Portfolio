@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import MusicCard from '../../components/MusicCard.astro';
+
+const musicEntries = (await getCollection('music-video')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title="Works - Music / Video" description="音楽・動画一覧">
+  <section class="section section--page">
+    <SectionHeader
+      eyebrow="Works - Music / Video"
+      title="音楽・動画一覧"
+      description="埋め込みを優先しつつ、必要に応じて作品ごとの詳細へ遷移できます。"
+    />
+    <div class="card-grid card-grid--music">
+      {musicEntries.map((entry) => <MusicCard entry={entry} />)}
+    </div>
+  </section>
+</BaseLayout>
+

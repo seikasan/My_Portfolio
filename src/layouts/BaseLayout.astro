@@ -1,27 +1,16 @@
 ---
-import { contactLinks, siteMeta } from "@content/site";
-import { musicPath, withBase } from "@utils/paths";
-import "@styles/tokens.css";
-import "@styles/global.css";
+import '../styles/global.css';
+import { siteMeta } from '../data/site.js';
 
-interface Props {
-  title?: string;
-  description?: string;
-}
-
-const { title = siteMeta.title, description = siteMeta.description } = Astro.props as Props;
-const pageTitle = title === siteMeta.title ? title : `${title} | ${siteMeta.title}`;
-const homeHref = withBase("");
-const navLinks = [
-  { label: "トップ", href: homeHref },
-  { label: "作品", href: `${homeHref}#works` },
-  { label: "音楽", href: musicPath() },
-  { label: "連絡先", href: `${homeHref}#contact` }
+const { title = 'Portfolio', description = siteMeta.intro } = Astro.props;
+const root = import.meta.env.BASE_URL;
+const navItems = [
+  { label: 'About', href: `${root}#about` },
+  { label: 'Skills', href: `${root}#skills` },
+  { label: 'Games', href: `${root}#works-games` },
+  { label: 'Music / Video', href: `${root}#works-music` },
+  { label: 'Contact', href: `${root}#contact` }
 ];
-const normalizedContactLinks = contactLinks.map((link) => ({
-  label: link.label,
-  url: "url" in link ? link.url : undefined
-}));
 ---
 
 <!doctype html>
@@ -29,106 +18,26 @@ const normalizedContactLinks = contactLinks.map((link) => ({
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | Portfolio</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#f6efe8" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <title>{pageTitle}</title>
   </head>
-  <body class="theme-gallery">
-    <div class="site-shell">
+  <body>
+    <div class="page-shell">
       <header class="site-header">
-        <div class="site-header__inner">
-          <a class="site-brand" href={homeHref}>
-            <span class="site-brand__name">{siteMeta.name}</span>
-            <span class="site-brand__role">{siteMeta.roleLine}</span>
-          </a>
-          <nav class="site-nav" aria-label="Primary">
-            <ul>
-              {navLinks.map((item) => (
-                <li>
-                  <a href={item.href}>{item.label}</a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
+        <a class="brand" href={root}>{siteMeta.ownerName}</a>
+        <nav class="site-nav" aria-label="Primary">
+          {navItems.map((item) => (
+            <a href={item.href}>{item.label}</a>
+          ))}
+        </nav>
       </header>
-
-      <main class="page-main">
+      <main>
         <slot />
       </main>
-
       <footer class="site-footer">
-        <div class="site-footer__inner">
-          <div>
-            <p class="site-footer__eyebrow">Contact</p>
-            <a href={`mailto:${siteMeta.contactEmail}`} class="site-footer__mail">
-              {siteMeta.contactEmail}
-            </a>
-          </div>
-          <ul class="site-footer__links">
-            {normalizedContactLinks.map((item) => (
-              <li>
-                {item.url ? (
-                  <a href={item.url} target="_blank" rel="noreferrer">
-                    {item.label}
-                  </a>
-                ) : (
-                  <span>{item.label}</span>
-                )}
-              </li>
-            ))}
-            <li>
-              <a href={musicPath()}>音楽ページ</a>
-            </li>
-          </ul>
-        </div>
+        <p>{siteMeta.ownerName}</p>
+        <p>Games / Music / Scenario / 3D / Programming</p>
       </footer>
     </div>
-    <script is:inline>
-      if (!window.__portfolioRevealInit) {
-        window.__portfolioRevealInit = true;
-
-        const nodes = Array.from(document.querySelectorAll("[data-reveal]"));
-        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-        const markVisible = (element) => {
-          if (element instanceof HTMLElement) {
-            element.classList.add("is-visible");
-          }
-        };
-
-        if (reduceMotion || !("IntersectionObserver" in window)) {
-          nodes.forEach(markVisible);
-        } else {
-          const observer = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  markVisible(entry.target);
-                  observer.unobserve(entry.target);
-                }
-              });
-            },
-            {
-              threshold: 0.18,
-              rootMargin: "0px 0px -8% 0px"
-            }
-          );
-
-          nodes.forEach((node, index) => {
-            if (node instanceof HTMLElement && !node.style.getPropertyValue("--reveal-delay")) {
-              node.style.setProperty("--reveal-delay", `${Math.min(index, 6) * 70}ms`);
-            }
-            observer.observe(node);
-          });
-        }
-      }
-    </script>
   </body>
 </html>

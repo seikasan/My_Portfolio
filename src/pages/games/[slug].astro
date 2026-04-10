@@ -1,19 +1,116 @@
 ---
-import { getCollection, render } from "astro:content";
-import type { CollectionEntry } from "astro:content";
-import ProjectLayout from "@layouts/ProjectLayout.astro";
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EmbedFrame from '../../components/EmbedFrame.astro';
 
 export async function getStaticPaths() {
-  const projects = await getCollection("projects");
-
-  return projects.map((project) => ({
-    params: { slug: project.slug },
-    props: { project }
+  const entries = await getCollection('games');
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry }
   }));
 }
 
-const { project } = Astro.props as { project: CollectionEntry<"projects"> };
-const { Content } = await render(project);
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const root = import.meta.env.BASE_URL;
 ---
 
-<ProjectLayout project={project} Content={Content} />
+<BaseLayout title={entry.data.title} description={entry.data.summary}>
+  <article class="detail-page">
+    <section class="section section--page">
+      <a class="back-link" href={`${root}games/`}>← Games に戻る</a>
+      <div class="detail-hero">
+        <div>
+          <p class="eyebrow">Works - Games</p>
+          <h1>{entry.data.title}</h1>
+          <p class="hero-description">{entry.data.summary}</p>
+        </div>
+        <div class="detail-meta-box">
+          <p><strong>開発期間</strong>{entry.data.period}</p>
+          <p><strong>チーム人数</strong>{entry.data.teamSize}</p>
+          <p><strong>担当役職</strong>{entry.data.roles.join(' / ')}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section detail-grid">
+      <div class="panel">
+        <h2>作品概要</h2>
+        <p>{entry.data.summary}</p>
+      </div>
+      <div class="panel">
+        <h2>チーム情報</h2>
+        <p>{entry.data.teamSize}</p>
+      </div>
+      <div class="panel">
+        <h2>使用技術</h2>
+        <ul class="inline-list">
+          {entry.data.technologies.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+      <div class="panel">
+        <h2>担当範囲と成果物</h2>
+        <p>{entry.data.contribution}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="panel">
+        <h2>こだわりポイント</h2>
+        <ul class="simple-list">
+          {entry.data.highlights.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section class="section detail-grid">
+      <div class="panel">
+        <h2>プレイ映像</h2>
+        {entry.data.playMedia.length > 0 ? (
+          <div class="media-stack">
+            {entry.data.playMedia.map((item) => <EmbedFrame item={item} />)}
+          </div>
+        ) : (
+          <p class="empty-copy">YouTubeの限定公開URLを追加するとここに表示されます。</p>
+        )}
+      </div>
+      <div class="panel">
+        <h2>ダウンロードリンク</h2>
+        {entry.data.downloads.length > 0 ? (
+          <ul class="simple-list">
+            {entry.data.downloads.map((item) => (
+              <li><a href={item.url} target="_blank" rel="noreferrer">{item.label}</a></li>
+            ))}
+          </ul>
+        ) : (
+          <p class="empty-copy">配布ページやダウンロードURLを追加してください。</p>
+        )}
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="panel">
+        <h2>補足資料</h2>
+        {entry.data.references.length > 0 ? (
+          <ul class="simple-list">
+            {entry.data.references.map((item) => (
+              <li><a href={item.url} target="_blank" rel="noreferrer">{item.label}</a></li>
+            ))}
+          </ul>
+        ) : (
+          <p class="empty-copy">サウンド解説、仕様メモ、画像資料などを追加できます。</p>
+        )}
+      </div>
+    </section>
+
+    {entry.body.trim() && (
+      <section class="section">
+        <div class="panel prose">
+          <h2>補足メモ</h2>
+          <Content />
+        </div>
+      </section>
+    )}
+  </article>
+</BaseLayout>

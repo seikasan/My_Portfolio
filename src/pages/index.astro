@@ -1,85 +1,154 @@
 ---
-import { getCollection } from "astro:content";
-import BaseLayout from "@layouts/BaseLayout.astro";
-import Hero from "@components/Hero.astro";
-import ProjectIndexList from "@components/ProjectIndexList.astro";
-import { aboutLines, contactLinks, heroTechStack, siteMeta } from "@content/site";
-import { musicPath } from "@utils/paths";
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import GameCard from '../components/GameCard.astro';
+import MusicCard from '../components/MusicCard.astro';
+import { siteMeta, profile, skills, contact } from '../data/site.js';
 
-const projects = (await getCollection("projects")).sort(
-  (left, right) => left.data.sortOrder - right.data.sortOrder
-);
-const normalizedContactLinks = contactLinks.map((link) => ({
-  label: link.label,
-  url: "url" in link ? link.url : undefined
-}));
+const games = (await getCollection('games')).sort((a, b) => a.data.order - b.data.order);
+const musicEntries = (await getCollection('music-video')).sort((a, b) => a.data.order - b.data.order);
+const root = import.meta.env.BASE_URL;
 ---
 
-<BaseLayout>
-  <Hero
-    name={siteMeta.name}
-    roleLine={siteMeta.roleLine}
-    summary={siteMeta.heroSummary}
-    techStack={heroTechStack}
-    primaryHref="#works"
-    musicHref={musicPath()}
-  />
-
-  <section class="section-card section-card--spotlight" id="works" data-reveal>
-    <div class="section-heading">
-      <p class="section-heading__eyebrow">Works</p>
-      <h2>ゲーム作品</h2>
-      <p class="section-heading__lead">
-        カードに触れると、同じ行の反対セル上に詳細オーバーレイが表示されます。クリックか
-        Enter / Space で選択を固定できます。
-      </p>
+<BaseLayout title="Home" description={siteMeta.intro}>
+  <section class="hero section">
+    <div class="hero-copy">
+      <p class="eyebrow">Portfolio</p>
+      <h1>{siteMeta.ownerName}</h1>
+      <p class="hero-role">{siteMeta.role}</p>
+      <p class="hero-tagline">{siteMeta.tagline}</p>
+      <p class="hero-description">{siteMeta.intro}</p>
+      <div class="hero-actions">
+        <a class="button" href="#works-games">Works - Games</a>
+        <a class="button button--ghost" href="#works-music">Works - Music / Video</a>
+      </div>
     </div>
-    <ProjectIndexList items={projects} />
-  </section>
-
-  <section class="section-card section-card--quiet" id="about" data-reveal>
-    <div class="section-heading">
-      <p class="section-heading__eyebrow">About</p>
-      <h2>制作の軸</h2>
-      <p class="section-heading__lead">
-        主担当領域、使う技術、展示・頒布実績だけを短くまとめています。
-      </p>
-    </div>
-    <div class="about-list">
-      {aboutLines.map((item, index) => (
-        <article class="about-item" style={`--reveal-delay: ${90 + index * 70}ms;`} data-reveal>
-          <h3>{item.title}</h3>
-          <p>{item.text}</p>
-        </article>
-      ))}
+    <div class="hero-panel">
+      <div class="hero-stat">
+        <strong>{games.length}</strong>
+        <span>Team Games</span>
+      </div>
+      <div class="hero-stat">
+        <strong>{musicEntries.length}</strong>
+        <span>Music / Video Works</span>
+      </div>
+      <div class="hero-stat">
+        <strong>4 Roles</strong>
+        <span>Program / Sound / Scenario / 3D</span>
+      </div>
     </div>
   </section>
 
-  <section class="section-card section-card--quiet" id="contact" data-reveal>
-    <div class="section-heading">
-      <p class="section-heading__eyebrow">Contact</p>
-      <h2>連絡先</h2>
-    </div>
-    <div class="contact-stack">
-      <a class="contact-stack__mail" href={`mailto:${siteMeta.contactEmail}`}>
-        {siteMeta.contactEmail}
-      </a>
-      <ul class="contact-stack__links">
-        {normalizedContactLinks.map((item) => (
-          <li>
-            {item.url ? (
-              <a href={item.url} target="_blank" rel="noreferrer">
-                {item.label}
-              </a>
-            ) : (
+  <section class="section" id="about">
+    <SectionHeader
+      eyebrow="About / Profile"
+      title="創作の背景"
+      description={profile.comment}
+    />
+    <div class="two-column">
+      <div class="panel">
+        <h3>経歴</h3>
+        <ul class="timeline-list">
+          {profile.timeline.map((item) => (
+            <li>
               <span>{item.label}</span>
-            )}
-          </li>
-        ))}
-        <li>
-          <a href={musicPath()}>音楽ページ</a>
-        </li>
-      </ul>
+              <p>{item.text}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="stack">
+        <div class="panel">
+          <h3>学歴</h3>
+          <ul class="simple-list">
+            {profile.education.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>イベント歴</h3>
+          <ul class="simple-list">
+            {profile.events.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <SectionHeader
+      eyebrow="Skills"
+      title="できること"
+      description={skills.summary}
+    />
+    <div class="two-column">
+      <div class="panel">
+        <h3>Languages</h3>
+        <ul class="skill-list">
+          {skills.languages.map((item) => (
+            <li>
+              <strong>{item.name}</strong>
+              <span>{item.experience}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Tools</h3>
+        <ul class="skill-list">
+          {skills.tools.map((item) => (
+            <li>
+              <strong>{item.name}</strong>
+              <span>{item.experience}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="works-games">
+    <SectionHeader
+      eyebrow="Works - Games"
+      title="ゲーム制作"
+      description="作品全体の説明と、自分の担当範囲が混ざらないように整理しています。"
+      actionHref={`${root}games/`}
+      actionLabel="ゲーム一覧へ"
+    />
+    <div class="card-grid">
+      {games.map((entry) => <GameCard entry={entry} />)}
+    </div>
+  </section>
+
+  <section class="section" id="works-music">
+    <SectionHeader
+      eyebrow="Works - Music / Video"
+      title="音楽・動画"
+      description="視聴導線を優先し、作品説明は短く保っています。"
+      actionHref={`${root}music-video/`}
+      actionLabel="音楽・動画一覧へ"
+    />
+    <div class="card-grid card-grid--music">
+      {musicEntries.map((entry) => <MusicCard entry={entry} />)}
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <SectionHeader
+      eyebrow="Contact"
+      title="連絡先"
+      description="公開用のURLとメールアドレスに差し替えてください。"
+    />
+    <div class="two-column">
+      <a class="panel contact-card" href={contact.github} target="_blank" rel="noreferrer">
+        <strong>GitHub</strong>
+        <span>{contact.github}</span>
+      </a>
+      <a class="panel contact-card" href={`mailto:${contact.email}`}>
+        <strong>Email</strong>
+        <span>{contact.email}</span>
+      </a>
     </div>
   </section>
 </BaseLayout>
+

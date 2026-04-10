@@ -1,0 +1,31 @@
+---
+const { entry } = Astro.props;
+const href = `${import.meta.env.BASE_URL}games/${entry.id}/`;
+---
+
+<article class="card game-card">
+  <a class="thumbnail thumbnail--game" href={href} aria-label={`${entry.data.title} の詳細へ`}>
+    <span>{entry.data.thumbnailLabel || entry.data.title}</span>
+  </a>
+  <div class="card-body">
+    <div class="card-title-row">
+      <h3><a href={href}>{entry.data.title}</a></h3>
+      <span class="pill pill--accent">{entry.data.teamSize}</span>
+    </div>
+    <p class="meta-line">{entry.data.period}</p>
+    <p>{entry.data.summary}</p>
+    <dl class="meta-grid">
+      <div>
+        <dt>使用技術</dt>
+        <dd>{entry.data.technologies.join(', ')}</dd>
+      </div>
+      <div>
+        <dt>担当範囲</dt>
+        <dd>{entry.data.roles.join(' / ')}</dd>
+      </div>
+    </dl>
+    <p class="contribution-copy">{entry.data.contribution}</p>
+    <a class="button button--small" href={href}>詳細を見る</a>
+  </div>
+</article>
+

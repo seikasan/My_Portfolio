@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
-  <rect width="1200" height="800" fill="#fff7ed" />
-  <rect x="80" y="100" width="1040" height="600" rx="40" fill="#ffffff" stroke="#d1b89e" stroke-width="8" />
-  <rect x="130" y="430" width="940" height="190" rx="28" fill="#d7f8eb" />
-  <circle cx="250" cy="350" r="80" fill="#ffb57f" />
-  <circle cx="520" cy="270" r="120" fill="#ffe6cc" />
-  <circle cx="865" cy="355" r="95" fill="#98e5c8" />
-  <text x="130" y="170" fill="#4d3928" font-family="Georgia, serif" font-size="58">Field Screenshot Placeholder</text>
-</svg>

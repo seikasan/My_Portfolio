@@ -1,0 +1,26 @@
+---
+import EmbedFrame from './EmbedFrame.astro';
+
+const { entry } = Astro.props;
+const href = `${import.meta.env.BASE_URL}music-video/${entry.id}/`;
+const primaryEmbed = entry.data.embeds[0];
+---
+
+<article class="card music-card">
+  <div class="card-body">
+    <div class="card-title-row">
+      <h3><a href={href}>{entry.data.title}</a></h3>
+      <span class="pill">{entry.data.category}</span>
+    </div>
+    <p class="meta-line">{entry.data.releaseLabel}</p>
+    <p>{entry.data.summary}</p>
+    <EmbedFrame item={primaryEmbed} />
+    {entry.data.achievements.length > 0 && (
+      <ul class="inline-list">
+        {entry.data.achievements.map((item) => <li>{item}</li>)}
+      </ul>
+    )}
+    <a class="button button--small" href={href}>詳細を見る</a>
+  </div>
+</article>
+

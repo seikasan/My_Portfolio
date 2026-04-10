@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
-  <rect width="1200" height="800" fill="#fff4f5" />
-  <rect x="110" y="110" width="980" height="580" rx="40" fill="#ffffff" stroke="#e5c4cb" stroke-width="8" />
-  <path d="M240 570 L420 260 L560 520 L720 240 L900 560" fill="none" stroke="#b14e69" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="170" y="210" fill="#5a2e39" font-family="Georgia, serif" font-size="56">カチカチカチカチ</text>
-</svg>

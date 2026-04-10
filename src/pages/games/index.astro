@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import GameCard from '../../components/GameCard.astro';
+
+const games = (await getCollection('games')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title="Works - Games" description="ゲーム制作一覧">
+  <section class="section section--page">
+    <SectionHeader
+      eyebrow="Works - Games"
+      title="ゲーム一覧"
+      description="カードの情報設計を固定し、作品が増えても同じ見方で比較できる構成にしています。"
+    />
+    <div class="card-grid">
+      {games.map((entry) => <GameCard entry={entry} />)}
+    </div>
+  </section>
+</BaseLayout>
+

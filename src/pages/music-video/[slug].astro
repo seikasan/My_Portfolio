@@ -1,0 +1,81 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EmbedFrame from '../../components/EmbedFrame.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('music-video');
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry }
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const root = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.summary}>
+  <article class="detail-page">
+    <section class="section section--page">
+      <a class="back-link" href={`${root}music-video/`}>← Music / Video に戻る</a>
+      <p class="eyebrow">Works - Music / Video</p>
+      <h1>{entry.data.title}</h1>
+      <p class="hero-role">{entry.data.category}</p>
+      <p class="hero-description">{entry.data.summary}</p>
+    </section>
+
+    <section class="section detail-grid">
+      <div class="panel">
+        <h2>発表時期</h2>
+        <p>{entry.data.releaseLabel}</p>
+      </div>
+      <div class="panel">
+        <h2>種別</h2>
+        <p>{entry.data.category}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="panel">
+        <h2>埋め込み</h2>
+        <div class="media-stack">
+          {entry.data.embeds.length > 0 ? (
+            entry.data.embeds.map((item) => <EmbedFrame item={item} />)
+          ) : (
+            <p class="empty-copy">埋め込みURLを追加するとここに表示されます。</p>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <section class="section detail-grid">
+      <div class="panel">
+        <h2>補足</h2>
+        {entry.body.trim() ? <div class="prose"><Content /></div> : <p class="empty-copy">補足本文を追加できます。</p>}
+      </div>
+      <div class="panel">
+        <h2>関連リンク</h2>
+        {entry.data.links.length > 0 ? (
+          <ul class="simple-list">
+            {entry.data.links.map((item) => (
+              <li><a href={item.url} target="_blank" rel="noreferrer">{item.label}</a></li>
+            ))}
+          </ul>
+        ) : (
+          <p class="empty-copy">ニコニコや配信ページのリンクを追加できます。</p>
+        )}
+        {entry.data.achievements.length > 0 && (
+          <>
+            <h3>実績</h3>
+            <ul class="simple-list">
+              {entry.data.achievements.map((item) => <li>{item}</li>)}
+            </ul>
+          </>
+        )}
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+

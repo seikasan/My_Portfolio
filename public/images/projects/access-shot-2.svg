@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
-  <rect width="1200" height="800" fill="#fbf8ff" />
-  <rect x="100" y="110" width="1000" height="580" rx="38" fill="#ffffff" stroke="#d7d0ec" stroke-width="8" />
-  <path d="M180 520 C260 250, 440 620, 560 330 S860 540, 1020 240" fill="none" stroke="#8f7ad8" stroke-width="16" stroke-linecap="round"/>
-  <path d="M180 580 C310 370, 470 660, 660 350 S920 560, 1020 420" fill="none" stroke="#f28a73" stroke-width="14" stroke-linecap="round"/>
-  <text x="160" y="190" fill="#49395d" font-family="Georgia, serif" font-size="52">BGM Motif Placeholder</text>
-</svg>

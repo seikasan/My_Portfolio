@@ -1,91 +1,60 @@
 ---
-import styles from "./EmbedFrame.module.css";
+const { item } = Astro.props;
 
-type Provider = "youtube" | "soundcloud" | "apple-music";
+const provider = item?.provider?.toLowerCase?.() ?? 'external';
+const label = item?.label ?? 'Media';
+const rawUrl = item?.url ?? '';
+let embedUrl = rawUrl;
+let useIframe = false;
+let compact = false;
 
-interface Props {
-  provider: Provider;
-  title: string;
-  embedUrl?: string;
-  externalUrl?: string;
-  note?: string;
+if (provider === 'youtube' && rawUrl) {
+  const match = rawUrl.match(/(?:v=|youtu\.be\/|embed\/)([A-Za-z0-9_-]{11})/);
+  if (match) {
+    embedUrl = `https://www.youtube.com/embed/${match[1]}`;
+    useIframe = true;
+  }
 }
 
-const { provider, title, embedUrl, externalUrl, note } = Astro.props as Props;
+if (provider === 'soundcloud' && rawUrl) {
+  embedUrl = `https://w.soundcloud.com/player/?url=${encodeURIComponent(rawUrl)}`;
+  useIframe = true;
+  compact = true;
+}
 
-const providerLabel: Record<Provider, string> = {
-  youtube: "YouTube",
-  soundcloud: "SoundCloud",
-  "apple-music": "Apple Music"
-};
+if (provider === 'applemusic' && rawUrl.includes('/embed')) {
+  useIframe = true;
+  compact = true;
+}
 
-const isReady = Boolean(embedUrl && externalUrl);
+if (provider === 'niconico' && rawUrl.includes('ext.nicovideo.jp')) {
+  useIframe = true;
+}
 ---
 
-<div
-  class={styles.embed}
-  data-embed-root={isReady ? "true" : "false"}
-  data-provider={provider}
-  data-embed-url={embedUrl}
-  data-title={title}
->
-  <div class={styles.placeholder} data-embed-placeholder>
-    <span class={styles.provider}>{providerLabel[provider]}</span>
-    <h3>{title}</h3>
-    {note && <p>{note}</p>}
-    {isReady ? (
-      <button type="button" class="button button--primary" data-embed-button>
-        プレーヤーを表示
-      </button>
+<div class="media-card">
+  <div class:list={['embed-frame', compact && 'embed-frame--compact']}>
+    {useIframe ? (
+      <iframe
+        src={embedUrl}
+        title={label}
+        loading="lazy"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen
+      />
+    ) : rawUrl ? (
+      <a class="embed-placeholder" href={rawUrl} target="_blank" rel="noreferrer">
+        <span>{provider}</span>
+        <strong>{label}</strong>
+        <small>外部ページで開く</small>
+      </a>
     ) : (
-      <p class={styles.pending}>
-        埋め込み URL を設定すると、ここに {providerLabel[provider]} のプレーヤーが表示されます。
-      </p>
+      <div class="embed-placeholder">
+        <span>{provider}</span>
+        <strong>{label}</strong>
+        <small>URLを追加するとここに埋め込みます</small>
+      </div>
     )}
   </div>
-  <div class={styles.frameArea} data-embed-target hidden></div>
-  {externalUrl && (
-    <a class={styles.external} href={externalUrl} target="_blank" rel="noreferrer">
-      {providerLabel[provider]} で開く
-    </a>
-  )}
 </div>
 
-<script is:inline>
-  if (!window.__portfolioEmbedHandler) {
-    window.__portfolioEmbedHandler = true;
-
-    document.addEventListener("click", (event) => {
-      const target = event.target;
-      if (!(target instanceof HTMLElement)) return;
-
-      const button = target.closest("[data-embed-button]");
-      if (!button) return;
-
-      const root = button.closest("[data-embed-root='true']");
-      if (!(root instanceof HTMLElement)) return;
-
-      const mount = root.querySelector("[data-embed-target]");
-      if (!(mount instanceof HTMLElement) || mount.childElementCount > 0) return;
-
-      const iframe = document.createElement("iframe");
-      iframe.src = root.dataset.embedUrl || "";
-      iframe.title = root.dataset.title || "Embedded media";
-      iframe.loading = "lazy";
-      iframe.referrerPolicy = "strict-origin-when-cross-origin";
-      iframe.allow =
-        root.dataset.provider === "youtube"
-          ? "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          : "autoplay; clipboard-write; encrypted-media; picture-in-picture";
-      iframe.allowFullscreen = true;
-
-      mount.hidden = false;
-      mount.appendChild(iframe);
-
-      const placeholder = root.querySelector("[data-embed-placeholder]");
-      if (placeholder instanceof HTMLElement) {
-        placeholder.style.display = "none";
-      }
-    });
-  }
-</script>

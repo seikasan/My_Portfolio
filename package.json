@@ -1,19 +1,16 @@
 {
   "name": "my-portfolio",
   "private": true,
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "check": "astro check"
+    "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "^5.6.0"
-  },
-  "devDependencies": {
-    "@types/node": "^22.14.1",
-    "typescript": "^5.8.3"
+    "astro": "^5.0.0"
   }
 }
+
