@@ -1,0 +1,105 @@
+.wrap {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.tabList {
+  display: inline-flex;
+  gap: 0.65rem;
+  padding: 0.5rem;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  background: rgba(255, 250, 244, 0.04);
+  width: fit-content;
+}
+
+.tab {
+  cursor: pointer;
+  padding: 0.8rem 1.2rem;
+  border-radius: 999px;
+  color: var(--color-text-muted);
+  background: transparent;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.tab:hover,
+.tab:focus-visible {
+  color: var(--color-text);
+  outline: none;
+}
+
+.active {
+  background: rgba(255, 250, 244, 0.08);
+  color: var(--color-text);
+  transform: translateY(-1px);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg, rgba(255, 250, 244, 0.07), rgba(255, 250, 244, 0.03)),
+    rgba(16, 15, 15, 0.5);
+}
+
+.imageWrap {
+  aspect-ratio: 4 / 5;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.body {
+  display: grid;
+  gap: 0.45rem;
+  padding: 1rem;
+}
+
+.caption,
+.tools {
+  margin: 0;
+  line-height: 1.75;
+}
+
+.caption {
+  color: var(--color-text);
+}
+
+.tools {
+  color: var(--color-text-faint);
+  font-size: 0.92rem;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .tabList {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .tab {
+    flex: 1;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,221 @@
+.page {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.hero,
+.metaCard,
+.detailCard,
+.galleryCard,
+.missing {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(18px);
+  background:
+    linear-gradient(180deg, rgba(255, 250, 244, 0.08), rgba(255, 250, 244, 0.03)),
+    rgba(16, 15, 15, 0.56);
+  box-shadow: 0 18px 48px var(--color-shadow);
+}
+
+.hero {
+  display: grid;
+  gap: 1.35rem;
+  padding: clamp(1.2rem, 3vw, 2rem);
+}
+
+.heroHeader {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.backLink,
+.backButton,
+.actionLink {
+  width: fit-content;
+  padding: 0.8rem 1.1rem;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  background: rgba(255, 250, 244, 0.04);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.backLink:hover,
+.backButton:hover,
+.actionLink:hover,
+.backLink:focus-visible,
+.backButton:focus-visible,
+.actionLink:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--color-line-strong);
+  background: rgba(255, 250, 244, 0.08);
+  outline: none;
+}
+
+.category {
+  margin: 0;
+  color: var(--color-accent);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.84rem;
+}
+
+.title,
+.missingTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  line-height: 1.12;
+  font-size: clamp(2rem, 4vw, 4rem);
+}
+
+.summary,
+.detailText,
+.pendingNote,
+.missingText {
+  margin: 0;
+  color: var(--color-text-muted);
+  line-height: 1.95;
+}
+
+.mediaFrame {
+  overflow: hidden;
+  border-radius: calc(var(--radius-xl) - 8px);
+  aspect-ratio: 16 / 9;
+  background: rgba(255, 250, 244, 0.04);
+}
+
+.media,
+.galleryImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.metaGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.metaCard {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1.2rem;
+}
+
+.metaLabel,
+.detailEyebrow,
+.missingEyebrow {
+  margin: 0;
+  color: var(--color-accent);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.metaValue {
+  margin: 0;
+  line-height: 1.75;
+}
+
+.chipList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.roleChip,
+.toolChip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.92rem;
+}
+
+.roleChip {
+  background: rgba(224, 169, 91, 0.16);
+  color: var(--color-text);
+}
+
+.toolChip {
+  background: rgba(124, 198, 211, 0.16);
+  color: var(--color-text);
+}
+
+.body {
+  display: grid;
+  gap: 1rem;
+}
+
+.detailCard {
+  display: grid;
+  gap: 0.85rem;
+  padding: 1.35rem;
+}
+
+.detailTitle {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 0.35rem;
+}
+
+.pendingNote {
+  padding-top: 0.3rem;
+  color: var(--color-text-faint);
+}
+
+.gallerySection {
+  display: grid;
+  gap: 1rem;
+}
+
+.galleryHeader {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.galleryCard {
+  overflow: hidden;
+  min-height: 16rem;
+}
+
+.missing {
+  display: grid;
+  gap: 0.9rem;
+  padding: 1.6rem;
+}
+
+@media (max-width: 1024px) {
+  .metaGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .metaGrid,
+  .galleryGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero,
+  .detailCard,
+  .missing {
+    padding: 1rem;
+  }
+}
