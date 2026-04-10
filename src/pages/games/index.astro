@@ -7,16 +7,15 @@ import GameCard from '../../components/GameCard.astro';
 const games = (await getCollection('games')).sort((a, b) => a.data.order - b.data.order);
 ---
 
-<BaseLayout title="Works - Games" description="ゲーム制作一覧">
+<BaseLayout title="Works - Games" description="Selected game projects.">
   <section class="section section--page">
     <SectionHeader
       eyebrow="Works - Games"
-      title="ゲーム一覧"
-      description="カードの情報設計を固定し、作品が増えても同じ見方で比較できる構成にしています。"
+      title="All Games"
+      description="A full list of game projects with team size, roles, stack, and contribution."
     />
     <div class="card-grid">
       {games.map((entry) => <GameCard entry={entry} />)}
     </div>
   </section>
 </BaseLayout>
-

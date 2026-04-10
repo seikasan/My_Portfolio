@@ -3,7 +3,7 @@ const { eyebrow, title, description, actionHref, actionLabel } = Astro.props;
 ---
 
 <div class="section-header">
-  <div>
+  <div class="section-header__copy">
     {eyebrow && <p class="eyebrow">{eyebrow}</p>}
     <h2>{title}</h2>
     {description && <p class="section-description">{description}</p>}
@@ -14,4 +14,3 @@ const { eyebrow, title, description, actionHref, actionLabel } = Astro.props;
     </a>
   )}
 </div>
-

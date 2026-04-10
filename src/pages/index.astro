@@ -13,42 +13,38 @@ const root = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
 <BaseLayout title="Home" description={siteMeta.intro}>
   <section class="hero section">
-    <div class="hero-copy">
+    <div class="hero-copy panel">
       <p class="eyebrow">Portfolio</p>
       <h1>{siteMeta.ownerName}</h1>
       <p class="hero-role">{siteMeta.role}</p>
       <p class="hero-tagline">{siteMeta.tagline}</p>
       <p class="hero-description">{siteMeta.intro}</p>
+      <ul class="hero-meta">
+        <li>
+          <span>Games</span>
+          <strong>{games.length}</strong>
+        </li>
+        <li>
+          <span>Music / Video</span>
+          <strong>{musicEntries.length}</strong>
+        </li>
+        <li>
+          <span>Roles</span>
+          <strong>4</strong>
+        </li>
+      </ul>
       <div class="hero-actions">
-        <a class="button" href="#works-games">Works - Games</a>
-        <a class="button button--ghost" href="#works-music">Works - Music / Video</a>
-      </div>
-    </div>
-    <div class="hero-panel">
-      <div class="hero-stat">
-        <strong>{games.length}</strong>
-        <span>Team Games</span>
-      </div>
-      <div class="hero-stat">
-        <strong>{musicEntries.length}</strong>
-        <span>Music / Video Works</span>
-      </div>
-      <div class="hero-stat">
-        <strong>4 Roles</strong>
-        <span>Program / Sound / Scenario / 3D</span>
+        <a class="button" href="#works-games">View games</a>
+        <a class="button button--ghost" href="#works-music">View music / video</a>
       </div>
     </div>
   </section>
 
   <section class="section" id="about">
-    <SectionHeader
-      eyebrow="About / Profile"
-      title="創作の背景"
-      description={profile.comment}
-    />
+    <SectionHeader eyebrow="About" title="Profile" description={profile.comment} />
     <div class="two-column">
       <div class="panel">
-        <h3>経歴</h3>
+        <h3>Timeline</h3>
         <ul class="timeline-list">
           {profile.timeline.map((item) => (
             <li>
@@ -60,13 +56,13 @@ const root = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       </div>
       <div class="stack">
         <div class="panel">
-          <h3>学歴</h3>
+          <h3>Education</h3>
           <ul class="simple-list">
             {profile.education.map((item) => <li>{item}</li>)}
           </ul>
         </div>
         <div class="panel">
-          <h3>イベント歴</h3>
+          <h3>Events</h3>
           <ul class="simple-list">
             {profile.events.map((item) => <li>{item}</li>)}
           </ul>
@@ -76,11 +72,7 @@ const root = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   </section>
 
   <section class="section" id="skills">
-    <SectionHeader
-      eyebrow="Skills"
-      title="できること"
-      description={skills.summary}
-    />
+    <SectionHeader eyebrow="Skills" title="Capabilities" description={skills.summary} />
     <div class="two-column">
       <div class="panel">
         <h3>Languages</h3>
@@ -110,10 +102,10 @@ const root = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   <section class="section" id="works-games">
     <SectionHeader
       eyebrow="Works - Games"
-      title="ゲーム制作"
-      description="作品全体の説明と、自分の担当範囲が混ざらないように整理しています。"
+      title="Selected Games"
+      description="Game projects with period, roles, stack, and contribution."
       actionHref={`${root}games/`}
-      actionLabel="ゲーム一覧へ"
+      actionLabel="Browse all games"
     />
     <div class="card-grid">
       {games.map((entry) => <GameCard entry={entry} />)}
@@ -123,10 +115,10 @@ const root = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   <section class="section" id="works-music">
     <SectionHeader
       eyebrow="Works - Music / Video"
-      title="音楽・動画"
-      description="視聴導線を優先し、作品説明は短く保っています。"
+      title="Music / Video"
+      description="Selected media work with embedded previews and supporting links."
       actionHref={`${root}music-video/`}
-      actionLabel="音楽・動画一覧へ"
+      actionLabel="Browse all music / video"
     />
     <div class="card-grid card-grid--music">
       {musicEntries.map((entry) => <MusicCard entry={entry} />)}
@@ -136,8 +128,8 @@ const root = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   <section class="section" id="contact">
     <SectionHeader
       eyebrow="Contact"
-      title="連絡先"
-      description="公開用のURLとメールアドレスに差し替えてください。"
+      title="Contact"
+      description="External links and a direct contact address."
     />
     <div class="two-column">
       <a class="panel contact-card" href={contact.github} target="_blank" rel="noreferrer">

@@ -20,23 +20,28 @@ const navItems = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title} | Portfolio</title>
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#ffffff" />
   </head>
   <body>
     <div class="page-shell">
       <header class="site-header">
-        <a class="brand" href={root}>{siteMeta.ownerName}</a>
-        <nav class="site-nav" aria-label="Primary">
-          {navItems.map((item) => (
-            <a href={item.href}>{item.label}</a>
-          ))}
-        </nav>
+        <div class="site-header__inner">
+          <a class="brand" href={root}>{siteMeta.ownerName}</a>
+          <nav class="site-nav" aria-label="Primary">
+            {navItems.map((item) => (
+              <a href={item.href}>{item.label}</a>
+            ))}
+          </nav>
+        </div>
       </header>
-      <main>
+      <main class="site-main">
         <slot />
       </main>
       <footer class="site-footer">
-        <p>{siteMeta.ownerName}</p>
-        <p>Games / Music / Scenario / 3D / Programming</p>
+        <div class="site-footer__inner">
+          <p>{siteMeta.ownerName}</p>
+          <p>Games / Music / Scenario / 3D / Programming</p>
+        </div>
       </footer>
     </div>
   </body>

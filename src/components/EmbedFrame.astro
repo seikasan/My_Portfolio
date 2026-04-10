@@ -4,6 +4,7 @@ const { item } = Astro.props;
 const provider = item?.provider?.toLowerCase?.() ?? 'external';
 const label = item?.label ?? 'Media';
 const rawUrl = item?.url ?? '';
+const providerLabel = provider === 'external' ? 'Link' : provider;
 let embedUrl = rawUrl;
 let useIframe = false;
 let compact = false;
@@ -44,17 +45,16 @@ if (provider === 'niconico' && rawUrl.includes('ext.nicovideo.jp')) {
       />
     ) : rawUrl ? (
       <a class="embed-placeholder" href={rawUrl} target="_blank" rel="noreferrer">
-        <span>{provider}</span>
+        <span>{providerLabel}</span>
         <strong>{label}</strong>
-        <small>外部ページで開く</small>
+        <small>Open external media</small>
       </a>
     ) : (
       <div class="embed-placeholder">
-        <span>{provider}</span>
+        <span>{providerLabel}</span>
         <strong>{label}</strong>
-        <small>URLを追加するとここに埋め込みます</small>
+        <small>Media URL unavailable</small>
       </div>
     )}
   </div>
 </div>
-
