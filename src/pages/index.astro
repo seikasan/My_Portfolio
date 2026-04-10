@@ -9,6 +9,15 @@ import { siteMeta, profile, skills, contact } from '../data/site.js';
 const games = (await getCollection('games')).sort((a, b) => a.data.order - b.data.order);
 const musicEntries = (await getCollection('music-video')).sort((a, b) => a.data.order - b.data.order);
 const root = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const stripDates = (text) => text.replace(/\b\d{4}\/\d{2}\b/g, '').replace(/\s{2,}/g, ' ').trim();
+const backgroundItems = profile.education.map(stripDates);
+const activityItems = profile.events.map(stripDates);
+const focusPoints = [
+  'Cross-disciplinary work across programming, sound, scenario, and 3D.',
+  'Comfortable in small-team production where roles overlap.',
+  'Builds both interactive projects and music / video work.',
+  'Prefers clean structure and direct, finished outputs.'
+];
 ---
 
 <BaseLayout title="Home" description={siteMeta.intro}>
@@ -30,27 +39,22 @@ const root = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     <SectionHeader eyebrow="About" title="Profile" description={profile.comment} />
     <div class="two-column">
       <div class="panel">
-        <h3>Timeline</h3>
-        <ul class="timeline-list">
-          {profile.timeline.map((item) => (
-            <li>
-              <span>{item.label}</span>
-              <p>{item.text}</p>
-            </li>
-          ))}
+        <h3>Current focus</h3>
+        <ul class="simple-list">
+          {focusPoints.map((item) => <li>{item}</li>)}
         </ul>
       </div>
       <div class="stack">
         <div class="panel">
-          <h3>Education</h3>
+          <h3>Background</h3>
           <ul class="simple-list">
-            {profile.education.map((item) => <li>{item}</li>)}
+            {backgroundItems.map((item) => <li>{item}</li>)}
           </ul>
         </div>
         <div class="panel">
-          <h3>Events</h3>
+          <h3>Selected activity</h3>
           <ul class="simple-list">
-            {profile.events.map((item) => <li>{item}</li>)}
+            {activityItems.map((item) => <li>{item}</li>)}
           </ul>
         </div>
       </div>
