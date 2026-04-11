@@ -1,11 +1,14 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { Reveal } from '../components/Reveal';
+import type { RouteLocationState } from '../lib/scrollRestoration';
 import { works } from '../data/siteContent';
 import styles from './WorkDetailPage.module.css';
 
 export function WorkDetailPage() {
+  const location = useLocation();
   const { slug } = useParams();
   const work = works.find((entry) => entry.slug === slug);
+  const detailState = location.state as RouteLocationState | null;
 
   if (!work) {
     return (
@@ -27,7 +30,11 @@ export function WorkDetailPage() {
   return (
     <div className={styles.page}>
       <Reveal as="section" className={styles.headerBlock}>
-        <Link to="/" className={styles.backLink}>
+        <Link
+          to="/"
+          state={detailState?.fromHome ? { restoreHomeScroll: true } : undefined}
+          className={styles.backLink}
+        >
           ← 作品一覧に戻る
         </Link>
         <p className={styles.category}>{work.category}</p>

@@ -6,11 +6,8 @@ import { SectionHeading } from '../components/SectionHeading';
 import { WorkCard } from '../components/WorkCard';
 import { galleryItems, siteProfile, works } from '../data/siteContent';
 import { useReducedMotion } from '../hooks/useReducedMotion';
+import type { RouteLocationState } from '../lib/scrollRestoration';
 import styles from './HomePage.module.css';
-
-interface LocationState {
-  scrollTo?: string;
-}
 
 export function HomePage() {
   const location = useLocation();
@@ -18,7 +15,7 @@ export function HomePage() {
   const reducedMotion = useReducedMotion();
 
   useEffect(() => {
-    const state = location.state as LocationState | null;
+    const state = location.state as RouteLocationState | null;
     const targetId = state?.scrollTo;
 
     if (!targetId) {

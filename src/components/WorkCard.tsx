@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { saveHomeScrollPosition } from '../lib/scrollRestoration';
 import type { WorkEntry } from '../types/content';
 import styles from './WorkCard.module.css';
 
@@ -8,7 +9,12 @@ interface WorkCardProps {
 
 export function WorkCard({ work }: WorkCardProps) {
   return (
-    <Link to={`/works/${work.slug}`} className={styles.card}>
+    <Link
+      to={`/works/${work.slug}`}
+      state={{ fromHome: true }}
+      className={styles.card}
+      onClick={saveHomeScrollPosition}
+    >
       <div className={styles.imageWrap}>
         <img
           src={work.coverImage.src}
