@@ -159,8 +159,6 @@ export function AccessToYour5GirlsContent() {
           title="Access to your 5 Girls playlist"
           entryUrl="https://soundcloud.com/seika-461144239/sets/access-to-your-5-girls"
           entryLabel="Access to your 5 Girls"
-          profileUrl={soundCloudProfile.url}
-          profileLabel={soundCloudProfile.label}
           height={450}
         />
       </section>
