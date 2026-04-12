@@ -21,6 +21,37 @@ export const siteProfile: SiteProfile = {
 
 export const works: WorkEntry[] = [
   {
+    slug: 'access-to-your-5-girls',
+    title: 'Access to your 5 Girls',
+    category: '2D恋愛ADVゲーム / サイコサスペンス',
+    period: '2025/08 - 2025/12',
+    role: ['シナリオライター', 'コンポーザー'],
+    tools: ['Unity', 'C#', 'Studio One'],
+    teamSize: '8人',
+    summary:
+      '幼なじみとの再会をきっかけに、主人公が5人の女性と関わっていく2D恋愛ADVゲームです。恋愛劇からサイコサスペンスへ変化する構成の中で、シナリオと楽曲の両面を担当しました。',
+    challenge:
+      'プロット設計、シナリオ構成、キャラクター会話・テキストなど計20万字以上の執筆に加え、通常BGM1曲とヒロイン固有BGM5曲を制作しました。表向きの印象と内面のずれ、伏線、キャラクター間の接続を文章と音楽の両方で揃えて設計しています。',
+    result:
+      '詳細ページでは、花のモチーフによる伏線設計、各ヒロインBGMの意図、ネタバレ付き解説、SoundCloud の埋め込み再生をまとめて確認できます。',
+    coverImage: createPosterAsset({
+      title: '5 Girls',
+      subtitle: 'Romance ADV / Psycho suspense',
+      accent: '#F08AA6',
+      surface: '#22131A',
+      detail: '#E0A95B',
+    }),
+    gallery: [],
+    externalLinks: [
+      {
+        label: 'SoundCloud Playlist',
+        url: 'https://soundcloud.com/seika-461144239/sets/access-to-your-5-girls',
+        kind: 'demo',
+      },
+    ],
+    featured: true,
+  },
+  {
     slug: 'case-01',
     title: 'Case 01 / Narrative Game',
     category: 'Game Prototype',

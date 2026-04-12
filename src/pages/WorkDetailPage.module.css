@@ -6,6 +6,7 @@
 .headerBlock,
 .infoBlock,
 .visualBlock,
+.articleBlock,
 .sectionBlock,
 .galleryCard,
 .missing {
@@ -17,6 +18,7 @@
 .headerBlock,
 .infoBlock,
 .visualBlock,
+.articleBlock,
 .sectionBlock,
 .missing {
   padding: 1.4rem;
@@ -24,6 +26,7 @@
 
 .headerBlock,
 .visualBlock,
+.articleBlock,
 .sectionBlock,
 .galleryHeader,
 .missing {
@@ -137,6 +140,10 @@
   object-fit: cover;
 }
 
+.articleBlock {
+  gap: 0;
+}
+
 .detailStack,
 .gallerySection {
   display: grid;
@@ -162,6 +169,7 @@
   .headerBlock,
   .infoBlock,
   .visualBlock,
+  .articleBlock,
   .sectionBlock,
   .missing {
     padding: 1rem;

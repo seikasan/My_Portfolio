@@ -1,0 +1,37 @@
+.embed {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.frame {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-strong);
+}
+
+.meta {
+  margin: 0;
+  color: var(--color-text-faint);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+.meta a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.meta a:hover,
+.meta a:focus-visible {
+  color: var(--color-accent);
+  border-color: currentColor;
+  outline: none;
+}
+
+.separator {
+  color: var(--color-text-faint);
+}
