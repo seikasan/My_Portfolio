@@ -31,6 +31,10 @@ export function WorkCard({ work }: WorkCardProps) {
         </div>
         <p className={styles.category}>{work.category}</p>
         <dl className={styles.infoRow}>
+          <dt>担当</dt>
+          <dd>{work.role.join(' / ')}</dd>
+        </dl>
+        <dl className={styles.infoRow}>
           <dt>使用技術</dt>
           <dd>{work.tools.join(' / ')}</dd>
         </dl>
