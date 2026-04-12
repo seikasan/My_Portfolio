@@ -7,6 +7,7 @@ import type {
   WorkEntry,
 } from '../types/content';
 import accessToYour5GirlsCover from '../assets/works/access-to-your-5-girls/cover.png';
+import returnFalseCover from '../assets/works/return-false/cover.png';
 
 export const siteProfile: SiteProfile = {
   name: 'seika',
@@ -55,6 +56,39 @@ export const works: WorkEntry[] = [
       {
         label: 'SoundCloud Playlist',
         url: 'https://soundcloud.com/seika-461144239/sets/access-to-your-5-girls',
+        kind: 'demo',
+      },
+    ],
+    featured: true,
+  },
+  {
+    slug: 'return-false',
+    title: 'return false;',
+    category: '2D推理ADVゲーム・ミステリー',
+    period: '2025/03 - 2025/08',
+    role: ['シナリオライター', 'コンポーザー'],
+    tools: ['Siv3D', 'C++', 'Studio One'],
+    teamSize: '7人',
+    summary:
+      '学祭を3日後に控えたゲーム開発サークルを舞台に、制作データ消失事件の真相を追う推理ADVゲームです。事件の導入から解決までのシナリオ構成と楽曲制作を担当しました。',
+    challenge:
+      '部室内の痕跡やメンバーの証言を少しずつ接続し、誰が何を見ていたのか、どの証言が食い違っているのかをプレイヤー自身が読み解ける構成を目指しました。学祭前特有の焦りや切迫感と、身近な人間関係の不穏さを文章と音の両面から揃えています。',
+    result:
+      '詳細ページでは、推理ADVとしてのシナリオ設計に加え、SoundCloud のプレイリストと各BGMの試聴、シナリオ解説、外部配布リンクをまとめて確認できます。',
+    coverImage: {
+      src: returnFalseCover,
+      alt: 'return false; メインビジュアル',
+    },
+    gallery: [],
+    externalLinks: [
+      {
+        label: 'PandD 2025 Summer をダウンロード',
+        url: 'https://pandd.sakura.ne.jp/games/comiket/PandD2025Summer.zip',
+        kind: 'demo',
+      },
+      {
+        label: 'SoundCloud Playlist',
+        url: 'https://soundcloud.com/seika-461144239/sets/return-false',
         kind: 'demo',
       },
     ],

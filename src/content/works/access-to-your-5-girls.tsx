@@ -1,4 +1,5 @@
 import { SoundCloudEmbed } from '../../components/SoundCloudEmbed';
+import { WorkSpoilerSection } from './WorkSpoilerSection';
 import styles from './WorkRichContent.module.css';
 
 const soundCloudProfile = {
@@ -37,6 +38,17 @@ const flowerRows = [
   ['月下志穂', '月下美人', '強い意志・ただ一度だけ会いたくて'],
   ['喫茶スイートピー', 'スイートピー', '門出・別離'],
 ];
+
+const spoilerSummary = '⚠️ ネタバレを含む解説を見る';
+
+const scenarioSpoiler = {
+  summary: spoilerSummary,
+  paragraphs: scenarioSpoilerParagraphs,
+  table: {
+    headers: ['名前・舞台', 'モチーフの花', '花言葉'],
+    rows: flowerRows,
+  },
+};
 
 const musicIntroParagraphs = [
   '通常BGM1曲と、5人のヒロインそれぞれの固有BGM5曲、計6曲を制作しました。各曲では、キャラクターの第一印象だけでなく、ルート進行によって見えてくる内面や伏線も音で表現しています。',
@@ -162,32 +174,7 @@ export function AccessToYour5GirlsContent() {
       <section className={styles.section}>
         <h2 className={styles.heading}>シナリオについて</h2>
         <Paragraphs paragraphs={scenarioParagraphs} />
-        <details className={styles.details}>
-          <summary className={styles.detailsSummary}>⚠️ ネタバレを含む解説を見る</summary>
-          <div className={styles.detailsBody}>
-            <Paragraphs paragraphs={scenarioSpoilerParagraphs} />
-            <div className={styles.tableWrap}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    <th>名前・舞台</th>
-                    <th>モチーフの花</th>
-                    <th>花言葉</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {flowerRows.map((row) => (
-                    <tr key={row[0]}>
-                      <td>{row[0]}</td>
-                      <td>{row[1]}</td>
-                      <td>{row[2]}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </details>
+        <WorkSpoilerSection data={scenarioSpoiler} />
       </section>
 
       <section className={styles.section}>
@@ -207,12 +194,12 @@ export function AccessToYour5GirlsContent() {
               />
               <Paragraphs paragraphs={track.intro} />
               {'spoiler' in track && track.spoiler ? (
-                <details className={styles.details}>
-                  <summary className={styles.detailsSummary}>⚠️ ネタバレを含む解説を見る</summary>
-                  <div className={styles.detailsBody}>
-                    <Paragraphs paragraphs={track.spoiler} />
-                  </div>
-                </details>
+                <WorkSpoilerSection
+                  data={{
+                    summary: spoilerSummary,
+                    paragraphs: track.spoiler,
+                  }}
+                />
               ) : null}
             </section>
           ))}
