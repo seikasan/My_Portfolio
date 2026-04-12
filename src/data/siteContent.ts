@@ -1,5 +1,6 @@
 import { createPosterAsset } from '../lib/placeholders';
 import type { GalleryItem, SiteProfile, WorkEntry } from '../types/content';
+import accessToYour5GirlsCover from '../assets/works/access-to-your-5-girls/cover.png';
 
 export const siteProfile: SiteProfile = {
   name: 'seika',
@@ -34,13 +35,10 @@ export const works: WorkEntry[] = [
       'プロット設計、シナリオ構成、キャラクター会話・テキストなど計20万字以上の執筆に加え、通常BGM1曲とヒロイン固有BGM5曲を制作しました。表向きの印象と内面のずれ、伏線、キャラクター間の接続を文章と音楽の両方で揃えて設計しています。',
     result:
       '詳細ページでは、花のモチーフによる伏線設計、各ヒロインBGMの意図、ネタバレ付き解説、SoundCloud の埋め込み再生をまとめて確認できます。',
-    coverImage: createPosterAsset({
-      title: '5 Girls',
-      subtitle: 'Romance ADV / Psycho suspense',
-      accent: '#F08AA6',
-      surface: '#22131A',
-      detail: '#E0A95B',
-    }),
+    coverImage: {
+      src: accessToYour5GirlsCover,
+      alt: 'Access to your 5 Girls メインビジュアル',
+    },
     gallery: [],
     externalLinks: [
       {
