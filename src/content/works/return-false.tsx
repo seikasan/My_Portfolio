@@ -85,18 +85,6 @@ export function ReturnFalseContent() {
   return (
     <article className={styles.content}>
       <section className={styles.section}>
-        <SoundCloudEmbed
-          embedSrc="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A2220873161&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
-          title="return false; Playlist"
-          entryUrl="https://soundcloud.com/seika-461144239/sets/return-false"
-          entryLabel="return false;"
-          profileUrl={soundCloudProfile.url}
-          profileLabel={soundCloudProfile.label}
-          height={450}
-        />
-      </section>
-
-      <section className={styles.section}>
         <h2 className={styles.heading}>概要</h2>
         <Paragraphs paragraphs={overviewParagraphs} />
       </section>
