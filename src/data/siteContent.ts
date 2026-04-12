@@ -2,7 +2,7 @@ import { createPosterAsset } from '../lib/placeholders';
 import type { GalleryItem, SiteProfile, WorkEntry } from '../types/content';
 
 export const siteProfile: SiteProfile = {
-  name: 'seikasan',
+  name: 'seika',
   heroTitle: 'Game / Illustration / 3DCG',
   heroBody:
     '作品そのものの魅力と、制作の考え方がどちらも伝わる構成を目指したポートフォリオです。現在は差し替えしやすい仮データで、公開導線まで実装しています。',
@@ -13,7 +13,7 @@ export const siteProfile: SiteProfile = {
   links: [
     {
       label: 'Email',
-      url: 'mailto:seika8738@gmail.com',
+      url: 'mailto:s1320103@u-aizu.ac.jp',
       kind: 'email',
     },
   ],
@@ -22,7 +22,7 @@ export const siteProfile: SiteProfile = {
 export const works: WorkEntry[] = [
   {
     slug: 'access-to-your-5-girls',
-    title: 'Access to your 5 Girls',
+    title: 'Access to your 5 Girls💜🩷💛🩵🤍',
     category: '2D恋愛ADVゲーム / サイコサスペンス',
     period: '2025/08 - 2025/12',
     role: ['シナリオライター', 'コンポーザー'],
@@ -43,6 +43,11 @@ export const works: WorkEntry[] = [
     }),
     gallery: [],
     externalLinks: [
+      {
+        label: 'PandD 2025 Winter をダウンロード',
+        url: 'https://pandd.sakura.ne.jp/games/comiket/PandD2025Winter.zip',
+        kind: 'demo',
+      },
       {
         label: 'SoundCloud Playlist',
         url: 'https://soundcloud.com/seika-461144239/sets/access-to-your-5-girls',

@@ -209,6 +209,14 @@ export function AccessToYour5GirlsContent() {
           {tracks.map((track) => (
             <section key={track.title} className={styles.trackSection}>
               <h3 className={styles.subheading}>{track.title}</h3>
+              <SoundCloudEmbed
+                embedSrc={track.embedSrc}
+                title={track.title}
+                entryUrl={track.entryUrl}
+                entryLabel={track.entryLabel}
+                profileUrl={soundCloudProfile.url}
+                profileLabel={soundCloudProfile.label}
+              />
               <Paragraphs paragraphs={track.intro} />
               {'spoiler' in track && track.spoiler ? (
                 <details className={styles.details}>
@@ -218,14 +226,6 @@ export function AccessToYour5GirlsContent() {
                   </div>
                 </details>
               ) : null}
-              <SoundCloudEmbed
-                embedSrc={track.embedSrc}
-                title={track.title}
-                entryUrl={track.entryUrl}
-                entryLabel={track.entryLabel}
-                profileUrl={soundCloudProfile.url}
-                profileLabel={soundCloudProfile.label}
-              />
             </section>
           ))}
         </div>
