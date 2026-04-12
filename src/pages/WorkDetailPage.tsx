@@ -90,7 +90,7 @@ export function WorkDetailPage() {
         </dl>
       </Reveal>
 
-      <Reveal as="section" className={styles.visualBlock}>
+      <section className={styles.visualBlock}>
         <h2 className={styles.sectionTitle}>メインビジュアル</h2>
         <div className={styles.mediaFrame}>
           {work.demoVideo ? (
@@ -111,52 +111,50 @@ export function WorkDetailPage() {
             />
           )}
         </div>
-      </Reveal>
+      </section>
 
       {DetailContent ? (
-        <Reveal as="section" className={styles.articleBlock}>
+        <section className={styles.articleBlock}>
           <DetailContent />
-        </Reveal>
+        </section>
       ) : (
         <div className={styles.detailStack}>
-          <Reveal as="section" className={styles.sectionBlock}>
+          <section className={styles.sectionBlock}>
             <h2 className={styles.sectionTitle}>概要</h2>
             <p className={styles.bodyText}>{work.summary}</p>
-          </Reveal>
+          </section>
 
-          <Reveal as="section" className={styles.sectionBlock}>
+          <section className={styles.sectionBlock}>
             <h2 className={styles.sectionTitle}>担当と工夫</h2>
             <p className={styles.bodyText}>{work.challenge}</p>
-          </Reveal>
+          </section>
 
-          <Reveal as="section" className={styles.sectionBlock}>
+          <section className={styles.sectionBlock}>
             <h2 className={styles.sectionTitle}>成果</h2>
             <p className={styles.bodyText}>{work.result}</p>
-          </Reveal>
+          </section>
         </div>
       )}
 
       {work.gallery.length > 0 ? (
         <section className={styles.gallerySection}>
-          <Reveal className={styles.galleryHeader}>
+          <div className={styles.galleryHeader}>
             <h2 className={styles.sectionTitle}>補足ビジュアル</h2>
             <p className={styles.bodyText}>
               詳細補足用の静止画を並べています。画像が少ない作品でも本文を先に読める構成です。
             </p>
-          </Reveal>
+          </div>
           <div className={styles.galleryGrid}>
             {work.gallery.map((image) => (
-              <Reveal key={image.alt}>
-                <div className={styles.galleryCard}>
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className={styles.galleryImage}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-              </Reveal>
+              <div key={image.alt} className={styles.galleryCard}>
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className={styles.galleryImage}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
             ))}
           </div>
         </section>
