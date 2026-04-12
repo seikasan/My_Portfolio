@@ -41,6 +41,27 @@ export function MusicGallerySection({
                 {providerItems.map((item) => (
                   <article key={item.id} className={styles.card}>
                     <h5 className={styles.cardTitle}>{item.title}</h5>
+                    {item.releasePeriod || item.role?.length ? (
+                      <dl className={styles.cardMeta}>
+                        {item.releasePeriod ? (
+                          <div className={styles.metaRow}>
+                            <dt className={styles.metaLabel}>
+                              {'\u516c\u958b\u6642\u671f'}
+                            </dt>
+                            <dd className={styles.metaValue}>{item.releasePeriod}</dd>
+                          </div>
+                        ) : null}
+                        {item.role?.length ? (
+                          <div className={styles.metaRow}>
+                            <dt className={styles.metaLabel}>{'\u62c5\u5f53'}</dt>
+                            <dd className={styles.metaValue}>{item.role.join(' / ')}</dd>
+                          </div>
+                        ) : null}
+                      </dl>
+                    ) : null}
+                    {item.description ? (
+                      <p className={styles.cardDescription}>{item.description}</p>
+                    ) : null}
                     {item.provider === 'spotify' ? (
                       <SpotifyEmbed embedSrc={item.embedSrc} title={item.title} />
                     ) : (

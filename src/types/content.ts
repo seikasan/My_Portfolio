@@ -44,6 +44,9 @@ export interface MusicItem {
   title: string;
   provider: 'niconico' | 'spotify';
   embedSrc: string;
+  description?: string;
+  releasePeriod?: string;
+  role?: string[];
 }
 
 export interface MusicSectionMeta {
