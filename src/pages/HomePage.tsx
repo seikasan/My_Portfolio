@@ -20,6 +20,7 @@ export function HomePage() {
   const location = useLocation();
   const navigate = useNavigate();
   const reducedMotion = useReducedMotion();
+  const threeDcgItems = galleryItems.filter((item) => item.category === '3dcg');
 
   useEffect(() => {
     const state = location.state as RouteLocationState | null;
@@ -82,8 +83,8 @@ export function HomePage() {
       <section id="works" className={styles.section}>
         <Reveal className={styles.sectionHeader}>
           <SectionHeading
-            eyebrow="Works"
-            title="作品"
+            eyebrow="Game"
+            title="Game"
             description="タイトル、期間、区分、使用技術、概要が一覧で比較できる構成です。詳細ページでは担当範囲と工夫を確認できます。"
           />
         </Reveal>
@@ -96,19 +97,33 @@ export function HomePage() {
         </div>
       </section>
 
-      <section id="gallery" className={styles.section}>
+      <section id="music" className={styles.section}>
         <Reveal className={styles.sectionHeader}>
           <SectionHeading
-            eyebrow="Gallery"
-            title="Illustration / 3DCG"
-            description="Gallery も Works と同じ重要度で残し、カテゴリを隠さず常時一覧できる構成にしています。"
+            eyebrow="Music"
+            title="Music"
+            description="Songs and albums released on Niconico and Spotify."
           />
         </Reveal>
         <Reveal>
-          <GalleryTabs items={galleryItems} />
+          <MusicGallerySection
+            items={musicItems}
+            sectionMeta={musicSectionMeta}
+            showHeader={false}
+          />
+        </Reveal>
+      </section>
+
+      <section id="three-dcg" className={styles.section}>
+        <Reveal className={styles.sectionHeader}>
+          <SectionHeading
+            eyebrow="3DCG"
+            title="3DCG"
+            description="3DCG studies, props, environments, and animation work."
+          />
         </Reveal>
         <Reveal>
-          <MusicGallerySection items={musicItems} sectionMeta={musicSectionMeta} />
+          <GalleryTabs items={threeDcgItems} showGroupHeader={false} />
         </Reveal>
       </section>
 
@@ -116,7 +131,7 @@ export function HomePage() {
         <Reveal className={styles.sectionHeader}>
           <SectionHeading
             eyebrow="Contact"
-            title="連絡先"
+            title="Contact"
             description={siteProfile.contactNote}
           />
         </Reveal>

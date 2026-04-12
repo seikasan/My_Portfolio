@@ -4,6 +4,7 @@ import styles from './GalleryTabs.module.css';
 
 interface GalleryTabsProps {
   items: GalleryItem[];
+  showGroupHeader?: boolean;
 }
 
 const categories: { id: GalleryCategory; label: string }[] = [
@@ -11,13 +12,15 @@ const categories: { id: GalleryCategory; label: string }[] = [
   { id: '3dcg', label: '3DCG' },
 ];
 
-export function GalleryTabs({ items }: GalleryTabsProps) {
+export function GalleryTabs({ items, showGroupHeader = true }: GalleryTabsProps) {
   const groupedItems = useMemo(
     () =>
-      categories.map((category) => ({
-        ...category,
-        items: items.filter((item) => item.category === category.id),
-      })),
+      categories
+        .map((category) => ({
+          ...category,
+          items: items.filter((item) => item.category === category.id),
+        }))
+        .filter((group) => group.items.length > 0),
     [items],
   );
 
@@ -25,10 +28,12 @@ export function GalleryTabs({ items }: GalleryTabsProps) {
     <div className={styles.wrap}>
       {groupedItems.map((group) => (
         <section key={group.id} className={styles.group}>
-          <div className={styles.groupHeader}>
-            <h3 className={styles.groupTitle}>{group.label}</h3>
-            <p className={styles.groupMeta}>{group.items.length}点</p>
-          </div>
+          {showGroupHeader ? (
+            <div className={styles.groupHeader}>
+              <h3 className={styles.groupTitle}>{group.label}</h3>
+              <p className={styles.groupMeta}>{group.items.length}点</p>
+            </div>
+          ) : null}
           <div className={styles.grid}>
             {group.items.map((item) => (
               <article key={item.id} className={styles.card}>

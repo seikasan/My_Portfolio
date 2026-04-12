@@ -6,6 +6,7 @@ import styles from './MusicGallerySection.module.css';
 interface MusicGallerySectionProps {
   items: MusicItem[];
   sectionMeta: MusicSectionMeta[];
+  showHeader?: boolean;
 }
 
 const providerOrder: MusicSectionMeta['provider'][] = ['niconico', 'spotify'];
@@ -13,13 +14,16 @@ const providerOrder: MusicSectionMeta['provider'][] = ['niconico', 'spotify'];
 export function MusicGallerySection({
   items,
   sectionMeta,
+  showHeader = true,
 }: MusicGallerySectionProps) {
   return (
     <section className={styles.section}>
-      <div className={styles.header}>
-        <h3 className={styles.title}>Music</h3>
-        <p className={styles.meta}>{items.length} items</p>
-      </div>
+      {showHeader ? (
+        <div className={styles.header}>
+          <h3 className={styles.title}>Music</h3>
+          <p className={styles.meta}>{items.length} items</p>
+        </div>
+      ) : null}
 
       <div className={styles.groupList}>
         {providerOrder.map((provider) => {

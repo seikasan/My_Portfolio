@@ -4,8 +4,9 @@ import { useReducedMotion } from '../hooks/useReducedMotion';
 import styles from './SiteHeader.module.css';
 
 const sections = [
-  { id: 'works', label: 'Works' },
-  { id: 'gallery', label: 'Gallery' },
+  { id: 'works', label: 'Game' },
+  { id: 'music', label: 'Music' },
+  { id: 'three-dcg', label: '3DCG' },
   { id: 'contact', label: 'Contact' },
 ];
 

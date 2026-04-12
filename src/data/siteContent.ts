@@ -10,11 +10,11 @@ import accessToYour5GirlsCover from '../assets/works/access-to-your-5-girls/cove
 
 export const siteProfile: SiteProfile = {
   name: 'seika',
-  heroTitle: 'Game / Illustration / 3DCG',
+  heroTitle: 'Game / Music / 3DCG',
   heroBody:
     '作品そのものの魅力と、制作の考え方がどちらも伝わる構成を目指したポートフォリオです。現在は差し替えしやすい仮データで、公開導線まで実装しています。',
   intro:
-    'プロフィール、作品一覧、詳細ページ、ギャラリー、連絡先までをデータ駆動で整理しています。画像・文言・外部リンクは `src/data/siteContent.ts` を差し替えるだけで更新できます。',
+    'プロフィール、Game、Music、3DCG、連絡先までをデータ駆動で整理しています。画像・文言・外部リンクは `src/data/siteContent.ts` を差し替えるだけで更新できます。',
   contactNote:
     '案件相談、共同制作、ポートフォリオへのフィードバックはメールから受け付けています。SNS や GitHub の導線も同じデータ定義に追加できます。',
   links: [
