@@ -39,6 +39,12 @@ export interface GalleryItem {
   tools: string[];
 }
 
+export interface MusicItem {
+  id: string;
+  title: string;
+  embedSrc: string;
+}
+
 export interface ProfileLink {
   label: string;
   url: string;

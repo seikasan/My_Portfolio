@@ -1,5 +1,5 @@
 import { createPosterAsset } from '../lib/placeholders';
-import type { GalleryItem, SiteProfile, WorkEntry } from '../types/content';
+import type { GalleryItem, MusicItem, SiteProfile, WorkEntry } from '../types/content';
 import accessToYour5GirlsCover from '../assets/works/access-to-your-5-girls/cover.png';
 
 export const siteProfile: SiteProfile = {
@@ -360,5 +360,38 @@ export const galleryItems: GalleryItem[] = [
     }),
     caption: '短いループアニメーションの差し替え先',
     tools: ['Blender', 'After Effects'],
+  },
+];
+
+export const musicItems: MusicItem[] = [
+  {
+    id: 'music-01',
+    title: '罪の世界に戻りたいな',
+    embedSrc: 'https://embed.nicovideo.jp/watch/sm41687351',
+  },
+  {
+    id: 'music-02',
+    title: '存在感覚実行',
+    embedSrc: 'https://embed.nicovideo.jp/watch/sm42186160',
+  },
+  {
+    id: 'music-03',
+    title: 'ひとりだけの住処',
+    embedSrc: 'https://embed.nicovideo.jp/watch/sm42337068',
+  },
+  {
+    id: 'music-04',
+    title: 'ベランダ',
+    embedSrc: 'https://embed.nicovideo.jp/watch/sm43101136',
+  },
+  {
+    id: 'music-05',
+    title: '星屑の記憶',
+    embedSrc: 'https://embed.nicovideo.jp/watch/sm43840363',
+  },
+  {
+    id: 'music-06',
+    title: 'カチカチカチカチ',
+    embedSrc: 'https://embed.nicovideo.jp/watch/sm44662289',
   },
 ];

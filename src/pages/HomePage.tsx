@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { GalleryTabs } from '../components/GalleryTabs';
+import { MusicGallerySection } from '../components/MusicGallerySection';
 import { Reveal } from '../components/Reveal';
 import { SectionHeading } from '../components/SectionHeading';
 import { WorkCard } from '../components/WorkCard';
-import { galleryItems, siteProfile, works } from '../data/siteContent';
+import { galleryItems, musicItems, siteProfile, works } from '../data/siteContent';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 import type { RouteLocationState } from '../lib/scrollRestoration';
 import styles from './HomePage.module.css';
@@ -99,6 +100,9 @@ export function HomePage() {
         </Reveal>
         <Reveal>
           <GalleryTabs items={galleryItems} />
+        </Reveal>
+        <Reveal>
+          <MusicGallerySection items={musicItems} />
         </Reveal>
       </section>
 
