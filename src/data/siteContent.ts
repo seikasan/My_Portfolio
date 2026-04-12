@@ -1,5 +1,11 @@
 import { createPosterAsset } from '../lib/placeholders';
-import type { GalleryItem, MusicItem, SiteProfile, WorkEntry } from '../types/content';
+import type {
+  GalleryItem,
+  MusicItem,
+  MusicSectionMeta,
+  SiteProfile,
+  WorkEntry,
+} from '../types/content';
 import accessToYour5GirlsCover from '../assets/works/access-to-your-5-girls/cover.png';
 
 export const siteProfile: SiteProfile = {
@@ -366,32 +372,79 @@ export const galleryItems: GalleryItem[] = [
 export const musicItems: MusicItem[] = [
   {
     id: 'music-01',
+    provider: 'niconico',
     title: 'ベランダ',
     embedSrc: 'https://embed.nicovideo.jp/watch/sm43101136',
   },
   {
     id: 'music-02',
+    provider: 'niconico',
     title: 'カチカチカチカチ',
     embedSrc: 'https://embed.nicovideo.jp/watch/sm44662289',
   },
   {
     id: 'music-03',
+    provider: 'niconico',
     title: '罪の世界に戻りたいな',
     embedSrc: 'https://embed.nicovideo.jp/watch/sm41687351',
   },
   {
     id: 'music-04',
+    provider: 'niconico',
     title: '存在感覚実行',
     embedSrc: 'https://embed.nicovideo.jp/watch/sm42186160',
   },
   {
     id: 'music-05',
+    provider: 'niconico',
     title: 'ひとりだけの住処',
     embedSrc: 'https://embed.nicovideo.jp/watch/sm42337068',
   },
   {
     id: 'music-06',
+    provider: 'niconico',
     title: '星屑の記憶',
     embedSrc: 'https://embed.nicovideo.jp/watch/sm43840363',
+  },
+  {
+    id: 'music-07',
+    provider: 'spotify',
+    title: '森に眠る町',
+    embedSrc:
+      'https://open.spotify.com/embed/album/0SZNC23ADIi067A8BD0W1n?utm_source=generator',
+  },
+  {
+    id: 'music-08',
+    provider: 'spotify',
+    title: '海中の額縁',
+    embedSrc:
+      'https://open.spotify.com/embed/album/2ZMNfxL6qcHfEU07KMyN6e?utm_source=generator',
+  },
+  {
+    id: 'music-09',
+    provider: 'spotify',
+    title: '雲の透き間',
+    embedSrc:
+      'https://open.spotify.com/embed/album/5v8N0qBuLpv84E5OvATZZF?utm_source=generator',
+  },
+  {
+    id: 'music-10',
+    provider: 'spotify',
+    title: '何処かの深淋浴',
+    embedSrc:
+      'https://open.spotify.com/embed/album/72Hj4enYEt42pPFYHoYGDX?utm_source=generator',
+  },
+];
+
+export const musicSectionMeta: MusicSectionMeta[] = [
+  {
+    provider: 'niconico',
+    title: 'Niconico',
+    description: '高校生のときに上島美月として動画付きで公開したボカロ楽曲です。',
+  },
+  {
+    provider: 'spotify',
+    title: 'Spotify',
+    description: '大学生になってからseikaとして公開したインスト楽曲です。',
   },
 ];

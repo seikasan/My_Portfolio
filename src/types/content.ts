@@ -42,7 +42,14 @@ export interface GalleryItem {
 export interface MusicItem {
   id: string;
   title: string;
+  provider: 'niconico' | 'spotify';
   embedSrc: string;
+}
+
+export interface MusicSectionMeta {
+  provider: 'niconico' | 'spotify';
+  title: string;
+  description: string;
 }
 
 export interface ProfileLink {

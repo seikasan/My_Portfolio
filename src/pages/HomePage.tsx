@@ -5,7 +5,13 @@ import { MusicGallerySection } from '../components/MusicGallerySection';
 import { Reveal } from '../components/Reveal';
 import { SectionHeading } from '../components/SectionHeading';
 import { WorkCard } from '../components/WorkCard';
-import { galleryItems, musicItems, siteProfile, works } from '../data/siteContent';
+import {
+  galleryItems,
+  musicItems,
+  musicSectionMeta,
+  siteProfile,
+  works,
+} from '../data/siteContent';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 import type { RouteLocationState } from '../lib/scrollRestoration';
 import styles from './HomePage.module.css';
@@ -102,7 +108,7 @@ export function HomePage() {
           <GalleryTabs items={galleryItems} />
         </Reveal>
         <Reveal>
-          <MusicGallerySection items={musicItems} />
+          <MusicGallerySection items={musicItems} sectionMeta={musicSectionMeta} />
         </Reveal>
       </section>
 
