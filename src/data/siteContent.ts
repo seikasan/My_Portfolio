@@ -366,32 +366,32 @@ export const galleryItems: GalleryItem[] = [
 export const musicItems: MusicItem[] = [
   {
     id: 'music-01',
-    title: '罪の世界に戻りたいな',
-    embedSrc: 'https://embed.nicovideo.jp/watch/sm41687351',
-  },
-  {
-    id: 'music-02',
-    title: '存在感覚実行',
-    embedSrc: 'https://embed.nicovideo.jp/watch/sm42186160',
-  },
-  {
-    id: 'music-03',
-    title: 'ひとりだけの住処',
-    embedSrc: 'https://embed.nicovideo.jp/watch/sm42337068',
-  },
-  {
-    id: 'music-04',
     title: 'ベランダ',
     embedSrc: 'https://embed.nicovideo.jp/watch/sm43101136',
   },
   {
+    id: 'music-02',
+    title: 'カチカチカチカチ',
+    embedSrc: 'https://embed.nicovideo.jp/watch/sm44662289',
+  },
+  {
+    id: 'music-03',
+    title: '罪の世界に戻りたいな',
+    embedSrc: 'https://embed.nicovideo.jp/watch/sm41687351',
+  },
+  {
+    id: 'music-04',
+    title: '存在感覚実行',
+    embedSrc: 'https://embed.nicovideo.jp/watch/sm42186160',
+  },
+  {
     id: 'music-05',
-    title: '星屑の記憶',
-    embedSrc: 'https://embed.nicovideo.jp/watch/sm43840363',
+    title: 'ひとりだけの住処',
+    embedSrc: 'https://embed.nicovideo.jp/watch/sm42337068',
   },
   {
     id: 'music-06',
-    title: 'カチカチカチカチ',
-    embedSrc: 'https://embed.nicovideo.jp/watch/sm44662289',
+    title: '星屑の記憶',
+    embedSrc: 'https://embed.nicovideo.jp/watch/sm43840363',
   },
 ];
