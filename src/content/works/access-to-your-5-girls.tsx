@@ -154,16 +154,6 @@ export function AccessToYour5GirlsContent() {
   return (
     <article className={styles.content}>
       <section className={styles.section}>
-        <SoundCloudEmbed
-          embedSrc="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A2217704927&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
-          title="Access to your 5 Girls playlist"
-          entryUrl="https://soundcloud.com/seika-461144239/sets/access-to-your-5-girls"
-          entryLabel="Access to your 5 Girls"
-          height={450}
-        />
-      </section>
-
-      <section className={styles.section}>
         <h2 className={styles.heading}>概要</h2>
         <Paragraphs paragraphs={overviewParagraphs} />
         <p className={styles.notice}>作品の性質上、一部の解説にはネタバレを含みます。</p>
