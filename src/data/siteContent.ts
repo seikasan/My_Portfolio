@@ -377,7 +377,7 @@ export const musicItems: MusicItem[] = [
     embedSrc: 'https://embed.nicovideo.jp/watch/sm43101136',
     description: '夜の寒いベランダでぽつぽつと独り言を呟く。',
     releasePeriod: '2023/12/03',
-    role: ['楽曲制作'],
+    role: ['作詞作曲/編曲/動画制作'],
   },
   {
     id: 'music-02',
@@ -386,7 +386,7 @@ export const musicItems: MusicItem[] = [
     embedSrc: 'https://embed.nicovideo.jp/watch/sm44662289',
     description: '秩序に囚われた少女が自由を求めて自らの血と肋骨を鍵にする物語。',
     releasePeriod: '2025/02/22',
-    role: ['楽曲制作'],
+    role: ['作詞作曲/編曲/動画制作/小説執筆'],
   },
   {
     id: 'music-03',
@@ -395,7 +395,7 @@ export const musicItems: MusicItem[] = [
     embedSrc: 'https://embed.nicovideo.jp/watch/sm41687351',
     description: 'とある界隈の衰退を嘆いた曲。',
     releasePeriod: '2023/01/22',
-    role: ['楽曲制作'],
+    role: ['作詞作曲/編曲/動画制作'],
   },
   {
     id: 'music-04',
@@ -404,7 +404,7 @@ export const musicItems: MusicItem[] = [
     embedSrc: 'https://embed.nicovideo.jp/watch/sm42186160',
     description: '自分の存在を疑問視する恐怖症。',
     releasePeriod: '2023/05/06',
-    role: ['楽曲制作'],
+    role: ['作詞作曲/編曲/動画制作'],
   },
   {
     id: 'music-05',
@@ -413,7 +413,7 @@ export const musicItems: MusicItem[] = [
     embedSrc: 'https://embed.nicovideo.jp/watch/sm42337068',
     description: 'ひとりでも楽しいじゃないか。',
     releasePeriod: '2023/06/10',
-    role: ['楽曲制作'],
+    role: ['作詞作曲/編曲/動画制作'],
   },
   {
     id: 'music-06',
@@ -422,7 +422,7 @@ export const musicItems: MusicItem[] = [
     embedSrc: 'https://embed.nicovideo.jp/watch/sm43840363',
     description: '大学に入学して友達と離れたけどそれって星座みたいだと。',
     releasePeriod: '2024/05/27',
-    role: ['楽曲制作'],
+    role: ['作詞作曲/編曲/動画制作'],
   },
   {
     id: 'music-07',
