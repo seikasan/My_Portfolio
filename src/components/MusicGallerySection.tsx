@@ -1,5 +1,6 @@
 import type { MusicItem, MusicSectionMeta } from '../types/content';
 import { NiconicoEmbed } from './NiconicoEmbed';
+import { Reveal } from './Reveal';
 import { SpotifyEmbed } from './SpotifyEmbed';
 import styles from './MusicGallerySection.module.css';
 
@@ -35,7 +36,7 @@ export function MusicGallerySection({
           }
 
           return (
-            <section key={provider} className={styles.group}>
+            <Reveal key={provider} as="section" className={styles.group}>
               <div className={styles.groupHeader}>
                 <h4 className={styles.groupTitle}>{meta.title}</h4>
                 <p className={styles.groupDescription}>{meta.description}</p>
@@ -74,7 +75,7 @@ export function MusicGallerySection({
                   </article>
                 ))}
               </div>
-            </section>
+            </Reveal>
           );
         })}
       </div>

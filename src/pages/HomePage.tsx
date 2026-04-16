@@ -84,13 +84,11 @@ export function HomePage() {
             description="Songs and albums released on Niconico and Spotify."
           />
         </Reveal>
-        <Reveal>
-          <MusicGallerySection
-            items={musicItems}
-            sectionMeta={musicSectionMeta}
-            showHeader={false}
-          />
-        </Reveal>
+        <MusicGallerySection
+          items={musicItems}
+          sectionMeta={musicSectionMeta}
+          showHeader={false}
+        />
       </section>
 
       <section id="three-dcg" className={styles.section}>
