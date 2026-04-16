@@ -45,11 +45,18 @@ export function SiteHeader() {
           <span className={styles.brandLabel}>Portfolio</span>
         </Link>
         <nav className={styles.nav} aria-label="主要セクション">
+          <Link
+            to="/about"
+            className={styles.navLink}
+            aria-current={location.pathname === '/about' ? 'page' : undefined}
+          >
+            About
+          </Link>
           {sections.map((section) => (
             <button
               key={section.id}
               type="button"
-              className={styles.navButton}
+              className={styles.navLink}
               onClick={() => handleSectionClick(section.id)}
             >
               {section.label}

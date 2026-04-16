@@ -2,6 +2,7 @@ import { useLayoutEffect, useRef } from 'react';
 import { HashRouter, Route, Routes, useLocation, useNavigationType } from 'react-router-dom';
 import { SiteHeader } from './components/SiteHeader';
 import { isWorkDetailPath, readHomeScrollPosition, type RouteLocationState } from './lib/scrollRestoration';
+import { AboutPage } from './pages/AboutPage';
 import { HomePage } from './pages/HomePage';
 import { WorkDetailPage } from './pages/WorkDetailPage';
 import styles from './App.module.css';
@@ -15,7 +16,7 @@ function RouteScrollManager() {
     const state = location.state as RouteLocationState | null;
     const previousPathname = previousPathnameRef.current;
 
-    if (isWorkDetailPath(location.pathname)) {
+    if (location.pathname !== '/' && location.pathname !== previousPathname) {
       window.scrollTo(0, 0);
     } else if (
       location.pathname === '/' &&
@@ -47,6 +48,7 @@ function App() {
         <main className={styles.main}>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="/works/:slug" element={<WorkDetailPage />} />
           </Routes>
         </main>

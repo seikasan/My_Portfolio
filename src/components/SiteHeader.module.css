@@ -42,7 +42,7 @@
   gap: 1.2rem;
 }
 
-.navButton {
+.navLink {
   cursor: pointer;
   padding: 0.35rem 0;
   color: var(--color-text-muted);
@@ -51,10 +51,12 @@
   transition:
     color 180ms ease,
     border-color 180ms ease;
+  text-decoration: none;
 }
 
-.navButton:hover,
-.navButton:focus-visible {
+.navLink:hover,
+.navLink:focus-visible,
+.navLink[aria-current='page'] {
   color: var(--color-accent);
   border-color: var(--color-accent);
   outline: none;
@@ -74,7 +76,7 @@
     gap: 0.8rem;
   }
 
-  .navButton {
+  .navLink {
     font-size: 0.9rem;
   }
 }

@@ -1,22 +1,24 @@
 import { createPosterAsset } from '../lib/placeholders';
 import type {
   GalleryItem,
+  HistoryEntry,
   MusicItem,
   MusicSectionMeta,
+  SkillGroup,
   SiteProfile,
   WorkEntry,
 } from '../types/content';
 import accessToYour5GirlsCover from '../assets/works/access-to-your-5-girls/cover.png';
 import returnFalseCover from '../assets/works/return-false/cover.png';
-import lostOfMusicCover from '../assets/works/lost-of-music/cover.png'
+import lostOfMusicCover from '../assets/works/lost-of-music/cover.png';
 
 export const siteProfile: SiteProfile = {
   name: 'seika',
   heroTitle: 'Game / Music / 3DCG',
   heroBody:
-    '作品そのものの魅力と、制作の考え方がどちらも伝わる構成を目指したポートフォリオです。現在は差し替えしやすい仮データで、公開導線まで実装しています。',
+    '作曲、プログラミング、3D制作を横断しながら、ゲーム制作へ統合している学生クリエイターです。',
   intro:
-    'プロフィール、Game、Music、3DCG、連絡先までをデータ駆動で整理しています。画像・文言・外部リンクは `src/data/siteContent.ts` を差し替えるだけで更新できます。',
+    '幼少期から続けてきた複数の表現を、現在はゲームというかたちで結び直しています。プロフィールの詳細は About ページにまとめています。',
   contactNote:
     '案件相談、共同制作、ポートフォリオへのフィードバックはメールから受け付けています。SNS や GitHub の導線も同じデータ定義に追加できます。',
   links: [
@@ -27,6 +29,76 @@ export const siteProfile: SiteProfile = {
     },
   ],
 };
+
+export const aboutSummary =
+  '幼少期から作曲、小説、プログラミング、漫画、3D制作、動画制作に親しみ、それぞれ別々に続けてきた経験を、現在はゲーム制作に統合しています。';
+
+export const skillGroups: SkillGroup[] = [
+  {
+    title: '主力',
+    description: '継続して制作に使っている言語とツールです。',
+    items: [
+      { name: 'C', experience: '2年' },
+      { name: 'C#', experience: '2年' },
+      { name: 'VBA', experience: '1か月' },
+      { name: 'Unity', experience: '2年' },
+      { name: 'Blender', experience: '4年' },
+      { name: 'Studio One', experience: '6年' },
+      { name: 'GitHub', experience: '2年' },
+    ],
+  },
+  {
+    title: '授業で少し使用',
+    description: '授業や演習の中で触れた技術です。',
+    items: [
+      { name: 'Java' },
+      { name: 'HTML' },
+      { name: 'CSS' },
+      { name: 'JavaScript' },
+    ],
+  },
+];
+
+export const educationHistory: HistoryEntry[] = [
+  {
+    period: '2021 - 2024',
+    title: '福島県立福島高校',
+    description: '2021年入学 / 2024年卒業',
+  },
+  {
+    period: '2024 -',
+    title: '会津大学',
+    description: '2024年入学',
+  },
+];
+
+export const activityHistory: HistoryEntry[] = [
+  {
+    period: '2024/10',
+    title: '会津大学 文化祭',
+    description: '展示',
+  },
+  {
+    period: '2024/12',
+    title: 'コミックマーケット105',
+    description: '自主制作ゲーム展示・頒布',
+  },
+  {
+    period: '2025/08',
+    title: 'コミックマーケット106',
+    description: '自主制作ゲーム展示・頒布',
+  },
+  {
+    period: '2025/10',
+    title: '会津大学 文化祭',
+    description: '展示',
+  },
+  {
+    period: '2025/12',
+    title: 'コミックマーケット107',
+    description: '自主制作ゲーム展示・頒布',
+  },
+];
 
 export const works: WorkEntry[] = [
   {

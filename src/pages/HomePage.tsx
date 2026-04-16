@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { GalleryTabs } from '../components/GalleryTabs';
 import { MusicGallerySection } from '../components/MusicGallerySection';
 import { Reveal } from '../components/Reveal';
@@ -41,14 +41,6 @@ export function HomePage() {
 
     return () => window.clearTimeout(timer);
   }, [location.pathname, location.state, navigate, reducedMotion]);
-
-  const scrollToSection = (sectionId: string) => {
-    document.getElementById(sectionId)?.scrollIntoView({
-      behavior: reducedMotion ? 'auto' : 'smooth',
-      block: 'start',
-    });
-  };
-
   return (
     <div className={styles.page}>
       <Reveal as="section" className={styles.profile}>
@@ -61,22 +53,9 @@ export function HomePage() {
         <div className={styles.profileAside}>
           <h2 className={styles.profileAsideTitle}>About</h2>
           <p className={styles.profileAsideText}>{siteProfile.intro}</p>
-          <div className={styles.profileActions}>
-            <button
-              type="button"
-              className={styles.inlineButton}
-              onClick={() => scrollToSection('works')}
-            >
-              作品一覧へ
-            </button>
-            <button
-              type="button"
-              className={styles.inlineButton}
-              onClick={() => scrollToSection('contact')}
-            >
-              連絡先を見る
-            </button>
-          </div>
+          <Link to="/about" className={styles.inlineButton}>
+            Aboutページへ
+          </Link>
         </div>
       </Reveal>
 

@@ -66,11 +66,14 @@
 }
 
 .inlineButton {
+  display: inline-flex;
+  align-items: center;
   width: fit-content;
   padding: 0;
   border-bottom: 1px solid transparent;
   color: var(--color-text);
   font-size: 0.96rem;
+  text-decoration: none;
   transition:
     color 180ms ease,
     border-color 180ms ease;

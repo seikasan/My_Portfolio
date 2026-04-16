@@ -61,6 +61,23 @@ export interface ProfileLink {
   kind: 'email' | 'social' | 'website';
 }
 
+export interface SkillEntry {
+  name: string;
+  experience?: string;
+}
+
+export interface SkillGroup {
+  title: string;
+  description?: string;
+  items: SkillEntry[];
+}
+
+export interface HistoryEntry {
+  period: string;
+  title: string;
+  description?: string;
+}
+
 export interface SiteProfile {
   name: string;
   heroTitle: string;
