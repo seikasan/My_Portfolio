@@ -44,7 +44,7 @@ function Paragraphs({ paragraphs }: { paragraphs: string[] }) {
   );
 }
 
-export function AccessToYour5GirlsContent() {
+export function LostOfMusicContent() {
   return (
     <article className={styles.content}>
       <section className={styles.section}>
