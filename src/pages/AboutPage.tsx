@@ -57,7 +57,6 @@ export function AboutPage() {
               <ul className={styles.skillList}>
                 {group.items.map((item) => (
                   <li key={item.name} className={styles.skillItem}>
-                    <span className={styles.skillName}>{item.name}</span>
                     <SkillLogo logoId={item.logoId} label={item.name} />
                     <span className={styles.skillContent}>
                       <span className={styles.skillName}>{item.name}</span>
