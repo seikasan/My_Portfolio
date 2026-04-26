@@ -11,9 +11,12 @@ export function SectionHeading({
   title,
   description,
 }: SectionHeadingProps) {
+  const shouldShowEyebrow =
+    eyebrow.trim().toLowerCase() !== title.trim().toLowerCase();
+
   return (
     <div className={styles.heading}>
-      <p className={styles.eyebrow}>{eyebrow}</p>
+      {shouldShowEyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
       <h2 className={styles.title}>{title}</h2>
       <p className={styles.description}>{description}</p>
     </div>
