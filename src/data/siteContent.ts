@@ -59,25 +59,26 @@ export const aboutSummary =
 
 export const skillGroups: SkillGroup[] = [
   {
-    title: '主力',
-    description: '継続して制作に使っている言語とツールです。',
+    title: 'Languages',
+    description: '制作や授業で使用している言語です。',
     items: [
-      { name: 'Studio One', experience: '6年' },
-      { name: 'Blender', experience: '4年' },
-      { name: 'Unity', experience: '2年' },
-      { name: 'GitHub', experience: '2年' },
-      { name: 'C', experience: '2年' },
-      { name: 'C#', experience: '2年' },
+      { name: 'C', experience: '2年', logoId: 'c' },
+      { name: 'C#', experience: '2年', logoId: 'csharp' },
+      { name: 'VBA', experience: '1か月', logoId: 'vba' },
+      { name: 'Java', note: '授業で少し使用', logoId: 'java' },
+      { name: 'HTML', note: '授業で少し使用', logoId: 'html5' },
+      { name: 'CSS', note: '授業で少し使用', logoId: 'css' },
+      { name: 'JavaScript', note: '授業で少し使用', logoId: 'javascript' },
     ],
   },
   {
-    title: '授業で少し使用',
-    description: '授業や演習の中で触れた技術です。',
+    title: 'Tools',
+    description: '制作環境として継続的に使っているツールです。',
     items: [
-      { name: 'Java' },
-      { name: 'HTML' },
-      { name: 'CSS' },
-      { name: 'JavaScript' },
+      { name: 'Studio One', experience: '6年', logoId: 'studioOne' },
+      { name: 'Blender', experience: '4年', logoId: 'blender' },
+      { name: 'Unity', experience: '2年', logoId: 'unity' },
+      { name: 'GitHub', experience: '2年', logoId: 'github' },
     ],
   },
 ];

@@ -114,9 +114,10 @@
 }
 
 .skillItem {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr) auto;
+  gap: 0.8rem;
+  align-items: center;
   padding-bottom: 0.85rem;
   border-bottom: 1px solid var(--color-line);
 }
@@ -130,10 +131,32 @@
   font-weight: 600;
 }
 
+.skillContent {
+  display: grid;
+  min-width: 0;
+  gap: 0.15rem;
+}
+
+.skillName,
+.skillNote {
+  overflow-wrap: anywhere;
+}
+
+.skillNote {
+  color: var(--color-text-faint);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
 .skillMeta,
 .timelinePeriod {
   color: var(--color-text-faint);
   font-size: 0.94rem;
+}
+
+.skillMeta {
+  justify-self: end;
+  white-space: nowrap;
 }
 
 .timeline {
@@ -190,7 +213,12 @@
   }
 
   .skillItem {
-    flex-direction: column;
-    gap: 0.25rem;
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+    gap: 0.45rem 0.8rem;
+  }
+
+  .skillMeta {
+    grid-column: 2;
+    justify-self: start;
   }
 }

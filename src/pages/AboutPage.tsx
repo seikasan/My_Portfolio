@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Reveal } from '../components/Reveal';
 import { SectionHeading } from '../components/SectionHeading';
+import { SkillLogo } from '../components/SkillLogo';
 import {
   aboutSummary,
   activityHistory,
@@ -57,9 +58,12 @@ export function AboutPage() {
                 {group.items.map((item) => (
                   <li key={item.name} className={styles.skillItem}>
                     <span className={styles.skillName}>{item.name}</span>
-                    {item.experience ? (
-                      <span className={styles.skillMeta}>{item.experience}</span>
-                    ) : null}
+                    <SkillLogo logoId={item.logoId} label={item.name} />
+                    <span className={styles.skillContent}>
+                      <span className={styles.skillName}>{item.name}</span>
+                      {item.note ? <span className={styles.skillNote}>{item.note}</span> : null}
+                    </span>
+                    {item.experience ? <span className={styles.skillMeta}>{item.experience}</span> : null}
                   </li>
                 ))}
               </ul>

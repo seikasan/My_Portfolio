@@ -61,9 +61,24 @@ export interface ProfileLink {
   kind: 'email' | 'social' | 'website';
 }
 
+export type SkillLogoId =
+  | 'c'
+  | 'csharp'
+  | 'vba'
+  | 'java'
+  | 'html5'
+  | 'css'
+  | 'javascript'
+  | 'studioOne'
+  | 'blender'
+  | 'unity'
+  | 'github';
+
 export interface SkillEntry {
   name: string;
   experience?: string;
+  note?: string;
+  logoId: SkillLogoId;
 }
 
 export interface SkillGroup {
