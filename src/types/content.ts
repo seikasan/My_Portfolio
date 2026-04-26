@@ -78,6 +78,11 @@ export interface HistoryEntry {
   description?: string;
 }
 
+export interface HeadingTone {
+  backgroundColor: string;
+  foregroundColor?: string;
+}
+
 export interface SiteProfile {
   name: string;
   heroTitle: string;

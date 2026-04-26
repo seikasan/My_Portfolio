@@ -32,6 +32,15 @@
   text-transform: uppercase;
 }
 
+.profileEyebrowTone {
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.2em 0.48em 0.24em;
+  border-radius: 8px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
 .profileName {
   margin: 0;
   font-size: clamp(2.4rem, 5vw, 4rem);

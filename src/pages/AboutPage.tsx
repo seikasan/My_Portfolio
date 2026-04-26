@@ -5,6 +5,7 @@ import {
   aboutSummary,
   activityHistory,
   educationHistory,
+  sectionHeadingTones,
   siteProfile,
   skillGroups,
 } from '../data/siteContent';
@@ -19,6 +20,7 @@ export function AboutPage() {
             eyebrow="About"
             title="About"
             description={aboutSummary}
+            tone={sectionHeadingTones.about}
           />
           <Link to="/" className={styles.backLink}>
             トップに戻る
@@ -39,6 +41,7 @@ export function AboutPage() {
             eyebrow="Skills"
             title="Skills"
             description="継続して使っているものと、授業で少し触れたものです。"
+            tone={sectionHeadingTones.skills}
           />
         </Reveal>
         <div className={styles.skillGrid}>
@@ -71,6 +74,7 @@ export function AboutPage() {
             eyebrow="Education"
             title="Education"
             description=""
+            tone={sectionHeadingTones.education}
           />
         </Reveal>
         <Reveal className={styles.timeline}>
@@ -94,6 +98,7 @@ export function AboutPage() {
             eyebrow="Activities"
             title="Activities"
             description=""
+            tone={sectionHeadingTones.activities}
           />
         </Reveal>
         <Reveal className={styles.timeline}>

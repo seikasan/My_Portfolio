@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, type CSSProperties } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { GalleryTabs } from '../components/GalleryTabs';
 import { MusicGallerySection } from '../components/MusicGallerySection';
@@ -9,10 +9,12 @@ import {
   galleryItems,
   musicItems,
   musicSectionMeta,
+  sectionHeadingTones,
   siteProfile,
   works,
 } from '../data/siteContent';
 import { useReducedMotion } from '../hooks/useReducedMotion';
+import { getReadableTextColor } from '../lib/colorContrast';
 import type { RouteLocationState } from '../lib/scrollRestoration';
 import styles from './HomePage.module.css';
 
@@ -21,6 +23,12 @@ export function HomePage() {
   const navigate = useNavigate();
   const reducedMotion = useReducedMotion();
   const threeDcgItems = galleryItems.filter((item) => item.category === '3dcg');
+  const profileEyebrowStyle: CSSProperties = {
+    backgroundColor: sectionHeadingTones.profile.backgroundColor,
+    color:
+      sectionHeadingTones.profile.foregroundColor ??
+      getReadableTextColor(sectionHeadingTones.profile.backgroundColor),
+  };
 
   useEffect(() => {
     const state = location.state as RouteLocationState | null;
@@ -45,7 +53,12 @@ export function HomePage() {
     <div className={styles.page}>
       <Reveal as="section" className={styles.profile}>
         <div className={styles.profileMain}>
-          <p className={styles.profileEyebrow}>Profile</p>
+          <p
+            className={`${styles.profileEyebrow} ${styles.profileEyebrowTone}`}
+            style={profileEyebrowStyle}
+          >
+            Profile
+          </p>
           <h1 className={styles.profileName}>{siteProfile.name}</h1>
           <p className={styles.profileTitle}>{siteProfile.heroTitle}</p>
           <p className={styles.profileBody}>{siteProfile.heroBody}</p>
@@ -65,6 +78,7 @@ export function HomePage() {
             eyebrow="Game"
             title="Game"
             description="個人・チームで制作したゲームの一覧です。詳細ページで担当範囲などが確認できます。"
+            tone={sectionHeadingTones.game}
           />
         </Reveal>
         <div className={styles.worksList}>
@@ -82,6 +96,7 @@ export function HomePage() {
             eyebrow="Music"
             title="Music"
             description="ニコニコ動画とSpotifyなどに公開した楽曲です。"
+            tone={sectionHeadingTones.music}
           />
         </Reveal>
         <MusicGallerySection
@@ -97,6 +112,7 @@ export function HomePage() {
             eyebrow="3DCG"
             title="3DCG"
             description="3DCG やアニメーションなどの作品です。"
+            tone={sectionHeadingTones.threeDcg}
           />
         </Reveal>
         <Reveal>
@@ -110,6 +126,7 @@ export function HomePage() {
             eyebrow="Contact"
             title="Contact"
             description={siteProfile.contactNote}
+            tone={sectionHeadingTones.contact}
           />
         </Reveal>
         <Reveal className={styles.contactList}>

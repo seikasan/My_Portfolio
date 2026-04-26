@@ -21,6 +21,14 @@
   font-weight: 700;
 }
 
+.titleTone {
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.12em 0.36em 0.16em;
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+}
+
 .description {
   margin: 0;
   max-width: 48rem;

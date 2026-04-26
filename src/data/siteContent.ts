@@ -1,6 +1,7 @@
 import { createPosterAsset } from '../lib/placeholders';
 import type {
   GalleryItem,
+  HeadingTone,
   HistoryEntry,
   MusicItem,
   MusicSectionMeta,
@@ -28,6 +29,29 @@ export const siteProfile: SiteProfile = {
       kind: 'email',
     },
   ],
+};
+
+type SectionHeadingToneKey =
+  | 'profile'
+  | 'game'
+  | 'music'
+  | 'threeDcg'
+  | 'contact'
+  | 'about'
+  | 'skills'
+  | 'education'
+  | 'activities';
+
+export const sectionHeadingTones: Record<SectionHeadingToneKey, HeadingTone> = {
+  profile: { backgroundColor: '#315F86' },
+  game: { backgroundColor: '#91483A' },
+  music: { backgroundColor: '#2F6F5E' },
+  threeDcg: { backgroundColor: '#8A6F2A' },
+  contact: { backgroundColor: '#53606A' },
+  about: { backgroundColor: '#2F5D7C' },
+  skills: { backgroundColor: '#66733E' },
+  education: { backgroundColor: '#7D5A2F' },
+  activities: { backgroundColor: '#8C3F55' },
 };
 
 export const aboutSummary =
