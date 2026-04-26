@@ -20,7 +20,7 @@ export const siteProfile: SiteProfile = {
   intro:
     '幼少期から続けてきた複数の表現を、現在はゲームというかたちで結び直しています。プロフィールの詳細は About ページへ。',
   contactNote:
-    'コンタクトはこちら',
+    '下記のアドレスにお気軽にご連絡ください。',
   links: [
     {
       label: 'Email',
