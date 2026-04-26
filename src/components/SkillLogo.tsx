@@ -1,6 +1,7 @@
 import {
   siBlender,
   siC,
+  siCplusplus,
   siCss,
   siGithub,
   siHtml5,
@@ -22,6 +23,7 @@ interface SkillLogoProps {
 
 const simpleIconMap: Partial<Record<SkillLogoId, SimpleIcon>> = {
   c: siC,
+  cplusplus: siCplusplus,
   html5: siHtml5,
   css: siCss,
   javascript: siJavascript,

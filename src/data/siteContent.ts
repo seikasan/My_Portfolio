@@ -17,7 +17,7 @@ export const siteProfile: SiteProfile = {
   name: 'seika',
   heroTitle: 'Game / Music / 3DCG',
   heroBody:
-    '作曲、プログラミング、3D制作をゲーム制作へ統合している学生クリエイターです。',
+    '作曲、プログラミング、3D制作を軸にゲームを制作する学生クリエイターです。',
   intro:
     '幼少期から続けてきた複数の表現を、現在はゲームというかたちで結び直しています。プロフィールの詳細は About ページへ。',
   contactNote:
@@ -64,11 +64,12 @@ export const skillGroups: SkillGroup[] = [
     items: [
       { name: 'C', experience: '2年', logoId: 'c' },
       { name: 'C#', experience: '2年', logoId: 'csharp' },
-      { name: 'VBA', experience: '1か月', logoId: 'vba' },
+      { name: 'C++', note: '授業で少し使用', logoId: 'cplusplus' },
       { name: 'Java', note: '授業で少し使用', logoId: 'java' },
       { name: 'HTML', note: '授業で少し使用', logoId: 'html5' },
       { name: 'CSS', note: '授業で少し使用', logoId: 'css' },
       { name: 'JavaScript', note: '授業で少し使用', logoId: 'javascript' },
+      { name: 'VBA', experience: '趣味で少し使用', logoId: 'vba' },
     ],
   },
   {

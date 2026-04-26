@@ -63,6 +63,7 @@ export interface ProfileLink {
 
 export type SkillLogoId =
   | 'c'
+  | 'cplusplus'
   | 'csharp'
   | 'vba'
   | 'java'
