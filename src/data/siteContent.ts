@@ -16,11 +16,11 @@ export const siteProfile: SiteProfile = {
   name: 'seika',
   heroTitle: 'Game / Music / 3DCG',
   heroBody:
-    '作曲、プログラミング、3D制作を横断しながら、ゲーム制作へ統合している学生クリエイターです。',
+    '作曲、プログラミング、3D制作をゲーム制作へ統合している学生クリエイターです。',
   intro:
-    '幼少期から続けてきた複数の表現を、現在はゲームというかたちで結び直しています。プロフィールの詳細は About ページにまとめています。',
+    '幼少期から続けてきた複数の表現を、現在はゲームというかたちで結び直しています。プロフィールの詳細は About ページへ。',
   contactNote:
-    '案件相談、共同制作、ポートフォリオへのフィードバックはメールから受け付けています。SNS や GitHub の導線も同じデータ定義に追加できます。',
+    'コンタクトはこちら',
   links: [
     {
       label: 'Email',
@@ -38,13 +38,12 @@ export const skillGroups: SkillGroup[] = [
     title: '主力',
     description: '継続して制作に使っている言語とツールです。',
     items: [
+      { name: 'Studio One', experience: '6年' },
+      { name: 'Blender', experience: '4年' },
+      { name: 'Unity', experience: '2年' },
+      { name: 'GitHub', experience: '2年' },
       { name: 'C', experience: '2年' },
       { name: 'C#', experience: '2年' },
-      { name: 'VBA', experience: '1か月' },
-      { name: 'Unity', experience: '2年' },
-      { name: 'Blender', experience: '4年' },
-      { name: 'Studio One', experience: '6年' },
-      { name: 'GitHub', experience: '2年' },
     ],
   },
   {
@@ -217,45 +216,6 @@ export const galleryItems: GalleryItem[] = [
     tools: ['Clip Studio', 'Photoshop'],
   },
   {
-    id: 'illust-02',
-    category: 'illustration',
-    image: createPosterAsset({
-      title: 'Illustration 02',
-      subtitle: 'Character sheet placeholder',
-      accent: '#F08AA6',
-      surface: '#201217',
-      detail: '#E0A95B',
-    }),
-    caption: 'キャラクターデザインの差し替え先',
-    tools: ['Clip Studio'],
-  },
-  {
-    id: 'illust-03',
-    category: 'illustration',
-    image: createPosterAsset({
-      title: 'Illustration 03',
-      subtitle: 'Color study placeholder',
-      accent: '#7CC6D3',
-      surface: '#12191B',
-      detail: '#D9B36B',
-    }),
-    caption: '色設計や塗りの比較に使う枠',
-    tools: ['Photoshop'],
-  },
-  {
-    id: 'illust-04',
-    category: 'illustration',
-    image: createPosterAsset({
-      title: 'Illustration 04',
-      subtitle: 'Mood board placeholder',
-      accent: '#CBA9FF',
-      surface: '#18121E',
-      detail: '#E0A95B',
-    }),
-    caption: 'シリーズ作品の雰囲気を並べるための枠',
-    tools: ['Procreate'],
-  },
-  {
     id: '3dcg-01',
     category: '3dcg',
     image: createPosterAsset({
@@ -267,45 +227,6 @@ export const galleryItems: GalleryItem[] = [
     }),
     caption: '小物モデリングの差し替え先',
     tools: ['Blender', 'Substance 3D Painter'],
-  },
-  {
-    id: '3dcg-02',
-    category: '3dcg',
-    image: createPosterAsset({
-      title: '3DCG 02',
-      subtitle: 'Environment placeholder',
-      accent: '#7CC6D3',
-      surface: '#121A1D',
-      detail: '#E0A95B',
-    }),
-    caption: '背景制作やライティング検証向け',
-    tools: ['Blender'],
-  },
-  {
-    id: '3dcg-03',
-    category: '3dcg',
-    image: createPosterAsset({
-      title: '3DCG 03',
-      subtitle: 'Material study placeholder',
-      accent: '#E0A95B',
-      surface: '#201915',
-      detail: '#89D0A2',
-    }),
-    caption: '質感比較やレンダリング設定の見せ場',
-    tools: ['Blender', 'Cycles'],
-  },
-  {
-    id: '3dcg-04',
-    category: '3dcg',
-    image: createPosterAsset({
-      title: '3DCG 04',
-      subtitle: 'Animation placeholder',
-      accent: '#F08AA6',
-      surface: '#1E1417',
-      detail: '#7CC6D3',
-    }),
-    caption: '短いループアニメーションの差し替え先',
-    tools: ['Blender', 'After Effects'],
   },
 ];
 

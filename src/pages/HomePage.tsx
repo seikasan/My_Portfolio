@@ -64,7 +64,7 @@ export function HomePage() {
           <SectionHeading
             eyebrow="Game"
             title="Game"
-            description="タイトル、期間、区分、使用技術、概要が一覧で比較できる構成です。詳細ページでは担当範囲と工夫を確認できます。"
+            description="個人・チームで制作したゲームの一覧です。詳細ページで担当範囲などが確認できます。"
           />
         </Reveal>
         <div className={styles.worksList}>
@@ -81,7 +81,7 @@ export function HomePage() {
           <SectionHeading
             eyebrow="Music"
             title="Music"
-            description="Songs and albums released on Niconico and Spotify."
+            description="ニコニコ動画とSpotifyなどに公開した楽曲です。"
           />
         </Reveal>
         <MusicGallerySection
@@ -96,7 +96,7 @@ export function HomePage() {
           <SectionHeading
             eyebrow="3DCG"
             title="3DCG"
-            description="3DCG studies, props, environments, and animation work."
+            description="3DCG やアニメーションなどの作品です。"
           />
         </Reveal>
         <Reveal>

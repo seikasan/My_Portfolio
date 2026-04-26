@@ -38,7 +38,7 @@ export function AboutPage() {
           <SectionHeading
             eyebrow="Skills"
             title="Skills"
-            description="継続して使っているものと、授業で触れたものを分けて整理しています。"
+            description="継続して使っているものと、授業で少し触れたものです。"
           />
         </Reveal>
         <div className={styles.skillGrid}>
@@ -70,7 +70,7 @@ export function AboutPage() {
           <SectionHeading
             eyebrow="Education"
             title="Education"
-            description="在籍・卒業情報を学歴としてまとめています。"
+            description=""
           />
         </Reveal>
         <Reveal className={styles.timeline}>
@@ -93,7 +93,7 @@ export function AboutPage() {
           <SectionHeading
             eyebrow="Activities"
             title="Activities"
-            description="展示と頒布の記録を時系列でまとめています。"
+            description=""
           />
         </Reveal>
         <Reveal className={styles.timeline}>
