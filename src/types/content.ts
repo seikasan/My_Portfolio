@@ -101,6 +101,7 @@ export interface HeadingTone {
 
 export interface SiteProfile {
   name: string;
+  avatar: MediaAsset;
   heroTitle: string;
   heroBody: string;
   intro: string;

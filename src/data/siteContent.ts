@@ -12,9 +12,14 @@ import type {
 import accessToYour5GirlsCover from '../assets/works/access-to-your-5-girls/cover.png';
 import returnFalseCover from '../assets/works/return-false/cover.png';
 import lostOfMusicCover from '../assets/works/lost-of-music/cover.png';
+import profileIcon from '../assets/profile/icon.jpg';
 
 export const siteProfile: SiteProfile = {
   name: 'seika',
+  avatar: {
+    src: profileIcon,
+    alt: 'seika profile icon',
+  },
   heroTitle: 'Game / Music / 3DCG',
   heroBody:
     '作曲、プログラミング、3D制作を軸にゲームを制作する学生クリエイターです。',

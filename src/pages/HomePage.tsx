@@ -59,6 +59,13 @@ export function HomePage() {
           >
             Profile
           </p>
+          <img
+            className={styles.profileAvatar}
+            src={siteProfile.avatar.src}
+            alt={siteProfile.avatar.alt}
+            width="160"
+            height="160"
+          />
           <h1 className={styles.profileName}>{siteProfile.name}</h1>
           <p className={styles.profileTitle}>{siteProfile.heroTitle}</p>
           <p className={styles.profileBody}>{siteProfile.heroBody}</p>
