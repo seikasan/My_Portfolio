@@ -12,6 +12,8 @@ import type {
 import accessToYour5GirlsCover from '../assets/works/access-to-your-5-girls/cover.png';
 import returnFalseCover from '../assets/works/return-false/cover.png';
 import lostOfMusicCover from '../assets/works/lost-of-music/cover.png';
+import chocoTabiTitle from '../assets/works/choco-tabi/title.png';
+import chocoMapMakerTitle from '../assets/works/choco-tabi-map-editor/title.png';
 import profileIcon from '../assets/profile/icon.jpg';
 
 export const siteProfile: SiteProfile = {
@@ -131,6 +133,56 @@ export const activityHistory: HistoryEntry[] = [
 ];
 
 export const works: WorkEntry[] = [
+  {
+    slug: 'choco-tabi',
+    title: 'ちょこ旅',
+    category: '3Dアクションゲーム / お菓子',
+    period: '2026/02 - 開発中',
+    role: ['プログラマー', 'モデリング', 'サウンド'],
+    tools: ['Unity', 'C#', 'Blender', 'Shader Graph', 'Studio One'],
+    teamSize: '8人',
+    summary:
+      'チョコの「溶ける」「他の食べ物をコーティングできる」といった特徴を遊びに取り入れた、8人チームで開発中のポップなアクションゲームです。',
+    challenge:
+      'プログラムでは、ノーコードで敵やギミックを作れるアクタースクリプト群を主に担当しました。ステートマシン、View、Module を Inspector から組み替えられるようにし、二層構造ステージやレーン切り替え、専用マップエディターなども制作しています。',
+    result:
+      'モデリングではホイップクリーム、キャンディー、クッキー、ケーキブロックなどを制作し、Shader Graph でわたあめや水面表現も作りました。サウンドではお菓子の世界観に合う約3分のループBGMを制作しています。',
+    coverImage: {
+      src: chocoTabiTitle,
+      alt: 'ちょこ旅 タイトル画面',
+    },
+    gallery: [],
+    externalLinks: [],
+    featured: true,
+  },
+  {
+    slug: 'choco-map-maker',
+    title: '🍫ちょこ旅マップエディター',
+    category: '制作支援ツール / ステージ構想',
+    period: '2026/03/01',
+    role: ['設計', '実装'],
+    tools: ['JavaScript', 'HTML', 'CSS', 'Gemini', 'ChatGPT'],
+    teamSize: '個人',
+    summary:
+      'アクションゲーム「ちょこ旅」の手前と奥の二層構造を考えるために作った、ステージ案整理用の専用マップエディターです。',
+    challenge:
+      'ちょこ旅のステージは二層構造という特殊な仕様のため、既存ツールではアイデアを整理しづらく、自分で専用エディターを作りました。手前と奥を切り替えて作成でき、保存と読み込みは JSON で行えます。',
+    result:
+      'Unity との互換性を持つ実装ツールではなく、構想をまとめるためのツールとして制作しました。どうやら他のプロジェクトでも使われているようです。',
+    coverImage: {
+      src: chocoMapMakerTitle,
+      alt: 'ちょこ旅マップエディター 画面',
+    },
+    gallery: [],
+    externalLinks: [
+      {
+        label: 'GitHub Repository',
+        url: 'https://github.com/seikasan/ChocoMapMaker',
+        kind: 'source',
+      },
+    ],
+    featured: true,
+  },
   {
     slug: 'my-architecture',
     title: 'MyArchitecture',
