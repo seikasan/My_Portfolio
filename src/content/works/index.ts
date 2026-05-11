@@ -5,11 +5,13 @@ import { ChocoTabiContent } from './choco-tabi';
 import { ReturnFalseContent } from './return-false';
 import { LostOfMusicContent } from "./lost-of-music";
 import { MyArchitectureContent } from './my-architecture';
+import { LylaContent } from './lyla';
 
 const workContentRegistry: Record<string, ComponentType | undefined> = {
   'choco-map-maker': ChocoMapMakerContent,
   'choco-tabi': ChocoTabiContent,
   'my-architecture': MyArchitectureContent,
+  lyla: LylaContent,
   'access-to-your-5-girls': AccessToYour5GirlsContent,
   'return-false': ReturnFalseContent,
   'lost-of-music': LostOfMusicContent,
