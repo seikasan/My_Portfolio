@@ -45,14 +45,14 @@ export function ImageLightbox({
       </button>
 
       {isOpen ? (
-        <div className={styles.overlay} role="dialog" aria-modal="true" aria-label={alt}>
-          <button
-            type="button"
-            className={styles.backdrop}
-            onClick={() => setIsOpen(false)}
-            aria-label="拡大表示を閉じる"
-          />
-          <div className={styles.dialog}>
+        <div
+          className={styles.overlay}
+          role="dialog"
+          aria-modal="true"
+          aria-label={alt}
+          onClick={() => setIsOpen(false)}
+        >
+          <div className={styles.dialog} onClick={(event) => event.stopPropagation()}>
             <button
               type="button"
               className={styles.closeButton}

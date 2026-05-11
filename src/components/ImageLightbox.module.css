@@ -33,12 +33,6 @@
   display: grid;
   place-items: center;
   padding: 1.25rem;
-}
-
-.backdrop {
-  position: absolute;
-  inset: 0;
-  padding: 0;
   background: rgba(17, 20, 24, 0.82);
   cursor: zoom-out;
 }
@@ -50,6 +44,7 @@
   gap: 0.75rem;
   width: min(100%, 92rem);
   max-height: min(100%, 52rem);
+  cursor: default;
 }
 
 .closeButton {
