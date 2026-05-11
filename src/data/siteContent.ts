@@ -138,7 +138,7 @@ export const works: WorkEntry[] = [
     title: 'ちょこ旅',
     category: '3Dアクションゲーム / お菓子',
     period: '2026/02 - 開発中',
-    role: ['プログラマー', 'モデリング', 'サウンド'],
+    role: ['プログラマー', 'モデリング', 'コンポーザー'],
     tools: ['Unity', 'C#', 'Blender', 'Shader Graph', 'Studio One'],
     teamSize: '8人',
     summary:
