@@ -35,6 +35,11 @@ export const siteProfile: SiteProfile = {
       url: 'mailto:s1320103@u-aizu.ac.jp',
       kind: 'email',
     },
+    {
+      label: 'GitHub',
+      url: 'https://github.com/seikasan',
+      kind: 'social',
+    },
   ],
 };
 
