@@ -152,7 +152,13 @@ export const works: WorkEntry[] = [
       alt: 'ちょこ旅 タイトル画面',
     },
     gallery: [],
-    externalLinks: [],
+    externalLinks: [
+      {
+        label: 'SoundCloud Playlist',
+        url: 'https://soundcloud.com/seika-461144239/sets/syzq352z22qn',
+        kind: 'demo',
+      },
+    ],
     featured: true,
   },
   {

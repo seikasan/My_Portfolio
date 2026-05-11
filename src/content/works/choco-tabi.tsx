@@ -5,6 +5,11 @@ import { SoundCloudEmbed } from '../../components/SoundCloudEmbed';
 import { YouTubeEmbed } from '../../components/YouTubeEmbed';
 import styles from './WorkRichContent.module.css';
 
+const soundCloudProfile = {
+  url: 'https://soundcloud.com/seika-461144239',
+  label: 'seika',
+};
+
 const overviewParagraphs = [
   'ちょこ旅は、8人チームで開発しているアクションゲームです。チョコの「溶ける」「他の食べ物をコーティングできる」といった特徴を遊びに取り入れ、お菓子の世界を旅するようなポップな雰囲気を目指しています。',
   '私は主にプログラム、モデリング、サウンドを担当しました。ゲーム内の仕組みだけでなく、ステージ制作を支えるマップエディターや、世界観を形にする小物モデル、BGM を担当しています。',
