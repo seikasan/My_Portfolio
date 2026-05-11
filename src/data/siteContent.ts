@@ -201,6 +201,28 @@ export const works: WorkEntry[] = [
     featured: true,
   },
   {
+    slug: 'lyla',
+    title: 'Lyla',
+    category: '3D散策ゲーム / 実験作',
+    period: '2026/04',
+    role: ['個人制作'],
+    tools: ['Unity', 'C#', 'QFramework', 'VRoid Studio'],
+    teamSize: '個人制作',
+    summary:
+      'アニメ調のキャラクターが雨の降った夜の都会を歩き回る実験的な3D散策ゲームです。QFramework の使い方を知ることや、アニメキャラのレンダリング、雰囲気を確かめることを重視して制作しました。',
+    challenge:
+      'QFramework を使った試作です。',
+    result:
+      'VRoid Studio で制作した 3Dモデルを Unity でトゥーンレンダリングし、夜の街の空気感とキャラクターの見え方をまとめました。詳細ページではプレイ映像を掲載しています。',
+    coverImage: {
+      src: lylaTitle,
+      alt: 'Lyla タイトル画面',
+    },
+    gallery: [],
+    externalLinks: [],
+    featured: true,
+  },
+  {
     slug: 'choco-map-maker',
     title: '🍫ちょこ旅マップエディター',
     category: '制作支援ツール / ステージ構想',
@@ -226,28 +248,6 @@ export const works: WorkEntry[] = [
         kind: 'source',
       },
     ],
-    featured: true,
-  },
-    {
-    slug: 'lyla',
-    title: 'Lyla',
-    category: '3D散策ゲーム / 実験作',
-    period: '2026/04',
-    role: ['個人制作'],
-    tools: ['Unity', 'C#', 'QFramework', 'VRoid Studio'],
-    teamSize: '個人制作',
-    summary:
-      'アニメ調のキャラクターが雨の降った夜の都会を歩き回る実験的な3D散策ゲームです。QFramework の使い方を知ることや、アニメキャラのレンダリング、雰囲気を確かめることを重視して制作しました。',
-    challenge:
-      'QFramework を使った試作です。',
-    result:
-      'VRoid Studio で制作した 3Dモデルを Unity でトゥーンレンダリングし、夜の街の空気感とキャラクターの見え方をまとめました。詳細ページではプレイ映像を掲載しています。',
-    coverImage: {
-      src: lylaTitle,
-      alt: 'Lyla タイトル画面',
-    },
-    gallery: [],
-    externalLinks: [],
     featured: true,
   },
   {
