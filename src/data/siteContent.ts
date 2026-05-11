@@ -286,7 +286,7 @@ export const works: WorkEntry[] = [
   {
     slug: 'return-false',
     title: 'return false;',
-    category: '2D推理ADVゲーム・ミステリー',
+    category: '2D推理ADVゲーム / ミステリー',
     period: '2025/03 - 2025/08',
     role: ['シナリオライター', 'コンポーザー'],
     tools: ['Siv3D', 'C++', 'Studio One'],
