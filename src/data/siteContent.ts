@@ -135,9 +135,9 @@ export const works: WorkEntry[] = [
     slug: 'my-architecture',
     title: 'MyArchitecture',
     category: 'GitHub Repository / Architecture',
-    period: '公開中',
+    period: '2026/05 - 開発中',
     role: ['設計', '実装'],
-    tools: ['GitHub'],
+    tools: ['Unity', 'C#', 'VContainer', 'MessagePipe', 'UniTask', 'R3', 'QFramework', 'Roslyn'],
     teamSize: '個人',
     summary:
       'Unity 制作で画面、入力、状態、ゲームルールが混ざりやすい問題を整理するために作っている、自分用の軽量アーキテクチャです。',
