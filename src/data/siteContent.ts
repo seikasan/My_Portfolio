@@ -71,12 +71,13 @@ export const skillGroups: SkillGroup[] = [
     items: [
       { name: 'C', experience: '2年', logoId: 'c' },
       { name: 'C#', experience: '2年', logoId: 'csharp' },
+      { name: 'Java', experience: '1年', logoId: 'java' },
       { name: 'C++', note: '授業で少し使用', logoId: 'cplusplus' },
-      { name: 'Java', note: '授業で少し使用', logoId: 'java' },
       { name: 'HTML', note: '授業で少し使用', logoId: 'html5' },
       { name: 'CSS', note: '授業で少し使用', logoId: 'css' },
       { name: 'JavaScript', note: '授業で少し使用', logoId: 'javascript' },
-      { name: 'VBA', experience: '趣味で少し使用', logoId: 'vba' },
+      { name: 'TypeScript', note: '授業で少し使用', logoId: 'typescript' },
+      { name: 'VBA', note: '趣味で少し使用', logoId: 'vba' },
     ],
   },
   {

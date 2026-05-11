@@ -6,6 +6,7 @@ import {
   siGithub,
   siHtml5,
   siJavascript,
+  siTypescript,
   siUnity,
   type SimpleIcon,
 } from 'simple-icons';
@@ -27,6 +28,7 @@ const simpleIconMap: Partial<Record<SkillLogoId, SimpleIcon>> = {
   html5: siHtml5,
   css: siCss,
   javascript: siJavascript,
+  typescript: siTypescript,
   blender: siBlender,
   unity: siUnity,
   github: siGithub,

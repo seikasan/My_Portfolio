@@ -70,6 +70,7 @@ export type SkillLogoId =
   | 'html5'
   | 'css'
   | 'javascript'
+  | 'typescript'
   | 'studioOne'
   | 'blender'
   | 'unity'
