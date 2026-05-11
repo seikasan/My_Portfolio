@@ -166,9 +166,9 @@ export const works: WorkEntry[] = [
     title: '🍫ちょこ旅マップエディター',
     category: '制作支援ツール / ステージ構想',
     period: '2026/03/01',
-    role: ['設計', '実装'],
+    role: ['個人制作'],
     tools: ['JavaScript', 'HTML', 'CSS', 'Gemini', 'ChatGPT'],
-    teamSize: '個人',
+    teamSize: '個人制作',
     summary:
       'アクションゲーム「ちょこ旅」の手前と奥の二層構造を考えるために作った、ステージ案整理用の専用マップエディターです。',
     challenge:
@@ -194,9 +194,9 @@ export const works: WorkEntry[] = [
     title: 'MyArchitecture',
     category: 'GitHub Repository / Architecture',
     period: '2026/05 - 開発中',
-    role: ['設計', '実装'],
+    role: ['個人制作'],
     tools: ['Unity', 'C#', 'VContainer', 'MessagePipe', 'UniTask', 'R3', 'QFramework', 'Roslyn'],
-    teamSize: '個人',
+    teamSize: '個人制作',
     summary:
       'MyArchitecture は、Unity でゲームを作るときに読みやすいコードになるように作っている自分用の軽量アーキテクチャです。',
     challenge:
@@ -209,6 +209,7 @@ export const works: WorkEntry[] = [
       accent: '#315F86',
       surface: '#101820',
       detail: '#E0A95B',
+      eyebrow: 'UNITY ARCHITECTURE',
     }),
     gallery: [],
     externalLinks: [

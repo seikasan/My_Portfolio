@@ -6,6 +6,7 @@ interface PosterOptions {
   accent: string;
   surface: string;
   detail: string;
+  eyebrow?: string;
 }
 
 function toDataUri(svg: string) {
@@ -18,6 +19,7 @@ export function createPosterAsset({
   accent,
   surface,
   detail,
+  eyebrow = 'PORTFOLIO SAMPLE',
 }: PosterOptions): MediaAsset {
   const svg = `
     <svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -41,7 +43,7 @@ export function createPosterAsset({
       <rect x="180" y="214" width="290" height="44" rx="22" fill="${accent}" fill-opacity="0.18" />
       <text x="180" y="560" fill="#F3ECE2" font-size="118" font-family="'Noto Sans JP', sans-serif" font-weight="700">${title}</text>
       <text x="180" y="638" fill="#D2C8BC" font-size="34" font-family="'Noto Sans JP', sans-serif">${subtitle}</text>
-      <text x="180" y="250" fill="#F3ECE2" font-size="24" font-family="'Noto Sans JP', sans-serif" letter-spacing="10">PORTFOLIO SAMPLE</text>
+      <text x="180" y="250" fill="#F3ECE2" font-size="24" font-family="'Noto Sans JP', sans-serif" letter-spacing="10">${eyebrow}</text>
     </svg>
   `;
 
