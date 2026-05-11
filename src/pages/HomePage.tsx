@@ -1,12 +1,10 @@
 import { useEffect, type CSSProperties } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { GalleryTabs } from '../components/GalleryTabs';
 import { MusicGallerySection } from '../components/MusicGallerySection';
 import { Reveal } from '../components/Reveal';
 import { SectionHeading } from '../components/SectionHeading';
 import { WorkCard } from '../components/WorkCard';
 import {
-  galleryItems,
   musicItems,
   musicSectionMeta,
   sectionHeadingTones,
@@ -22,7 +20,6 @@ export function HomePage() {
   const location = useLocation();
   const navigate = useNavigate();
   const reducedMotion = useReducedMotion();
-  const threeDcgItems = galleryItems.filter((item) => item.category === '3dcg');
   const profileEyebrowStyle: CSSProperties = {
     backgroundColor: sectionHeadingTones.profile.backgroundColor,
     color:
@@ -111,20 +108,6 @@ export function HomePage() {
           sectionMeta={musicSectionMeta}
           showHeader={false}
         />
-      </section>
-
-      <section id="three-dcg" className={styles.section}>
-        <Reveal className={styles.sectionHeader}>
-          <SectionHeading
-            eyebrow="3DCG"
-            title="3DCG"
-            description="3DCG やアニメーションなどの作品です。"
-            tone={sectionHeadingTones.threeDcg}
-          />
-        </Reveal>
-        <Reveal>
-          <GalleryTabs items={threeDcgItems} showGroupHeader={false} />
-        </Reveal>
       </section>
 
       <section id="contact" className={styles.section}>

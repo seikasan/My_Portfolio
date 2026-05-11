@@ -132,6 +132,37 @@ export const activityHistory: HistoryEntry[] = [
 
 export const works: WorkEntry[] = [
   {
+    slug: 'my-architecture',
+    title: 'MyArchitecture',
+    category: 'GitHub Repository / Architecture',
+    period: '公開中',
+    role: ['設計', '実装'],
+    tools: ['GitHub'],
+    teamSize: '個人',
+    summary:
+      'Unity 制作で画面、入力、状態、ゲームルールが混ざりやすい問題を整理するために作っている、自分用の軽量アーキテクチャです。',
+    challenge:
+      'QFramework や VContainer を使う中で、規約としては分かっていても実装上できてしまう操作が事故につながると感じました。Presenter に読み取り専用 interface を渡すなど、間違えにくい構造をコード側で作ることを意識しています。',
+    result:
+      'まだ開発途中ですが、Command / Query / Event / ViewSignal、購読ライフタイム管理、Entity などを通して、チーム制作でも追いやすい Unity 向け設計を検証しています。',
+    coverImage: createPosterAsset({
+      title: 'MyArchitecture',
+      subtitle: 'GitHub Repository',
+      accent: '#315F86',
+      surface: '#101820',
+      detail: '#E0A95B',
+    }),
+    gallery: [],
+    externalLinks: [
+      {
+        label: 'GitHub Repository',
+        url: 'https://github.com/seikasan/MyArchitecture',
+        kind: 'source',
+      },
+    ],
+    featured: true,
+  },
+  {
     slug: 'access-to-your-5-girls',
     title: 'Access to your 5 Girls💜🩷💛🩵🤍',
     category: '恋愛ADVゲーム / サイコサスペンス',
