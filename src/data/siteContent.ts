@@ -133,6 +133,38 @@ export const activityHistory: HistoryEntry[] = [
 ];
 
 export const works: WorkEntry[] = [
+    {
+    slug: 'my-architecture',
+    title: 'MyArchitecture',
+    category: 'GitHub Repository / Architecture',
+    period: '2026/05 - 開発中',
+    role: ['個人制作'],
+    tools: ['Unity', 'C#', 'VContainer', 'MessagePipe', 'UniTask', 'R3', 'QFramework', 'Roslyn'],
+    teamSize: '個人制作',
+    summary:
+      'MyArchitecture は、Unity でゲームを作るときに読みやすいコードになるように作っている自分用の軽量アーキテクチャです。',
+    challenge:
+      'QFramework や VContainer を使う中で、規約としては分かっていても実装上できてしまう操作が事故につながると感じました。Presenter に読み取り専用 interface を渡すなど、間違えにくい構造をコード側で作ることを意識しています。',
+    result:
+      'まだ開発途中ですが、Command / Query / Event / ViewSignal、購読ライフタイム管理、Entity などを通して、チーム制作でも追いやすい Unity 向け設計を検証しています。',
+    coverImage: createPosterAsset({
+      title: 'MyArchitecture',
+      subtitle: 'GitHub Repository',
+      accent: '#315F86',
+      surface: '#101820',
+      detail: '#E0A95B',
+      eyebrow: 'UNITY ARCHITECTURE',
+    }),
+    gallery: [],
+    externalLinks: [
+      {
+        label: 'GitHub Repository',
+        url: 'https://github.com/seikasan/MyArchitecture',
+        kind: 'source',
+      },
+    ],
+    featured: true,
+  },
   {
     slug: 'choco-tabi',
     title: 'ちょこ旅',
@@ -184,38 +216,6 @@ export const works: WorkEntry[] = [
       {
         label: 'GitHub Repository',
         url: 'https://github.com/seikasan/ChocoMapMaker',
-        kind: 'source',
-      },
-    ],
-    featured: true,
-  },
-  {
-    slug: 'my-architecture',
-    title: 'MyArchitecture',
-    category: 'GitHub Repository / Architecture',
-    period: '2026/05 - 開発中',
-    role: ['個人制作'],
-    tools: ['Unity', 'C#', 'VContainer', 'MessagePipe', 'UniTask', 'R3', 'QFramework', 'Roslyn'],
-    teamSize: '個人制作',
-    summary:
-      'MyArchitecture は、Unity でゲームを作るときに読みやすいコードになるように作っている自分用の軽量アーキテクチャです。',
-    challenge:
-      'QFramework や VContainer を使う中で、規約としては分かっていても実装上できてしまう操作が事故につながると感じました。Presenter に読み取り専用 interface を渡すなど、間違えにくい構造をコード側で作ることを意識しています。',
-    result:
-      'まだ開発途中ですが、Command / Query / Event / ViewSignal、購読ライフタイム管理、Entity などを通して、チーム制作でも追いやすい Unity 向け設計を検証しています。',
-    coverImage: createPosterAsset({
-      title: 'MyArchitecture',
-      subtitle: 'GitHub Repository',
-      accent: '#315F86',
-      surface: '#101820',
-      detail: '#E0A95B',
-      eyebrow: 'UNITY ARCHITECTURE',
-    }),
-    gallery: [],
-    externalLinks: [
-      {
-        label: 'GitHub Repository',
-        url: 'https://github.com/seikasan/MyArchitecture',
         kind: 'source',
       },
     ],
