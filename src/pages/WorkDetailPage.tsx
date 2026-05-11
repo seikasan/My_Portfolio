@@ -1,5 +1,6 @@
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { getWorkContent } from '../content/works';
+import { ImageLightbox } from '../components/ImageLightbox';
 import { Reveal } from '../components/Reveal';
 import type { RouteLocationState } from '../lib/scrollRestoration';
 import { works } from '../data/siteContent';
@@ -102,7 +103,7 @@ export function WorkDetailPage() {
               preload="none"
             />
           ) : (
-            <img
+            <ImageLightbox
               className={styles.media}
               src={work.coverImage.src}
               alt={work.coverImage.alt}
@@ -147,7 +148,7 @@ export function WorkDetailPage() {
           <div className={styles.galleryGrid}>
             {work.gallery.map((image) => (
               <div key={image.alt} className={styles.galleryCard}>
-                <img
+                <ImageLightbox
                   src={image.src}
                   alt={image.alt}
                   className={styles.galleryImage}

@@ -1,4 +1,5 @@
 import chocoMapMakerBack from '../../assets/works/choco-tabi-map-editor/back.png';
+import { ImageLightbox } from '../../components/ImageLightbox';
 import styles from './WorkRichContent.module.css';
 
 const overviewParagraphs = [
@@ -37,11 +38,10 @@ function Paragraphs({ paragraphs }: { paragraphs: string[] }) {
 function LayerImage() {
   return (
     <figure className={styles.imageFigure}>
-      <img
+      <ImageLightbox
         src={chocoMapMakerBack}
         alt="ちょこ旅マップエディター 奥レイヤー編集画面"
         className={styles.inlineImage}
-        loading="lazy"
       />
       <figcaption className={styles.imageCaption}>
         手前と奥の二層構造を切り替えながらステージ案を作成できます。

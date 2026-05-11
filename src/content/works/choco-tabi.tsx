@@ -1,6 +1,7 @@
 import chocoTabiEndingPhoto from '../../assets/works/choco-tabi/EndingPhoto.png';
 import chocoTabiGameOverPhoto from '../../assets/works/choco-tabi/GameOverPhoto.png';
 import chocoTabiTitlePhoto from '../../assets/works/choco-tabi/TitlePhoto.png';
+import { ImageLightbox } from '../../components/ImageLightbox';
 import { SoundCloudEmbed } from '../../components/SoundCloudEmbed';
 import { YouTubeEmbed } from '../../components/YouTubeEmbed';
 import styles from './WorkRichContent.module.css';
@@ -71,7 +72,7 @@ function InlineImageGrid() {
     <div className={styles.imageGrid}>
       {designImages.map((image) => (
         <figure key={image.src} className={styles.imageFigure}>
-          <img src={image.src} alt={image.alt} className={styles.inlineImage} loading="lazy" />
+          <ImageLightbox src={image.src} alt={image.alt} className={styles.inlineImage} />
           <figcaption className={styles.imageCaption}>{image.caption}</figcaption>
         </figure>
       ))}

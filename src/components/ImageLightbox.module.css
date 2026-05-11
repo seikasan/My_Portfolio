@@ -1,0 +1,100 @@
+.trigger {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.trigger img {
+  transition:
+    filter 180ms ease,
+    transform 180ms ease;
+}
+
+.trigger:hover img,
+.trigger:focus-visible img {
+  filter: brightness(0.96);
+  transform: scale(1.01);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+  background: rgba(17, 20, 24, 0.82);
+  cursor: zoom-out;
+}
+
+.dialog {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.75rem;
+  width: min(100%, 92rem);
+  max-height: min(100%, 52rem);
+}
+
+.closeButton {
+  justify-self: end;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.closeButton:hover,
+.closeButton:focus-visible {
+  background: rgba(255, 255, 255, 0.2);
+  outline: none;
+}
+
+.fullImage {
+  max-width: 100%;
+  max-height: min(78vh, 44rem);
+  justify-self: center;
+  border-radius: var(--radius-md);
+  object-fit: contain;
+}
+
+.caption {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .overlay {
+    padding: 0.75rem;
+  }
+
+  .dialog {
+    max-height: 100%;
+  }
+}
