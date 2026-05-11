@@ -140,7 +140,7 @@ export const works: WorkEntry[] = [
     tools: ['Unity', 'C#', 'VContainer', 'MessagePipe', 'UniTask', 'R3', 'QFramework', 'Roslyn'],
     teamSize: '個人',
     summary:
-      'Unity 制作で画面、入力、状態、ゲームルールが混ざりやすい問題を整理するために作っている、自分用の軽量アーキテクチャです。',
+      'MyArchitecture は、Unity でゲームを作るときに読みやすいコードになるように作っている自分用の軽量アーキテクチャです。',
     challenge:
       'QFramework や VContainer を使う中で、規約としては分かっていても実装上できてしまう操作が事故につながると感じました。Presenter に読み取り専用 interface を渡すなど、間違えにくい構造をコード側で作ることを意識しています。',
     result:
