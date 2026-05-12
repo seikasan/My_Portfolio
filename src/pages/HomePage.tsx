@@ -95,8 +95,7 @@ export function HomePage() {
           <p className={styles.heroTitle}>Game / Music / 3DCG</p>
           <p className={styles.heroBody}>
             ゲーム、音楽、3D、物語をまたいで制作しています。<br />
-            企画、実装、サウンド、モデリング、シナリオをつなげて<br />
-            作品を形にします。
+            企画、実装、音、モデリング、シナリオをつなげて作品にします。
           </p>
           <div className={styles.heroActions}>
             <button
