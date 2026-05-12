@@ -34,7 +34,7 @@ function PageHeading({
 }) {
   return (
     <div className={styles.heading}>
-      <p className={styles.eyebrow}>{eyebrow}</p>
+      <p className={styles.eyebrow}>{eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}</p>
       <h2 className={styles.headingTitle}>{title}</h2>
       {description ? <p className={styles.headingDescription}>{description}</p> : null}
     </div>

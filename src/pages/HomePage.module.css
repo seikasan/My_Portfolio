@@ -274,6 +274,27 @@
   outline-offset: 4px;
 }
 
+.aboutReadMore {
+  grid-column: 1 / -1;
+  justify-self: end;
+  width: fit-content;
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.aboutStrip:hover .aboutReadMore,
+.aboutStrip:focus-within .aboutReadMore {
+  color: var(--color-accent-2);
+  transform: translateX(3px);
+}
+
 .contactPanel {
   padding: clamp(1.35rem, 3vw, 2rem);
 }

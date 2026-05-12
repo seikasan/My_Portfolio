@@ -128,21 +128,22 @@ export function HomePage() {
 
       <Reveal as="section" className={styles.aboutStrip}>
         <Link to="/about" className={styles.aboutStripLink}>
-        <div>
-          <p className={styles.sectionEyebrow}>About</p>
-          <h2 className={styles.stripTitle}>複数の表現を統合する。</h2>
-        </div>
-        <p className={styles.stripText}>
-          幼少期から作曲、プログラミング、3D制作、小説、漫画に親しみ、現在はそれらをゲーム制作に統合しています。
-          作品のルールだけでなく、音、画面、会話、手触りまで含めて設計することを大切にしています。
-        </p>
-        <div className={styles.statList}>
-          {stats.map((stat) => (
-            <span key={stat} className={styles.statItem}>
-              {stat}
-            </span>
-          ))}
-        </div>
+          <div>
+            <p className={styles.sectionEyebrow}>About</p>
+            <h2 className={styles.stripTitle}>複数の表現を統合する。</h2>
+          </div>
+          <p className={styles.stripText}>
+            幼少期から作曲、プログラミング、3D制作、小説、漫画に親しみ、現在はそれらをゲーム制作に統合しています。
+            作品のルールだけでなく、音、画面、会話、手触りまで含めて設計することを大切にしています。
+          </p>
+          <div className={styles.statList}>
+            {stats.map((stat) => (
+              <span key={stat} className={styles.statItem}>
+                {stat}
+              </span>
+            ))}
+          </div>
+          <span className={styles.aboutReadMore}>Read more →</span>
         </Link>
       </Reveal>
 
@@ -150,6 +151,7 @@ export function HomePage() {
         <Reveal className={styles.sectionHeader}>
           <h2 className={styles.sectionTitle}>Works</h2>
           <p className={styles.sectionDescription}>
+            ゲーム、制作支援ツール、シナリオ、音楽制作を含む作品をまとめています。
           </p>
         </Reveal>
         <div className={styles.worksGallery}>
