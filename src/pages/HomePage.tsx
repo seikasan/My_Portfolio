@@ -12,18 +12,18 @@ import styles from './HomePage.module.css';
 
 const tickerItems = [
   'Unity / C#',
-  'Studio One 6yr',
+  'DAW 6yr',
   'Blender 4yr',
   'Scenario Writing',
   'Shader Graph',
   'QFramework',
   'VContainer',
-  'Niconico Vocaloid',
+  'Vocaloid',
   'Comiket Exhibitor',
   'Aizu University',
 ];
 
-const stats = ['7+ Works', '6yr Studio One', '4yr Blender', 'Comiket Exhibitor'];
+const stats = ['7+ Works', '6yr DAW', '4yr Blender', 'Comiket Exhibitor'];
 
 const galleryOrder = [
   'choco-tabi',
@@ -94,8 +94,8 @@ export function HomePage() {
           </div>
           <p className={styles.heroTitle}>Game / Music / 3DCG</p>
           <p className={styles.heroBody}>
-            ゲーム、音楽、3D、物語をまたいで制作する学生クリエイターの作品集です。
-            企画から実装、BGM、モデリング、シナリオまで、作品の空気を形にすることを軸にしています。
+            ゲーム、音楽、3D、物語をまたいで制作しています。
+            企画、実装、サウンド、モデリング、シナリオをつなげて、作品を形にします。
           </p>
           <div className={styles.heroActions}>
             <button
