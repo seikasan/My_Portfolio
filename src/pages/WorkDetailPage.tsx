@@ -1,10 +1,23 @@
+import type { CSSProperties } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { getWorkContent } from '../content/works';
 import { ImageLightbox } from '../components/ImageLightbox';
 import { Reveal } from '../components/Reveal';
 import type { RouteLocationState } from '../lib/scrollRestoration';
 import { works } from '../data/siteContent';
+import { getWorkPresentation } from '../lib/workPresentation';
 import styles from './WorkDetailPage.module.css';
+
+function toneStyle(slug: string) {
+  const { tone } = getWorkPresentation(slug);
+
+  return {
+    '--work-accent': tone.accent,
+    '--work-accent-2': tone.accent2,
+    '--work-soft': tone.soft,
+    '--work-gradient': tone.gradient,
+  } as CSSProperties;
+}
 
 export function WorkDetailPage() {
   const location = useLocation();
@@ -17,11 +30,11 @@ export function WorkDetailPage() {
     return (
       <div className={styles.page}>
         <section className={styles.missing}>
-          <p className={styles.missingEyebrow}>Not Found</p>
-          <h1 className={styles.missingTitle}>作品が見つかりません</h1>
-          <p className={styles.missingText}>URL が変わったか、まだデータに登録されていません。</p>
+          <p className={styles.eyebrow}>Not Found</p>
+          <h1 className={styles.title}>Work not found</h1>
+          <p className={styles.summary}>URLを確認するか、作品一覧からもう一度選んでください。</p>
           <Link to="/" className={styles.backLink}>
-            トップに戻る
+            Back to works
           </Link>
         </section>
       </div>
@@ -29,70 +42,67 @@ export function WorkDetailPage() {
   }
 
   return (
-    <div className={styles.page}>
-      <Reveal as="section" className={styles.headerBlock}>
+    <div className={styles.page} style={toneStyle(work.slug)}>
+      <Reveal as="section" className={styles.hero}>
         <Link
           to="/"
           state={detailState?.fromHome ? { restoreHomeScroll: true } : undefined}
           className={styles.backLink}
         >
-          ← 作品一覧に戻る
+          Back to works
         </Link>
-        <p className={styles.category}>{work.category}</p>
-        <h1 className={styles.title}>{work.title}</h1>
-        <p className={styles.summary}>{work.summary}</p>
+
+        <div className={styles.heroGrid}>
+          <div className={styles.heroCopy}>
+            <p className={styles.eyebrow}>{work.category}</p>
+            <h1 className={styles.title}>{work.title}</h1>
+            <p className={styles.summary}>{work.summary}</p>
+          </div>
+
+          <aside className={styles.metaPanel} aria-label="Work information">
+            <div className={styles.metaRow}>
+              <span>Period</span>
+              <strong>{work.period}</strong>
+            </div>
+            <div className={styles.metaRow}>
+              <span>Role</span>
+              <strong>{work.role.join(' / ')}</strong>
+            </div>
+            <div className={styles.metaRow}>
+              <span>Team</span>
+              <strong>{work.teamSize}</strong>
+            </div>
+            <div className={styles.toolList}>
+              {work.tools.map((tool) => (
+                <span key={tool} className={styles.toolTag}>
+                  {tool}
+                </span>
+              ))}
+            </div>
+            {work.externalLinks.length > 0 ? (
+              <div className={styles.linkGroup}>
+                {work.externalLinks.map((link) => (
+                  <a
+                    key={`${link.label}-${link.url}`}
+                    href={link.url}
+                    className={styles.infoLink}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            ) : null}
+          </aside>
+        </div>
       </Reveal>
 
-      <Reveal as="section" className={styles.infoBlock}>
-        <h2 className={styles.sectionTitle}>基本情報</h2>
-        <dl className={styles.infoList}>
-          <div className={styles.infoRow}>
-            <dt>期間</dt>
-            <dd>{work.period}</dd>
-          </div>
-          <div className={styles.infoRow}>
-            <dt>区分</dt>
-            <dd>{work.category}</dd>
-          </div>
-          <div className={styles.infoRow}>
-            <dt>役割</dt>
-            <dd>{work.role.join(' / ')}</dd>
-          </div>
-          <div className={styles.infoRow}>
-            <dt>使用技術</dt>
-            <dd>{work.tools.join(' / ')}</dd>
-          </div>
-          <div className={styles.infoRow}>
-            <dt>チーム</dt>
-            <dd>{work.teamSize}</dd>
-          </div>
-          <div className={styles.infoRow}>
-            <dt>外部リンク</dt>
-            <dd>
-              {work.externalLinks.length > 0 ? (
-                <div className={styles.linkGroup}>
-                  {work.externalLinks.map((link) => (
-                    <a
-                      key={`${link.label}-${link.url}`}
-                      href={link.url}
-                      className={styles.infoLink}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {link.label}
-                    </a>
-                  ))}
-                </div>
-              ) : (
-                <span className={styles.emptyNote}>未設定</span>
-              )}
-            </dd>
-          </div>
-        </dl>
-      </Reveal>
-
-      <section className={styles.visualBlock}>
-        <h2 className={styles.sectionTitle}>メインビジュアル</h2>
+      <Reveal as="section" className={styles.visualBlock}>
+        <div className={styles.visualHeader}>
+          <p className={styles.eyebrow}>Main Visual</p>
+          <h2 className={styles.sectionTitle}>Artwork / Capture</h2>
+        </div>
         <div className={styles.mediaFrame}>
           {work.demoVideo ? (
             <video
@@ -112,7 +122,7 @@ export function WorkDetailPage() {
             />
           )}
         </div>
-      </section>
+      </Reveal>
 
       {DetailContent ? (
         <section className={styles.articleBlock}>
@@ -121,17 +131,17 @@ export function WorkDetailPage() {
       ) : (
         <div className={styles.detailStack}>
           <section className={styles.sectionBlock}>
-            <h2 className={styles.sectionTitle}>概要</h2>
+            <h2 className={styles.sectionTitle}>Overview</h2>
             <p className={styles.bodyText}>{work.summary}</p>
           </section>
 
           <section className={styles.sectionBlock}>
-            <h2 className={styles.sectionTitle}>担当と工夫</h2>
+            <h2 className={styles.sectionTitle}>Process</h2>
             <p className={styles.bodyText}>{work.challenge}</p>
           </section>
 
           <section className={styles.sectionBlock}>
-            <h2 className={styles.sectionTitle}>成果</h2>
+            <h2 className={styles.sectionTitle}>Result</h2>
             <p className={styles.bodyText}>{work.result}</p>
           </section>
         </div>
@@ -140,10 +150,8 @@ export function WorkDetailPage() {
       {work.gallery.length > 0 ? (
         <section className={styles.gallerySection}>
           <div className={styles.galleryHeader}>
-            <h2 className={styles.sectionTitle}>補足ビジュアル</h2>
-            <p className={styles.bodyText}>
-              詳細補足用の静止画を並べています。画像が少ない作品でも本文を先に読める構成です。
-            </p>
+            <p className={styles.eyebrow}>Additional Images</p>
+            <h2 className={styles.sectionTitle}>Gallery</h2>
           </div>
           <div className={styles.galleryGrid}>
             {work.gallery.map((image) => (

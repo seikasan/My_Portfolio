@@ -1,110 +1,259 @@
 .card {
+  --work-accent: var(--color-accent);
+  --work-accent-2: var(--color-gold);
+  --work-soft: var(--color-accent-soft);
+  --work-surface: var(--color-surface-strong);
+  --work-gradient: linear-gradient(135deg, rgba(163, 93, 112, 0.15), rgba(178, 138, 69, 0.12));
+  position: relative;
   display: grid;
-  grid-template-columns: clamp(280px, 30vw, 340px) minmax(0, 1fr);
-  gap: 1.25rem;
-  padding: 1rem;
-  border: 1px solid var(--color-line);
+  min-height: 100%;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--work-accent) 22%, var(--color-line));
   border-radius: var(--radius-lg);
-  background: var(--color-surface);
+  background:
+    var(--work-gradient),
+    linear-gradient(180deg, var(--work-surface), rgba(255, 252, 245, 0.92));
+  box-shadow: 0 18px 44px rgba(57, 39, 27, 0.07);
   transition:
-    background-color 220ms ease,
     border-color 220ms ease,
-    box-shadow 220ms ease;
+    box-shadow 220ms ease,
+    transform 220ms ease;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 48%, rgba(255, 252, 245, 0.72));
 }
 
 .card:hover,
-.card:focus-visible {
-  background: var(--color-accent-soft);
-  border-color: var(--color-accent);
-  box-shadow: 0 10px 28px var(--color-shadow);
-  outline: none;
+.card:focus-within {
+  border-color: color-mix(in srgb, var(--work-accent) 54%, var(--color-line));
+  box-shadow: 0 24px 56px rgba(57, 39, 27, 0.13);
+  transform: translateY(-4px);
+}
+
+.mainLink,
+.footer {
+  position: relative;
+  z-index: 1;
+}
+
+.mainLink {
+  display: grid;
+  min-width: 0;
+  color: inherit;
+}
+
+.mainLink:focus-visible,
+.detailLink:focus-visible,
+.externalLink:focus-visible {
+  outline: 2px solid var(--work-accent);
+  outline-offset: 3px;
+}
+
+.featured .mainLink {
+  grid-template-columns: minmax(0, 1.05fr) minmax(19rem, 0.95fr);
+  align-items: stretch;
+}
+
+.medium .mainLink,
+.standard .mainLink {
+  grid-template-rows: auto 1fr;
 }
 
 .imageWrap {
   position: relative;
-  aspect-ratio: 16 / 10;
+  min-height: 13rem;
   overflow: hidden;
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-md);
-  background: var(--color-surface-strong);
+  border-bottom: 1px solid rgba(93, 69, 48, 0.14);
+  background: rgba(45, 33, 27, 0.08);
+}
+
+.featured .imageWrap {
+  min-height: 23rem;
+  border-right: 1px solid rgba(93, 69, 48, 0.14);
+  border-bottom: 0;
+}
+
+.medium .imageWrap {
+  min-height: 17rem;
 }
 
 .image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transform: scale(1);
+  transition: transform 360ms ease;
+}
+
+.card:hover .image,
+.card:focus-within .image {
+  transform: scale(1.035);
 }
 
 .body {
   display: grid;
-  gap: 0.7rem;
   align-content: start;
+  gap: 0.85rem;
   min-width: 0;
+  padding: clamp(1.05rem, 2vw, 1.55rem);
 }
 
-.titleRow {
+.featured .body {
+  padding: clamp(1.35rem, 3vw, 2.2rem);
+}
+
+.kickerRow {
   display: flex;
-  align-items: start;
-  justify-content: space-between;
-  gap: 1rem;
   flex-wrap: wrap;
+  gap: 0.55rem 0.9rem;
+  align-items: center;
 }
 
-.title {
-  margin: 0;
-  font-size: 1.2rem;
-  line-height: 1.45;
+.period,
+.category,
+.metaList,
+.tag,
+.detailLink,
+.externalLink {
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
 }
 
 .period,
 .category {
-  margin: 0;
   color: var(--color-text-faint);
-  font-size: 0.92rem;
+  font-size: 0.72rem;
+  line-height: 1.6;
 }
 
 .category {
+  color: var(--work-accent);
+}
+
+.title {
+  margin: 0;
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 4vw, 3.5rem);
   font-weight: 500;
+  line-height: 0.98;
 }
 
-.infoRow {
-  display: grid;
-  grid-template-columns: 5.5rem 1fr;
-  gap: 0.8rem;
-  margin: 0;
+.medium .title {
+  font-size: clamp(1.55rem, 2.8vw, 2.45rem);
 }
 
-.infoRow dt {
-  color: var(--color-text-faint);
-}
-
-.infoRow dd {
-  margin: 0;
+.standard .title {
+  font-size: clamp(1.35rem, 2.2vw, 1.9rem);
 }
 
 .summary {
+  display: -webkit-box;
   margin: 0;
+  overflow: hidden;
   color: var(--color-text-muted);
-  line-height: 1.8;
+  line-height: 1.85;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
 }
 
-.linkLabel {
-  color: var(--color-accent);
-  font-weight: 700;
-  font-size: 0.95rem;
+.featured .summary {
+  -webkit-line-clamp: 5;
 }
 
-@media (max-width: 768px) {
+.standard .summary {
+  -webkit-line-clamp: 3;
+}
+
+.metaList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.9rem;
+  color: var(--color-text-faint);
+  font-size: 0.72rem;
+}
+
+.metaList span::before {
+  content: '◇';
+  margin-right: 0.35rem;
+  color: var(--work-accent-2);
+}
+
+.footer {
+  display: grid;
+  gap: 1rem;
+  align-self: end;
+  padding: 0 clamp(1.05rem, 2vw, 1.55rem) clamp(1.05rem, 2vw, 1.45rem);
+}
+
+.featured .footer {
+  padding: 0 clamp(1.35rem, 3vw, 2.2rem) clamp(1.35rem, 3vw, 2rem);
+}
+
+.tagList,
+.actionRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.tag {
+  padding: 0.28rem 0.48rem;
+  border: 1px solid color-mix(in srgb, var(--work-accent) 24%, transparent);
+  border-radius: 999px;
+  background: rgba(255, 252, 245, 0.58);
+  color: var(--color-text-muted);
+  font-size: 0.68rem;
+}
+
+.detailLink,
+.externalLink {
+  width: fit-content;
+  color: var(--work-accent);
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.detailLink::after {
+  content: ' →';
+}
+
+.detailLink:hover,
+.externalLink:hover {
+  color: var(--work-accent-2);
+  transform: translateX(2px);
+}
+
+@media (max-width: 900px) {
+  .featured .mainLink {
+    grid-template-columns: 1fr;
+  }
+
+  .featured .imageWrap {
+    min-height: 18rem;
+    border-right: 0;
+    border-bottom: 1px solid rgba(93, 69, 48, 0.14);
+  }
+}
+
+@media (max-width: 640px) {
   .card {
-    grid-template-columns: 1fr;
+    border-radius: 14px;
   }
 
-  .imageWrap {
-    aspect-ratio: 16 / 10;
-  }
-
-  .infoRow {
-    grid-template-columns: 1fr;
-    gap: 0.2rem;
+  .imageWrap,
+  .medium .imageWrap,
+  .featured .imageWrap {
+    min-height: 13.5rem;
   }
 }

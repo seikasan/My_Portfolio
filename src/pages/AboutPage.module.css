@@ -1,85 +1,136 @@
 .page {
   display: grid;
-  gap: 3.5rem;
+  gap: 4rem;
+}
+
+.hero,
+.creativeBackground,
+.card,
+.timeline {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-xl);
+  background: rgba(255, 252, 245, 0.72);
+  box-shadow: 0 18px 44px rgba(57, 39, 27, 0.07);
 }
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.85fr);
-  gap: 1.5rem;
-  align-items: start;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid var(--color-line);
+  gap: 1.4rem;
+  padding: clamp(1.4rem, 4vw, 2.6rem);
 }
 
-.heroCopy {
+.profileBlock {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.avatar {
+  width: clamp(6rem, 12vw, 8rem);
+  height: clamp(6rem, 12vw, 8rem);
+  border: 1px solid var(--color-line);
+  border-radius: 50%;
+  background: var(--color-surface-strong);
+  box-shadow: 0 14px 34px var(--color-shadow);
+  object-fit: cover;
+}
+
+.profileCopy,
+.heading,
+.textStack,
+.cardHeader,
+.timelineBody {
   display: grid;
-  gap: 1rem;
+  gap: 0.55rem;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.name,
+.headingTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.name {
+  font-size: clamp(3.4rem, 11vw, 7.5rem);
+  font-style: italic;
+  line-height: 0.8;
+}
+
+.title {
+  margin: 0;
+  color: var(--color-accent-2);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.lead,
+.headingDescription,
+.cardDescription,
+.timelineDescription,
+.textStack p {
+  margin: 0;
+  color: var(--color-text-muted);
+  line-height: 1.9;
+}
+
+.lead {
+  max-width: 56rem;
 }
 
 .backLink {
   width: fit-content;
-  color: var(--color-text-muted);
-  border-bottom: 1px solid transparent;
-  text-decoration: none;
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   transition:
     color 180ms ease,
-    border-color 180ms ease;
+    transform 180ms ease;
+}
+
+.backLink::before {
+  content: '← ';
 }
 
 .backLink:hover,
 .backLink:focus-visible {
-  color: var(--color-accent);
-  border-color: var(--color-accent);
+  color: var(--color-accent-2);
+  transform: translateX(-2px);
   outline: none;
 }
 
-.heroCard,
-.card,
-.timeline {
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-lg);
-  background: var(--color-surface);
-}
-
-.heroCard {
+.creativeBackground {
   display: grid;
-  gap: 0.9rem;
-  padding: 1.5rem;
+  grid-template-columns: minmax(14rem, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(1.4rem, 4vw, 3rem);
+  padding: clamp(1.4rem, 4vw, 2.4rem);
 }
 
-.heroLabel {
-  margin: 0;
-  color: var(--color-accent);
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.heroName {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  line-height: 1.1;
-}
-
-.heroTitle,
-.heroBody,
-.cardDescription,
-.timelineDescription {
-  margin: 0;
-  color: var(--color-text-muted);
-  line-height: 1.8;
+.headingTitle {
+  color: var(--color-text);
+  font-size: clamp(2.1rem, 5vw, 4rem);
+  line-height: 0.98;
 }
 
 .section {
   display: grid;
   gap: 1.25rem;
-}
-
-.sectionHeader {
-  margin-bottom: 0.1rem;
 }
 
 .skillGrid {
@@ -90,19 +141,18 @@
 
 .card {
   display: grid;
-  gap: 1.2rem;
-  padding: 1.35rem;
-}
-
-.cardHeader {
-  display: grid;
-  gap: 0.45rem;
+  gap: 1.25rem;
+  padding: clamp(1.1rem, 3vw, 1.55rem);
 }
 
 .cardTitle,
 .timelineTitle {
   margin: 0;
-  font-size: 1.08rem;
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.1;
 }
 
 .skillList {
@@ -115,9 +165,9 @@
 
 .skillItem {
   display: grid;
-  grid-template-columns: 2.25rem minmax(0, 1fr) auto;
-  gap: 0.8rem;
-  align-items: center;
+  grid-template-columns: 2.35rem minmax(0, 1fr) auto;
+  gap: 0.85rem;
+  align-items: start;
   padding-bottom: 0.85rem;
   border-bottom: 1px solid var(--color-line);
 }
@@ -127,31 +177,30 @@
   border-bottom: 0;
 }
 
-.skillName {
-  font-weight: 600;
-}
-
 .skillContent {
   display: grid;
   min-width: 0;
-  gap: 0.15rem;
+  gap: 0.22rem;
 }
 
-.skillName,
-.skillNote {
-  overflow-wrap: anywhere;
+.skillName {
+  color: var(--color-text);
+  font-weight: 700;
 }
 
 .skillNote {
-  color: var(--color-text-faint);
+  color: var(--color-text-muted);
   font-size: 0.88rem;
-  line-height: 1.5;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
 }
 
 .skillMeta,
 .timelinePeriod {
   color: var(--color-text-faint);
-  font-size: 0.94rem;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  line-height: 1.7;
 }
 
 .skillMeta {
@@ -162,14 +211,14 @@
 .timeline {
   display: grid;
   gap: 0;
-  padding: 0.5rem 1.35rem;
+  padding: 0.5rem clamp(1rem, 3vw, 1.4rem);
 }
 
 .timelineItem {
   display: grid;
-  grid-template-columns: minmax(5.5rem, 7rem) minmax(0, 1fr);
+  grid-template-columns: minmax(6rem, 8rem) minmax(0, 1fr);
   gap: 1rem;
-  padding: 1rem 0;
+  padding: 1.05rem 0;
   border-bottom: 1px solid var(--color-line);
 }
 
@@ -177,48 +226,29 @@
   border-bottom: 0;
 }
 
-.timelineBody {
-  display: grid;
-  gap: 0.35rem;
-}
-
 @media (max-width: 900px) {
-  .hero,
+  .creativeBackground,
   .skillGrid {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 700px) {
   .page {
     gap: 3rem;
   }
 
-  .hero {
-    padding-bottom: 1.5rem;
-  }
-
-  .heroCard,
-  .card {
-    padding: 1.2rem;
-  }
-
-  .timeline {
-    padding: 0.35rem 1.2rem;
-  }
-
-  .timelineItem {
-    grid-template-columns: 1fr;
-    gap: 0.4rem;
-  }
-
   .skillItem {
-    grid-template-columns: 2.25rem minmax(0, 1fr);
-    gap: 0.45rem 0.8rem;
+    grid-template-columns: 2.35rem minmax(0, 1fr);
   }
 
   .skillMeta {
     grid-column: 2;
     justify-self: start;
+  }
+
+  .timelineItem {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
   }
 }

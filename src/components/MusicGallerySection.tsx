@@ -1,6 +1,5 @@
 import type { MusicItem, MusicSectionMeta } from '../types/content';
 import { NiconicoEmbed } from './NiconicoEmbed';
-import { Reveal } from './Reveal';
 import { SpotifyEmbed } from './SpotifyEmbed';
 import styles from './MusicGallerySection.module.css';
 
@@ -36,7 +35,7 @@ export function MusicGallerySection({
           }
 
           return (
-            <Reveal key={provider} as="section" className={styles.group}>
+            <section key={provider} className={styles.group}>
               <div className={styles.groupHeader}>
                 <h4 className={styles.groupTitle}>{meta.title}</h4>
                 <p className={styles.groupDescription}>{meta.description}</p>
@@ -45,7 +44,13 @@ export function MusicGallerySection({
               <div className={styles.grid}>
                 {providerItems.map((item) => (
                   <article key={item.id} className={styles.card}>
-                    <h5 className={styles.cardTitle}>{item.title}</h5>
+                    <div className={styles.wave} aria-hidden="true" />
+                    <div className={styles.cardHead}>
+                      <span className={styles.trackNumber}>
+                        {String(items.findIndex((entry) => entry.id === item.id) + 1).padStart(2, '0')}
+                      </span>
+                      <h5 className={styles.cardTitle}>{item.title}</h5>
+                    </div>
                     {item.releasePeriod || item.role?.length ? (
                       <dl className={styles.cardMeta}>
                         {item.releasePeriod ? (
@@ -75,7 +80,7 @@ export function MusicGallerySection({
                   </article>
                 ))}
               </div>
-            </Reveal>
+            </section>
           );
         })}
       </div>

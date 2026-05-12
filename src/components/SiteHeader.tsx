@@ -4,7 +4,7 @@ import { useReducedMotion } from '../hooks/useReducedMotion';
 import styles from './SiteHeader.module.css';
 
 const sections = [
-  { id: 'works', label: 'Game' },
+  { id: 'works', label: 'Works' },
   { id: 'music', label: 'Music' },
   { id: 'contact', label: 'Contact' },
 ];
@@ -40,8 +40,10 @@ export function SiteHeader() {
     <header className={styles.header}>
       <div className={styles.inner}>
         <Link to="/" className={styles.brand}>
-          <span className={styles.brandHandle}>{siteProfile.name}</span>
-          <span className={styles.brandLabel}>Portfolio</span>
+          <span className={styles.brandHandle}>
+            <span className={styles.brandAccent}>{siteProfile.name.slice(0, 1)}</span>
+            {siteProfile.name.slice(1)}
+          </span>
         </Link>
         <nav className={styles.nav} aria-label="主要セクション">
           <Link

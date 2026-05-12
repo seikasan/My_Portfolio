@@ -1,30 +1,54 @@
-import { useEffect, type CSSProperties } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { MusicGallerySection } from '../components/MusicGallerySection';
 import { Reveal } from '../components/Reveal';
-import { SectionHeading } from '../components/SectionHeading';
 import { WorkCard } from '../components/WorkCard';
-import {
-  musicItems,
-  musicSectionMeta,
-  sectionHeadingTones,
-  siteProfile,
-  works,
-} from '../data/siteContent';
+import topVisual from '../assets/hero/top-visual.png';
+import { musicItems, musicSectionMeta, siteProfile, works } from '../data/siteContent';
 import { useReducedMotion } from '../hooks/useReducedMotion';
-import { getReadableTextColor } from '../lib/colorContrast';
+import { getWorkPresentation } from '../lib/workPresentation';
 import type { RouteLocationState } from '../lib/scrollRestoration';
 import styles from './HomePage.module.css';
+
+const tickerItems = [
+  'Unity / C#',
+  'Studio One 6yr',
+  'Blender 4yr',
+  'Scenario Writing',
+  'Shader Graph',
+  'QFramework',
+  'VContainer',
+  'Niconico Vocaloid',
+  'Comiket Exhibitor',
+  'Aizu University',
+];
+
+const stats = ['7+ Works', '6yr Studio One', '4yr Blender', 'Comiket Exhibitor'];
+
+const galleryOrder = [
+  'choco-tabi',
+  'my-architecture',
+  'access-to-your-5-girls',
+  'lyla',
+  'return-false',
+  'lost-of-music',
+  'choco-map-maker',
+];
 
 export function HomePage() {
   const location = useLocation();
   const navigate = useNavigate();
   const reducedMotion = useReducedMotion();
-  const profileEyebrowStyle: CSSProperties = {
-    backgroundColor: sectionHeadingTones.profile.backgroundColor,
-    color:
-      sectionHeadingTones.profile.foregroundColor ??
-      getReadableTextColor(sectionHeadingTones.profile.backgroundColor),
+  const workMap = new Map(works.map((work) => [work.slug, work]));
+  const galleryWorks = galleryOrder
+    .map((slug) => workMap.get(slug))
+    .filter((work): work is (typeof works)[number] => Boolean(work));
+
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({
+      behavior: reducedMotion ? 'auto' : 'smooth',
+      block: 'start',
+    });
   };
 
   useEffect(() => {
@@ -36,72 +60,126 @@ export function HomePage() {
     }
 
     const timer = window.setTimeout(() => {
-      document.getElementById(targetId)?.scrollIntoView({
-        behavior: reducedMotion ? 'auto' : 'smooth',
-        block: 'start',
-      });
-
+      scrollToSection(targetId);
       navigate(location.pathname, { replace: true, state: null });
     }, 60);
 
     return () => window.clearTimeout(timer);
   }, [location.pathname, location.state, navigate, reducedMotion]);
+
   return (
     <div className={styles.page}>
-      <Reveal as="section" className={styles.profile}>
-        <div className={styles.profileMain}>
-          <p
-            className={`${styles.profileEyebrow} ${styles.profileEyebrowTone}`}
-            style={profileEyebrowStyle}
-          >
-            Profile
+      <Reveal as="section" className={styles.hero}>
+        <img
+          className={styles.heroVisual}
+          src={topVisual}
+          alt=""
+          aria-hidden="true"
+          loading="eager"
+          decoding="async"
+        />
+        <div className={styles.heroCopy}>
+          <p className={styles.eyebrow}>Portfolio — 2026</p>
+          <div className={styles.signature}>
+            <img
+              className={styles.heroAvatar}
+              src={siteProfile.avatar.src}
+              alt={siteProfile.avatar.alt}
+              width="56"
+              height="56"
+            />
+            <h1 className={styles.heroName}>
+              <span>seika</span>
+            </h1>
+          </div>
+          <p className={styles.heroTitle}>Game / Music / 3DCG</p>
+          <p className={styles.heroBody}>
+            ゲーム、音楽、3D、物語をまたいで制作する学生クリエイターの作品集です。
+            企画から実装、BGM、モデリング、シナリオまで、作品の空気を形にすることを軸にしています。
           </p>
-          <img
-            className={styles.profileAvatar}
-            src={siteProfile.avatar.src}
-            alt={siteProfile.avatar.alt}
-            width="160"
-            height="160"
-          />
-          <h1 className={styles.profileName}>{siteProfile.name}</h1>
-          <p className={styles.profileTitle}>{siteProfile.heroTitle}</p>
-          <p className={styles.profileBody}>{siteProfile.heroBody}</p>
+          <div className={styles.heroActions}>
+            <button
+              type="button"
+              className={styles.primaryButton}
+              onClick={() => scrollToSection('works')}
+            >
+              View works
+            </button>
+            <button
+              type="button"
+              className={styles.secondaryButton}
+              onClick={() => scrollToSection('music')}
+            >
+              Listen music
+            </button>
+          </div>
         </div>
-        <div className={styles.profileAside}>
-          <h2 className={styles.profileAsideTitle}>About</h2>
-          <p className={styles.profileAsideText}>{siteProfile.intro}</p>
-          <Link to="/about" className={styles.inlineButton}>
-            Aboutページへ
-          </Link>
+      </Reveal>
+
+      <section className={styles.ticker} aria-label="Creative tools and activity">
+        <div className={styles.tickerTrack}>
+          {[...tickerItems, ...tickerItems].map((item, index) => (
+            <span key={`${item}-${index}`} className={styles.tickerItem}>
+              {item}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      <Reveal as="section" className={styles.aboutStrip}>
+        <div>
+          <p className={styles.sectionEyebrow}>About</p>
+          <h2 className={styles.stripTitle}>制作領域を、ひとつの作品世界へ。</h2>
+        </div>
+        <p className={styles.stripText}>
+          幼少期から作曲、プログラミング、3D制作、小説、漫画に親しみ、現在はそれらをゲーム制作に統合しています。
+          作品のルールだけでなく、音、画面、会話、手触りまで含めて設計することを大切にしています。
+        </p>
+        <div className={styles.statList}>
+          {stats.map((stat) => (
+            <span key={stat} className={styles.statItem}>
+              {stat}
+            </span>
+          ))}
         </div>
       </Reveal>
 
       <section id="works" className={styles.section}>
         <Reveal className={styles.sectionHeader}>
-          <SectionHeading
-            eyebrow="Game"
-            title="Game"
-            description="個人・チームで制作したゲームの一覧です。詳細ページで担当範囲などが確認できます。"
-            tone={sectionHeadingTones.game}
-          />
+          <p className={styles.sectionEyebrow}>Works</p>
+          <h2 className={styles.sectionTitle}>Selected Works</h2>
+          <p className={styles.sectionDescription}>
+            作品ごとに、ゲーム、音楽、3D、シナリオ、設計のどこを担当したかが見えるように並べています。
+          </p>
         </Reveal>
-        <div className={styles.worksList}>
-          {works.map((work) => (
-            <Reveal key={work.slug}>
-              <WorkCard work={work} />
-            </Reveal>
-          ))}
+        <div className={styles.worksGallery}>
+          {galleryWorks.map((work) => {
+            const presentation = getWorkPresentation(work.slug);
+
+            return (
+              <Reveal
+                key={work.slug}
+                as="article"
+                className={`${styles.workSlot} ${styles[`workSlot_${presentation.variant}`]}`}
+              >
+                <WorkCard
+                  work={work}
+                  variant={presentation.variant}
+                  tone={presentation.tone}
+                />
+              </Reveal>
+            );
+          })}
         </div>
       </section>
 
-      <section id="music" className={styles.section}>
-        <Reveal className={styles.sectionHeader}>
-          <SectionHeading
-            eyebrow="Music"
-            title="Music"
-            description="ニコニコ動画とSpotifyなどに公開した楽曲です。"
-            tone={sectionHeadingTones.music}
-          />
+      <section id="music" className={`${styles.section} ${styles.musicSection}`}>
+        <Reveal className={styles.musicHeader}>
+          <p className={styles.sectionEyebrow}>Music</p>
+          <h2 className={styles.musicTitle}>Songs in the Quiet Blue</h2>
+          <p className={styles.musicDescription}>
+            ボカロ曲、インスト、ゲームBGMを、ページ内でそのまま聴けるようにまとめています。
+          </p>
         </Reveal>
         <MusicGallerySection
           items={musicItems}
@@ -110,28 +188,25 @@ export function HomePage() {
         />
       </section>
 
-      <section id="contact" className={styles.section}>
-        <Reveal className={styles.sectionHeader}>
-          <SectionHeading
-            eyebrow="Contact"
-            title="Contact"
-            description={siteProfile.contactNote}
-            tone={sectionHeadingTones.contact}
-          />
-        </Reveal>
-        <Reveal className={styles.contactList}>
-          {siteProfile.links.map((link) => (
-            <a
-              key={link.label}
-              href={link.url}
-              className={styles.contactItem}
-              target={link.url.startsWith('mailto:') ? undefined : '_blank'}
-              rel={link.url.startsWith('mailto:') ? undefined : 'noreferrer'}
-            >
-              <span className={styles.contactItemLabel}>{link.label}</span>
-              <span className={styles.contactItemValue}>{link.url.replace('mailto:', '')}</span>
-            </a>
-          ))}
+      <section id="contact" className={`${styles.section} ${styles.contactSection}`}>
+        <Reveal className={styles.contactPanel}>
+          <p className={styles.sectionEyebrow}>Contact</p>
+          <h2 className={styles.contactTitle}>Get in Touch</h2>
+          <p className={styles.contactText}>{siteProfile.contactNote}</p>
+          <div className={styles.contactList}>
+            {siteProfile.links.map((link) => (
+              <a
+                key={link.label}
+                href={link.url}
+                className={styles.contactItem}
+                target={link.url.startsWith('mailto:') ? undefined : '_blank'}
+                rel={link.url.startsWith('mailto:') ? undefined : 'noreferrer'}
+              >
+                <span>{link.label}</span>
+                <strong>{link.url.replace('mailto:', '')}</strong>
+              </a>
+            ))}
+          </div>
         </Reveal>
       </section>
     </div>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;500;600&display=swap');
 
 :root {
   color-scheme: light;
@@ -7,21 +7,30 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  --color-bg-strong: #ffffff;
-  --color-bg: #f7f7f4;
-  --color-surface: #ffffff;
-  --color-surface-strong: #f3f4f1;
-  --color-line: #d7dcd4;
-  --color-line-strong: #b8c0b6;
-  --color-text: #1f252d;
-  --color-text-muted: #48525c;
-  --color-text-faint: #6b7480;
-  --color-accent: #315f86;
-  --color-accent-soft: rgba(49, 95, 134, 0.08);
-  --color-shadow: rgba(21, 28, 38, 0.05);
-  --font-display: 'Noto Sans JP', sans-serif;
-  --radius-xl: 18px;
-  --radius-lg: 14px;
+  --color-bg-strong: #f4eddf;
+  --color-bg: #f8f1e5;
+  --color-surface: rgba(255, 252, 245, 0.88);
+  --color-surface-strong: #fffaf0;
+  --color-surface-muted: #efe5d4;
+  --color-line: rgba(93, 69, 48, 0.16);
+  --color-line-strong: rgba(93, 69, 48, 0.28);
+  --color-text: #2d211b;
+  --color-text-muted: #695d55;
+  --color-text-faint: #8a7b70;
+  --color-accent: #a35d70;
+  --color-accent-2: #273f59;
+  --color-accent-3: #7a8d68;
+  --color-gold: #b28a45;
+  --color-night: #24313b;
+  --color-night-soft: #30424d;
+  --color-accent-soft: rgba(163, 93, 112, 0.12);
+  --color-shadow: rgba(57, 39, 27, 0.09);
+  --font-display: 'Cormorant Garamond', 'Noto Serif JP', serif;
+  --font-serif-jp: 'Noto Serif JP', serif;
+  --font-body: 'Noto Sans JP', sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+  --radius-xl: 22px;
+  --radius-lg: 16px;
   --radius-md: 10px;
-  --content-width: 1040px;
+  --content-width: 1180px;
 }

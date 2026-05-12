@@ -1,5 +1,4 @@
 import type { CSSProperties } from 'react';
-import { getReadableTextColor } from '../lib/colorContrast';
 import type { HeadingTone } from '../types/content';
 import styles from './SectionHeading.module.css';
 
@@ -20,8 +19,7 @@ export function SectionHeading({
     eyebrow.trim().toLowerCase() !== title.trim().toLowerCase();
   const titleStyle: CSSProperties | undefined = tone
     ? {
-        backgroundColor: tone.backgroundColor,
-        color: tone.foregroundColor ?? getReadableTextColor(tone.backgroundColor),
+        color: tone.foregroundColor ?? tone.backgroundColor,
       }
     : undefined;
   const titleClassName = tone

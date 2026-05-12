@@ -1,46 +1,88 @@
+import type { CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
 import { saveHomeScrollPosition } from '../lib/scrollRestoration';
+import type { WorkCardVariant, WorkTone } from '../lib/workPresentation';
 import type { WorkEntry } from '../types/content';
 import styles from './WorkCard.module.css';
 
 interface WorkCardProps {
   work: WorkEntry;
+  variant?: WorkCardVariant;
+  tone?: WorkTone;
 }
 
-export function WorkCard({ work }: WorkCardProps) {
+export function WorkCard({ work, variant = 'standard', tone }: WorkCardProps) {
+  const style = tone
+    ? ({
+        '--work-accent': tone.accent,
+        '--work-accent-2': tone.accent2,
+        '--work-soft': tone.soft,
+        '--work-surface': tone.surface,
+        '--work-gradient': tone.gradient,
+      } as CSSProperties)
+    : undefined;
+
   return (
-    <Link
-      to={`/works/${work.slug}`}
-      state={{ fromHome: true }}
-      className={styles.card}
-      onClick={saveHomeScrollPosition}
-    >
-      <div className={styles.imageWrap}>
-        <img
-          src={work.coverImage.src}
-          alt={work.coverImage.alt}
-          className={styles.image}
-          loading="lazy"
-          decoding="async"
-        />
-      </div>
-      <div className={styles.body}>
-        <div className={styles.titleRow}>
-          <h3 className={styles.title}>{work.title}</h3>
-          <span className={styles.period}>{work.period}</span>
+    <article className={`${styles.card} ${styles[variant]}`} style={style}>
+      <Link
+        to={`/works/${work.slug}`}
+        state={{ fromHome: true }}
+        className={styles.mainLink}
+        onClick={saveHomeScrollPosition}
+      >
+        <div className={styles.imageWrap}>
+          <img
+            src={work.coverImage.src}
+            alt={work.coverImage.alt}
+            className={styles.image}
+            loading="lazy"
+            decoding="async"
+          />
         </div>
-        <p className={styles.category}>{work.category}</p>
-        <dl className={styles.infoRow}>
-          <dt>担当</dt>
-          <dd>{work.role.join(' / ')}</dd>
-        </dl>
-        <dl className={styles.infoRow}>
-          <dt>使用技術</dt>
-          <dd>{work.tools.join(' / ')}</dd>
-        </dl>
-        <p className={styles.summary}>{work.summary}</p>
-        <span className={styles.linkLabel}>詳細を見る</span>
+        <div className={styles.body}>
+          <div className={styles.kickerRow}>
+            <span className={styles.period}>{work.period}</span>
+            <span className={styles.category}>{work.category}</span>
+          </div>
+          <h3 className={styles.title}>{work.title}</h3>
+          <p className={styles.summary}>{work.summary}</p>
+          <div className={styles.metaList}>
+            <span>{work.role.join(' / ')}</span>
+            <span>{work.teamSize}</span>
+          </div>
+        </div>
+      </Link>
+
+      <div className={styles.footer}>
+        <div className={styles.tagList} aria-label="Tools">
+          {work.tools.slice(0, variant === 'featured' ? 6 : 4).map((tool) => (
+            <span key={tool} className={styles.tag}>
+              {tool}
+            </span>
+          ))}
+        </div>
+        <div className={styles.actionRow}>
+          <Link
+            to={`/works/${work.slug}`}
+            state={{ fromHome: true }}
+            className={styles.detailLink}
+            onClick={saveHomeScrollPosition}
+          >
+            Read work
+          </Link>
+          {work.externalLinks.slice(0, 2).map((link) => (
+            <a
+              key={`${link.label}-${link.url}`}
+              href={link.url}
+              className={styles.externalLink}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
       </div>
-    </Link>
+    </article>
   );
 }

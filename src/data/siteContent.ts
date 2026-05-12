@@ -41,6 +41,11 @@ export const siteProfile: SiteProfile = {
       url: 'https://github.com/seikasan',
       kind: 'social',
     },
+    {
+      label: 'SoundCloud',
+      url: 'https://soundcloud.com/seika-461144239',
+      kind: 'social',
+    },
   ],
 };
 
