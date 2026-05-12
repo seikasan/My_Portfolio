@@ -98,12 +98,14 @@
   margin: 0;
   color: var(--color-text);
   font-family: var(--font-display);
-  font-size: clamp(3.2rem, 9vw, 7rem);
+  font-size: clamp(2.4rem, 6.0vw, 5.0rem);
   font-weight: 500;
   font-style: italic;
-  line-height: 0.82;
-  letter-spacing: 0;
-  white-space: nowrap;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  max-width: 100%;
 }
 
 .summary,
@@ -250,6 +252,8 @@
   }
 
   .title {
-    font-size: clamp(1.6rem, 6.8vw, 4.6rem);
+    font-size: clamp(1.65rem, 11vw, 3.4rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
   }
 }
