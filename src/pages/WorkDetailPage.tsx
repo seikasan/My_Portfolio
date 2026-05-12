@@ -52,10 +52,13 @@ export function WorkDetailPage() {
           Back to works
         </Link>
 
-        <div className={styles.heroGrid}>
-          <div className={styles.heroCopy}>
+        <div className={styles.titleBlock}>
             <p className={styles.eyebrow}>{work.category}</p>
             <h1 className={styles.title}>{work.title}</h1>
+        </div>
+
+        <div className={styles.heroGrid}>
+          <div className={styles.heroCopy}>
             <p className={styles.summary}>{work.summary}</p>
           </div>
 
@@ -80,18 +83,21 @@ export function WorkDetailPage() {
               ))}
             </div>
             {work.externalLinks.length > 0 ? (
-              <div className={styles.linkGroup}>
-                {work.externalLinks.map((link) => (
-                  <a
-                    key={`${link.label}-${link.url}`}
-                    href={link.url}
-                    className={styles.infoLink}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {link.label}
-                  </a>
-                ))}
+              <div className={styles.externalBlock}>
+                <h2 className={styles.externalTitle}>External Links</h2>
+                <div className={styles.linkGroup}>
+                  {work.externalLinks.map((link) => (
+                    <a
+                      key={`${link.label}-${link.url}`}
+                      href={link.url}
+                      className={styles.infoLink}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
               </div>
             ) : null}
           </aside>

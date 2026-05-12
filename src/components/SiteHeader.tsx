@@ -46,6 +46,13 @@ export function SiteHeader() {
           </span>
         </Link>
         <nav className={styles.nav} aria-label="主要セクション">
+          <button
+            type="button"
+            className={styles.navLink}
+            onClick={() => handleSectionClick('top')}
+          >
+            Top
+          </button>
           <Link
             to="/about"
             className={styles.navLink}

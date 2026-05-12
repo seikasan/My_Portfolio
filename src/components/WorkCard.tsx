@@ -55,7 +55,7 @@ export function WorkCard({ work, variant = 'standard', tone }: WorkCardProps) {
 
       <div className={styles.footer}>
         <div className={styles.tagList} aria-label="Tools">
-          {work.tools.slice(0, variant === 'featured' ? 6 : 4).map((tool) => (
+          {work.tools.map((tool) => (
             <span key={tool} className={styles.tag}>
               {tool}
             </span>
@@ -70,17 +70,6 @@ export function WorkCard({ work, variant = 'standard', tone }: WorkCardProps) {
           >
             Read work
           </Link>
-          {work.externalLinks.slice(0, 2).map((link) => (
-            <a
-              key={`${link.label}-${link.url}`}
-              href={link.url}
-              className={styles.externalLink}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {link.label}
-            </a>
-          ))}
         </div>
       </div>
     </article>

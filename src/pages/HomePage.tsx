@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { MusicGallerySection } from '../components/MusicGallerySection';
 import { Reveal } from '../components/Reveal';
 import { WorkCard } from '../components/WorkCard';
@@ -69,7 +69,7 @@ export function HomePage() {
 
   return (
     <div className={styles.page}>
-      <Reveal as="section" className={styles.hero}>
+      <Reveal as="section" className={styles.hero} id="top">
         <img
           className={styles.heroVisual}
           src={topVisual}
@@ -81,6 +81,9 @@ export function HomePage() {
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>Portfolio — 2026</p>
           <div className={styles.signature}>
+            <h1 className={styles.heroName}>
+              <span>seika</span>
+            </h1>
             <img
               className={styles.heroAvatar}
               src={siteProfile.avatar.src}
@@ -88,9 +91,6 @@ export function HomePage() {
               width="56"
               height="56"
             />
-            <h1 className={styles.heroName}>
-              <span>seika</span>
-            </h1>
           </div>
           <p className={styles.heroTitle}>Game / Music / 3DCG</p>
           <p className={styles.heroBody}>
@@ -127,6 +127,7 @@ export function HomePage() {
       </section>
 
       <Reveal as="section" className={styles.aboutStrip}>
+        <Link to="/about" className={styles.aboutStripLink}>
         <div>
           <p className={styles.sectionEyebrow}>About</p>
           <h2 className={styles.stripTitle}>制作領域を、ひとつの作品世界へ。</h2>
@@ -142,12 +143,12 @@ export function HomePage() {
             </span>
           ))}
         </div>
+        </Link>
       </Reveal>
 
       <section id="works" className={styles.section}>
         <Reveal className={styles.sectionHeader}>
-          <p className={styles.sectionEyebrow}>Works</p>
-          <h2 className={styles.sectionTitle}>Selected Works</h2>
+          <h2 className={styles.sectionTitle}>Works</h2>
           <p className={styles.sectionDescription}>
             作品ごとに、ゲーム、音楽、3D、シナリオ、設計のどこを担当したかが見えるように並べています。
           </p>
@@ -175,8 +176,7 @@ export function HomePage() {
 
       <section id="music" className={`${styles.section} ${styles.musicSection}`}>
         <Reveal className={styles.musicHeader}>
-          <p className={styles.sectionEyebrow}>Music</p>
-          <h2 className={styles.musicTitle}>Songs in the Quiet Blue</h2>
+          <h2 className={styles.musicTitle}>Music</h2>
           <p className={styles.musicDescription}>
             ボカロ曲、インスト、ゲームBGMを、ページ内でそのまま聴けるようにまとめています。
           </p>
@@ -190,7 +190,6 @@ export function HomePage() {
 
       <section id="contact" className={`${styles.section} ${styles.contactSection}`}>
         <Reveal className={styles.contactPanel}>
-          <p className={styles.sectionEyebrow}>Contact</p>
           <h2 className={styles.contactTitle}>Get in Touch</h2>
           <p className={styles.contactText}>{siteProfile.contactNote}</p>
           <div className={styles.contactList}>
