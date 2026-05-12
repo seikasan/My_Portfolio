@@ -79,19 +79,19 @@ export function HomePage() {
           decoding="async"
         />
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>Portfolio — 2026</p>
-          <div className={styles.signature}>
-            <h1 className={styles.heroName}>
-              <span>seika</span>
-            </h1>
+          <div className={styles.heroMeta}>
             <img
               className={styles.heroAvatar}
               src={siteProfile.avatar.src}
               alt={siteProfile.avatar.alt}
-              width="56"
-              height="56"
+              width="48"
+              height="48"
             />
+            <p className={styles.eyebrow}>Portfolio — 2026</p>
           </div>
+          <h1 className={styles.heroName}>
+            <span>seika</span>
+          </h1>
           <p className={styles.heroTitle}>Game / Music / 3DCG</p>
           <p className={styles.heroBody}>
             ゲーム、音楽、3D、物語をまたいで制作しています。<br />
