@@ -61,7 +61,7 @@ export function AboutPage() {
         </div>
         <p className={styles.lead}>{aboutSummary}</p>
         <Link to="/" className={styles.backLink}>
-          Back to works
+          Back to Home
         </Link>
       </Reveal>
 

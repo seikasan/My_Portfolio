@@ -12,7 +12,7 @@ import styles from './HomePage.module.css';
 
 const tickerItems = [
   'Unity / C#',
-  'DAW 6yr',
+  'Studio One 6yr',
   'Blender 4yr',
   'Scenario Writing',
   'Shader Graph',
@@ -23,7 +23,7 @@ const tickerItems = [
   'Aizu University',
 ];
 
-const stats = ['7+ Works', '6yr DAW', '4yr Blender', 'Comiket Exhibitor'];
+const stats = ['7+ Works', '6yr Studio One', '4yr Blender', 'Comiket Exhibitor'];
 
 const galleryOrder = [
   'choco-tabi',
@@ -94,8 +94,9 @@ export function HomePage() {
           </div>
           <p className={styles.heroTitle}>Game / Music / 3DCG</p>
           <p className={styles.heroBody}>
-            ゲーム、音楽、3D、物語をまたいで制作しています。
-            企画、実装、サウンド、モデリング、シナリオをつなげて、作品を形にします。
+            ゲーム、音楽、3D、物語をまたいで制作しています。<br />
+            企画、実装、サウンド、モデリング、シナリオをつなげて<br />
+            作品を形にします。
           </p>
           <div className={styles.heroActions}>
             <button
@@ -110,7 +111,7 @@ export function HomePage() {
               className={styles.secondaryButton}
               onClick={() => scrollToSection('music')}
             >
-              Listen music
+              Listen to music
             </button>
           </div>
         </div>
