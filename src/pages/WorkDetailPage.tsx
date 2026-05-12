@@ -107,7 +107,6 @@ export function WorkDetailPage() {
       <Reveal as="section" className={styles.visualBlock}>
         <div className={styles.visualHeader}>
           <p className={styles.eyebrow}>Main Visual</p>
-          <h2 className={styles.sectionTitle}>Main Visual</h2>
         </div>
         <div className={styles.mediaFrame}>
           {work.demoVideo ? (

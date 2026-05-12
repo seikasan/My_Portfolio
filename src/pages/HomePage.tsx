@@ -160,7 +160,6 @@ export function HomePage() {
             return (
               <Reveal
                 key={work.slug}
-                as="article"
                 className={`${styles.workSlot} ${styles[`workSlot_${presentation.variant}`]}`}
               >
                 <WorkCard
