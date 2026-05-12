@@ -68,20 +68,20 @@ const presentations: Record<string, WorkPresentation> = {
   'return-false': {
     variant: 'standard',
     tone: {
-      accent: '#6d2d2d',
-      accent2: '#261817',
-      soft: 'rgba(109, 45, 45, 0.14)',
-      surface: '#fff6f2',
-      gradient: 'linear-gradient(135deg, rgba(109, 45, 45, 0.18), rgba(38, 24, 23, 0.14))',
+      accent: '#385c96',
+      accent2: '#29384f',
+      soft: 'rgba(45, 83, 109, 0.14)',
+      surface: '#d1e3ff',
+      gradient: 'linear-gradient(135deg, rgba(45, 65, 109, 0.18), rgba(23, 29, 38, 0.14))',
     },
   },
   'lost-of-music': {
     variant: 'standard',
     tone: {
-      accent: '#496a53',
+      accent: '#454545',
       accent2: '#91a176',
       soft: 'rgba(73, 106, 83, 0.14)',
-      surface: '#f5f8ef',
+      surface: '#dfdfdf',
       gradient: 'linear-gradient(135deg, rgba(73, 106, 83, 0.18), rgba(145, 161, 118, 0.18))',
     },
   },
