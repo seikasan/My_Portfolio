@@ -11,7 +11,7 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  overflow-x: hidden;
+  overflow-x: clip;
   background:
     radial-gradient(circle at 18% 0%, rgba(178, 138, 69, 0.12), transparent 32rem),
     linear-gradient(180deg, var(--color-bg-strong), var(--color-bg));
