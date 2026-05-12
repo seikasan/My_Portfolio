@@ -64,15 +64,15 @@ export function WorkDetailPage() {
 
           <aside className={styles.metaPanel} aria-label="Work information">
             <div className={styles.metaRow}>
-              <span>Period</span>
+              <span>開発期間</span>
               <strong>{work.period}</strong>
             </div>
             <div className={styles.metaRow}>
-              <span>Role</span>
+              <span>役割</span>
               <strong>{work.role.join(' / ')}</strong>
             </div>
             <div className={styles.metaRow}>
-              <span>Team</span>
+              <span>開発人数</span>
               <strong>{work.teamSize}</strong>
             </div>
             <div className={styles.toolList}>
@@ -84,7 +84,7 @@ export function WorkDetailPage() {
             </div>
             {work.externalLinks.length > 0 ? (
               <div className={styles.externalBlock}>
-                <h2 className={styles.externalTitle}>External Links</h2>
+                <h2 className={styles.externalTitle}>外部リンク</h2>
                 <div className={styles.linkGroup}>
                   {work.externalLinks.map((link) => (
                     <a
