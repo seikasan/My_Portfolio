@@ -67,8 +67,8 @@ export function AboutPage() {
 
       <Reveal as="section" className={styles.creativeBackground}>
         <PageHeading
-          eyebrow="Creative Background"
-          title="複数の表現を、ゲームの中で接続する。"
+          eyebrow=""
+          title="複数の表現を統合する。"
         />
         <div className={styles.textStack}>
           <p>
@@ -85,9 +85,9 @@ export function AboutPage() {
       <section className={styles.section}>
         <Reveal>
           <PageHeading
-            eyebrow="Skills"
-            title="Tools in Context"
-            description="使える技術の羅列ではなく、どの制作でどう使っているかが見えるように整理しています。"
+            eyebrow=""
+            title="Languages / Tools"
+            description=""
           />
         </Reveal>
         <div className={styles.skillGrid}>
@@ -122,7 +122,7 @@ export function AboutPage() {
 
       <section className={styles.section}>
         <Reveal>
-          <PageHeading eyebrow="Education" title="Education" />
+          <PageHeading eyebrow="" title="Education" />
         </Reveal>
         <Reveal className={styles.timeline}>
           {educationHistory.map((entry) => (
@@ -141,7 +141,7 @@ export function AboutPage() {
 
       <section className={styles.section}>
         <Reveal>
-          <PageHeading eyebrow="Activities" title="Activities" />
+          <PageHeading eyebrow="" title="Activities" />
         </Reveal>
         <Reveal className={styles.timeline}>
           {activityHistory.map((entry) => (

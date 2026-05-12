@@ -30,9 +30,9 @@ const galleryOrder = [
   'my-architecture',
   'access-to-your-5-girls',
   'lyla',
+  'choco-map-maker',
   'return-false',
   'lost-of-music',
-  'choco-map-maker',
 ];
 
 export function HomePage() {
@@ -95,7 +95,7 @@ export function HomePage() {
           <p className={styles.heroTitle}>Game / Music / 3DCG</p>
           <p className={styles.heroBody}>
             ゲーム、音楽、3D、物語をまたいで制作しています。<br />
-            企画、実装、音、モデリング、シナリオをつなげて作品にします。
+            企画、実装、音、モデリング、文章をつなげて作品にします。
           </p>
           <div className={styles.heroActions}>
             <button
@@ -130,7 +130,7 @@ export function HomePage() {
         <Link to="/about" className={styles.aboutStripLink}>
         <div>
           <p className={styles.sectionEyebrow}>About</p>
-          <h2 className={styles.stripTitle}>制作領域を、ひとつの作品世界へ。</h2>
+          <h2 className={styles.stripTitle}>複数の表現を統合する。</h2>
         </div>
         <p className={styles.stripText}>
           幼少期から作曲、プログラミング、3D制作、小説、漫画に親しみ、現在はそれらをゲーム制作に統合しています。
@@ -150,7 +150,6 @@ export function HomePage() {
         <Reveal className={styles.sectionHeader}>
           <h2 className={styles.sectionTitle}>Works</h2>
           <p className={styles.sectionDescription}>
-            作品ごとに、ゲーム、音楽、3D、シナリオ、設計のどこを担当したかが見えるように並べています。
           </p>
         </Reveal>
         <div className={styles.worksGallery}>
