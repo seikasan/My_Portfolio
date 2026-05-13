@@ -44,7 +44,20 @@ export function HomePage() {
     .map((slug) => workMap.get(slug))
     .filter((work): work is (typeof works)[number] => Boolean(work));
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: reducedMotion ? 'auto' : 'smooth',
+    });
+  };
+
   const scrollToSection = (id: string) => {
+    if (id === 'top') {
+      scrollToTop();
+      return;
+    }
+
     document.getElementById(id)?.scrollIntoView({
       behavior: reducedMotion ? 'auto' : 'smooth',
       block: 'start',
@@ -69,7 +82,7 @@ export function HomePage() {
 
   return (
     <div className={styles.page}>
-      <Reveal as="section" className={styles.hero} id="top">
+      <Reveal as="section" className={styles.hero}>
         <img
           className={styles.heroVisual}
           src={topVisual}

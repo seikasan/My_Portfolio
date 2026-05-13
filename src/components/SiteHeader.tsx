@@ -25,7 +25,27 @@ export function SiteHeader() {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: reducedMotion ? 'auto' : 'smooth',
+    });
+  };
+
   const handleSectionClick = (id: string) => {
+    if (id === 'top') {
+      if (isHome) {
+        scrollToTop();
+        return;
+      }
+
+      navigate('/', {
+        state: { scrollTo: 'top' },
+      });
+      return;
+    }
+
     if (isHome) {
       scrollToSection(id);
       return;
