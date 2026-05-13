@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import styles from './ImageLightbox.module.css';
 
 interface ImageLightboxProps {
@@ -30,21 +31,16 @@ export function ImageLightbox({
     };
 
     document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
   }, [isOpen]);
 
-  return (
-    <>
-      <button
-        type="button"
-        className={styles.trigger}
-        onClick={() => setIsOpen(true)}
-        aria-label={`${alt}を拡大表示`}
-      >
-        <img src={src} alt={alt} className={className} loading={loading} decoding={decoding} />
-      </button>
-
-      {isOpen ? (
+  const overlay = isOpen
+    ? createPortal(
         <div
           className={styles.overlay}
           role="dialog"
@@ -64,8 +60,23 @@ export function ImageLightbox({
             <img src={src} alt={alt} className={styles.fullImage} />
             <p className={styles.caption}>{alt}</p>
           </div>
-        </div>
-      ) : null}
+        </div>,
+        document.body,
+      )
+    : null;
+
+  return (
+    <>
+      <button
+        type="button"
+        className={styles.trigger}
+        onClick={() => setIsOpen(true)}
+        aria-label={`${alt}を拡大表示`}
+      >
+        <img src={src} alt={alt} className={className} loading={loading} decoding={decoding} />
+      </button>
+
+      {overlay}
     </>
   );
 }
