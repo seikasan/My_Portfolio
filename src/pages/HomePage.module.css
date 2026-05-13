@@ -28,8 +28,12 @@
 .hero::before {
   z-index: 1;
   background:
-    linear-gradient(90deg, rgba(33, 24, 19, 0.62), rgba(33, 24, 19, 0.22) 48%, rgba(248, 241, 229, 0.12)),
-    linear-gradient(180deg, rgba(248, 241, 229, 0.2), rgba(33, 24, 19, 0.28));
+    linear-gradient(
+      90deg,
+      rgba(33, 24, 19, 0.58),
+      rgba(33, 24, 19, 0.18) 44%,
+      rgba(248, 241, 229, 0.04)
+    );
 }
 
 .hero::after {
@@ -47,6 +51,10 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+.heroVisual {
+  filter: saturate(0.95) contrast(1.08) brightness(0.92);
 }
 
 .heroMeta {
@@ -516,6 +524,10 @@
     height: 46svh;
     min-height: 22rem;
     margin: 0 0 1.25rem;
+  }
+
+  .heroVisual {
+    filter: saturate(0.95) contrast(1.08) brightness(0.92);
   }
 
   .heroCopy {
