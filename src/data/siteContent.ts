@@ -95,7 +95,7 @@ export const skillGroups: SkillGroup[] = [
     title: 'Tools',
     description: '制作環境として継続的に使っているツールです。',
     items: [
-      { name: 'Studio One', experience: '6年', logoId: 'studioOne' },
+      { name: 'Studio One', experience: '7年', logoId: 'studioOne' },
       { name: 'Blender', experience: '4年', logoId: 'blender' },
       { name: 'Unity', experience: '2年', logoId: 'unity' },
       { name: 'GitHub', experience: '2年', logoId: 'github' },

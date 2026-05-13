@@ -12,7 +12,7 @@ import styles from './HomePage.module.css';
 
 const tickerItems = [
   'Unity / C#',
-  'Studio One 6yr',
+  'Studio One 7yr',
   'Blender 4yr',
   'Scenario Writing',
   'Shader Graph',
@@ -23,7 +23,7 @@ const tickerItems = [
   'Aizu University',
 ];
 
-const stats = ['7+ Works', '6yr Studio One', '4yr Blender', 'Comiket Exhibitor'];
+const stats = ['7+ Works', '7yr Studio One', '4yr Blender', 'Comiket Exhibitor'];
 
 const galleryOrder = [
   'choco-tabi',
