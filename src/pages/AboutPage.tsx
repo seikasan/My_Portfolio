@@ -1,53 +1,105 @@
 import { Link } from 'react-router-dom';
 import { Reveal } from '../components/Reveal';
-import { SectionHeading } from '../components/SectionHeading';
 import { SkillLogo } from '../components/SkillLogo';
 import {
   aboutSummary,
   activityHistory,
   educationHistory,
-  sectionHeadingTones,
   siteProfile,
   skillGroups,
 } from '../data/siteContent';
 import styles from './AboutPage.module.css';
+import type { ReactNode } from 'react';
+
+const skillUsage: Record<string, string> = {
+  Unity: 'ゲーム制作、ステージ実装、演出、UI、ギミック制作に使用。',
+  'C#': 'Unityゲームのプレイヤー、敵、アクター、ツール連携の実装に使用。',
+  Blender: 'ちょこ旅の小物、背景素材、タイトル周りの3D素材制作に使用。',
+  'Studio One': 'ゲームBGM、ボカロ曲、場面に合わせた編曲制作に使用。',
+  GitHub: 'チーム開発、自作アーキテクチャ、制作ツールの管理に使用。',
+  TypeScript: 'ReactポートフォリオやWebツールの実装に使用。',
+  JavaScript: 'チョコ旅マップエディターなど、軽量な制作支援ツールに使用。',
+  HTML: 'Webツールやポートフォリオの画面構成に使用。',
+  CSS: 'ポートフォリオや制作支援ツールのUI表現に使用。',
+  'C++': 'Siv3D作品などのゲーム制作で使用。',
+};
+
+function PageHeading({
+  eyebrow,
+  title,
+  description,
+}: {
+  eyebrow: string;
+  title: ReactNode;
+  description?: string;
+}) {
+  return (
+    <div className={styles.heading}>
+      {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
+      <h2 className={styles.headingTitle}>{title}</h2>
+      {description ? <p className={styles.headingDescription}>{description}</p> : null}
+    </div>
+  );
+}
 
 export function AboutPage() {
   return (
     <div className={styles.page}>
       <Reveal as="section" className={styles.hero}>
-        <div className={styles.heroCopy}>
-          <SectionHeading
-            eyebrow="About"
-            title="About"
-            description={aboutSummary}
-            tone={sectionHeadingTones.about}
+        <div className={styles.profileBlock}>
+          <img
+            className={styles.avatar}
+            src={siteProfile.avatar.src}
+            alt={siteProfile.avatar.alt}
+            width="120"
+            height="120"
           />
-          <Link to="/" className={styles.backLink}>
-            トップに戻る
-          </Link>
+          <div className={styles.profileCopy}>
+            <p className={styles.eyebrow}>Profile</p>
+            <h1 className={styles.name}>{siteProfile.name}</h1>
+            <p className={styles.title}>{siteProfile.heroTitle}</p>
+          </div>
         </div>
+        <p className={styles.lead}>{aboutSummary}</p>
+        <Link to="/" className={styles.backLink}>
+          Back to Home
+        </Link>
+      </Reveal>
 
-        <div className={styles.heroCard}>
-          <p className={styles.heroLabel}>Profile</p>
-          <h2 className={styles.heroName}>{siteProfile.name}</h2>
-          <p className={styles.heroTitle}>{siteProfile.heroTitle}</p>
-          <p className={styles.heroBody}>{siteProfile.heroBody}</p>
+      <Reveal as="section" className={styles.creativeBackground}>
+        <PageHeading
+          eyebrow=""
+          title={
+            <>
+              表現を、
+              <br />
+              ゲームへ。
+            </>
+          }
+        />
+        <div className={styles.textStack}>
+          <p>
+            幼少期から作曲、プログラミング、3D制作、小説、漫画に触れてきました。
+            それぞれを別々の趣味としてではなく、現在はゲーム制作の中でつなげています。
+          </p>
+          <p>
+            画面の見え方、BGMの空気、キャラクターの会話、遊びのルールを同じ作品世界の一部として扱い、
+            自分で作れる範囲を広げながら制作しています。
+          </p>
         </div>
       </Reveal>
 
       <section className={styles.section}>
-        <Reveal className={styles.sectionHeader}>
-          <SectionHeading
-            eyebrow="Skills"
-            title="Skills"
-            description="継続して使っているものと、授業で少し触れたものです。"
-            tone={sectionHeadingTones.skills}
+        <Reveal>
+          <PageHeading
+            eyebrow=""
+            title="Languages / Tools"
+            description=""
           />
         </Reveal>
         <div className={styles.skillGrid}>
           {skillGroups.map((group) => (
-            <Reveal key={group.title} className={styles.card}>
+            <Reveal key={group.title} as="article" className={styles.card}>
               <div className={styles.cardHeader}>
                 <h3 className={styles.cardTitle}>{group.title}</h3>
                 {group.description ? (
@@ -60,9 +112,13 @@ export function AboutPage() {
                     <SkillLogo logoId={item.logoId} label={item.name} />
                     <span className={styles.skillContent}>
                       <span className={styles.skillName}>{item.name}</span>
-                      {item.note ? <span className={styles.skillNote}>{item.note}</span> : null}
+                      <span className={styles.skillNote}>
+                        {skillUsage[item.name] ?? item.note ?? '制作の中で必要に応じて使用。'}
+                      </span>
                     </span>
-                    {item.experience ? <span className={styles.skillMeta}>{item.experience}</span> : null}
+                    {item.experience ? (
+                      <span className={styles.skillMeta}>{item.experience}</span>
+                    ) : null}
                   </li>
                 ))}
               </ul>
@@ -72,13 +128,8 @@ export function AboutPage() {
       </section>
 
       <section className={styles.section}>
-        <Reveal className={styles.sectionHeader}>
-          <SectionHeading
-            eyebrow="Education"
-            title="Education"
-            description=""
-            tone={sectionHeadingTones.education}
-          />
+        <Reveal>
+          <PageHeading eyebrow="" title="Education" />
         </Reveal>
         <Reveal className={styles.timeline}>
           {educationHistory.map((entry) => (
@@ -96,13 +147,8 @@ export function AboutPage() {
       </section>
 
       <section className={styles.section}>
-        <Reveal className={styles.sectionHeader}>
-          <SectionHeading
-            eyebrow="Activities"
-            title="Activities"
-            description=""
-            tone={sectionHeadingTones.activities}
-          />
+        <Reveal>
+          <PageHeading eyebrow="" title="Activities" />
         </Reveal>
         <Reveal className={styles.timeline}>
           {activityHistory.map((entry) => (

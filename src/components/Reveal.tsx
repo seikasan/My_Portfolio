@@ -4,12 +4,14 @@ import styles from './Reveal.module.css';
 
 interface RevealProps extends PropsWithChildren {
   className?: string;
+  id?: string;
   as?: 'div' | 'section' | 'article';
 }
 
 export function Reveal({
   children,
   className = '',
+  id,
   as = 'div',
 }: RevealProps) {
   const { ref, visible } = useReveal<HTMLElement>();
@@ -20,6 +22,7 @@ export function Reveal({
 
   return (
     <Tag
+      id={id}
       ref={setRef}
       className={`${styles.reveal} ${visible ? styles.visible : ''} ${className}`.trim()}
     >

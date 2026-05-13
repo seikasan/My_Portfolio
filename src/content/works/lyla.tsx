@@ -7,7 +7,7 @@ const overviewParagraphs = [
 
 const productionParagraphs = [
   '制作では QFramework を使い、Unity 上での構成や実装フローを試しました。キャラクター操作やシーンの見え方を組み立てながら、フレームワークを使った開発の感触を確かめることができました。',
-  'Lyla の 3D モデルは VRoid Studio で制作しました。Unity ではトゥーンレンダリングを使い、現代的な見え方を目指しました。',
+  'Lyla の 3Dモデルは VRoid Studio で制作しました。Unity ではトゥーンレンダリングを使い、現代的な見え方を目指しました。',
 ];
 
 function Paragraphs({ paragraphs }: { paragraphs: string[] }) {

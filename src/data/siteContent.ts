@@ -41,6 +41,11 @@ export const siteProfile: SiteProfile = {
       url: 'https://github.com/seikasan',
       kind: 'social',
     },
+    {
+      label: 'SoundCloud',
+      url: 'https://soundcloud.com/seika-461144239',
+      kind: 'social',
+    },
   ],
 };
 
@@ -145,7 +150,7 @@ export const works: WorkEntry[] = [
     title: 'MyArchitecture',
     category: 'GitHub Repository / Architecture',
     period: '2026/05 - 開発中',
-    role: ['個人制作'],
+    role: ['企画・実装'],
     tools: ['Unity', 'C#', 'VContainer', 'MessagePipe', 'UniTask', 'R3', 'QFramework', 'Roslyn'],
     teamSize: '個人制作',
     summary:
@@ -205,7 +210,7 @@ export const works: WorkEntry[] = [
     title: 'Lyla',
     category: '3D散策ゲーム / 実験作',
     period: '2026/04',
-    role: ['個人制作'],
+    role: ['企画・実装', '3Dモデル制作', 'プログラマー'],
     tools: ['Unity', 'C#', 'QFramework', 'VRoid Studio'],
     teamSize: '個人制作',
     summary:
@@ -227,7 +232,7 @@ export const works: WorkEntry[] = [
     title: '🍫ちょこ旅マップエディター',
     category: '制作支援ツール / ステージ構想',
     period: '2026/03/01',
-    role: ['個人制作'],
+    role: ['企画・実装'],
     tools: ['JavaScript', 'HTML', 'CSS', 'Gemini', 'ChatGPT'],
     teamSize: '個人制作',
     summary:

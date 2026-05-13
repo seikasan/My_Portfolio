@@ -39,13 +39,16 @@ function RouteScrollManager() {
   return null;
 }
 
-function App() {
+function AppContent() {
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+
   return (
-    <HashRouter>
+    <>
       <RouteScrollManager />
       <div className={styles.shell}>
         <SiteHeader />
-        <main className={styles.main}>
+        <main className={`${styles.main} ${isHome ? styles.mainHome : ''}`}>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
@@ -53,6 +56,14 @@ function App() {
           </Routes>
         </main>
       </div>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <HashRouter>
+      <AppContent />
     </HashRouter>
   );
 }

@@ -53,17 +53,17 @@ const designImages = [
   {
     src: chocoTabiTitlePhoto,
     alt: 'ちょこ旅 タイトル画面',
-    caption: 'タイトル画面の3Dモデル群の配置',
+    caption: 'タイトル画面の3Dモデルの配置',
   },
   {
     src: chocoTabiGameOverPhoto,
     alt: 'ちょこ旅 ゲームオーバー画面',
-    caption: 'ゲームオーバー画面のパネルと3Dモデル配置',
+    caption: 'ゲームオーバー画面の3Dモデルの配置',
   },
   {
     src: chocoTabiEndingPhoto,
     alt: 'ちょこ旅 ゲームクリア画面',
-    caption: 'ゲームクリア画面のパネルと3Dモデル配置',
+    caption: 'ゲームクリア画面の3Dモデルの配置',
   },
 ];
 

@@ -11,7 +11,10 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  background: var(--color-bg-strong);
+  overflow-x: clip;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(178, 138, 69, 0.12), transparent 32rem),
+    linear-gradient(180deg, var(--color-bg-strong), var(--color-bg));
   color: var(--color-text);
   line-height: 1.6;
 }
@@ -20,7 +23,7 @@ body,
 button,
 input,
 textarea {
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: var(--font-body);
 }
 
 img,
@@ -45,7 +48,7 @@ a {
 }
 
 ::selection {
-  background: rgba(49, 95, 134, 0.18);
+  background: rgba(163, 93, 112, 0.2);
   color: var(--color-text);
 }
 

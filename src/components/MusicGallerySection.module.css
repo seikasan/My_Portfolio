@@ -1,17 +1,17 @@
 .section {
   display: grid;
-  gap: 1rem;
+  gap: 1.4rem;
 }
 
 .header,
 .groupHeader {
   display: grid;
-  gap: 0.35rem;
+  gap: 0.45rem;
 }
 
 .header {
-  padding-bottom: 0.65rem;
-  border-bottom: 1px solid var(--color-line);
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid rgba(248, 241, 229, 0.16);
 }
 
 .title,
@@ -25,21 +25,27 @@
   margin: 0;
 }
 
+.title,
+.groupTitle,
+.cardTitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+}
+
 .title {
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-size: 1.6rem;
 }
 
 .meta,
 .groupDescription {
-  color: var(--color-text-faint);
+  color: rgba(248, 241, 229, 0.64);
   font-size: 0.92rem;
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
 .groupList {
   display: grid;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .group {
@@ -48,8 +54,9 @@
 }
 
 .groupTitle {
-  font-size: 1rem;
-  line-height: 1.5;
+  color: #f8f1e5;
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  line-height: 1;
 }
 
 .grid {
@@ -61,45 +68,85 @@
 
 .card {
   display: grid;
-  gap: 0.85rem;
+  gap: 0.95rem;
   padding: 1rem;
-  border: 1px solid var(--color-line);
+  border: 1px solid rgba(248, 241, 229, 0.14);
   border-radius: var(--radius-lg);
-  background: var(--color-surface);
+  background: rgba(62, 82, 94, 0.76);
+  box-shadow: 0 20px 42px rgba(10, 18, 24, 0.14);
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.card:hover,
+.card:focus-within {
+  border-color: rgba(158, 200, 202, 0.4);
+  background: rgba(72, 94, 107, 0.84);
+  transform: translateY(-2px);
+}
+
+.wave {
+  height: 1rem;
+  opacity: 0.7;
+  background:
+    radial-gradient(0.45rem 0.35rem at 0.45rem 0.5rem, transparent 45%, rgba(158, 200, 202, 0.72) 48%, transparent 55%) 0 0 / 1.25rem 1rem repeat-x;
+}
+
+.cardHead {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: baseline;
+}
+
+.trackNumber,
+.metaLabel,
+.metaValue {
+  font-family: var(--font-mono);
+}
+
+.trackNumber {
+  color: #9ec8ca;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
 }
 
 .cardTitle {
-  font-size: 1rem;
-  line-height: 1.5;
+  color: #fffaf0;
+  font-size: clamp(1.25rem, 2.4vw, 1.8rem);
+  line-height: 1.08;
 }
 
 .cardMeta {
   display: grid;
   gap: 0.45rem;
+  margin: 0;
 }
 
 .metaRow {
   display: grid;
-  grid-template-columns: 5rem minmax(0, 1fr);
+  grid-template-columns: 5.5rem minmax(0, 1fr);
   gap: 0.75rem;
 }
 
 .metaLabel {
-  color: var(--color-text-faint);
-  font-size: 0.9rem;
+  color: rgba(248, 241, 229, 0.48);
+  font-size: 0.76rem;
   line-height: 1.6;
 }
 
 .metaValue {
-  color: var(--color-text-muted);
-  font-size: 0.92rem;
+  color: rgba(248, 241, 229, 0.72);
+  font-size: 0.78rem;
   line-height: 1.7;
 }
 
 .cardDescription {
-  color: var(--color-text-muted);
+  color: rgba(248, 241, 229, 0.76);
   font-size: 0.95rem;
-  line-height: 1.8;
+  line-height: 1.85;
 }
 
 @media (max-width: 900px) {
@@ -109,6 +156,10 @@
 }
 
 @media (max-width: 640px) {
+  .card {
+    padding: 0.9rem;
+  }
+
   .metaRow {
     grid-template-columns: 1fr;
     gap: 0.15rem;

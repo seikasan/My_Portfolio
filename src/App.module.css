@@ -1,18 +1,32 @@
 .shell {
   min-height: 100vh;
-  background: var(--color-bg-strong);
+  overflow-x: clip;
+  background:
+    linear-gradient(90deg, rgba(45, 33, 27, 0.035) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 252, 245, 0.18), transparent 24rem);
+  background-size: 96px 96px, auto;
 }
 
 .main {
   width: min(var(--content-width), calc(100% - 2rem));
   margin: 0 auto;
-  padding: 2.25rem 0 4rem;
+  padding: calc(4.25rem + 2.75rem) 0 5rem;
+}
+
+.mainHome {
+  width: 100%;
+  padding-top: 0;
 }
 
 @media (max-width: 768px) {
   .main {
     width: min(var(--content-width), calc(100% - 1.25rem));
-    padding-top: 1.5rem;
+    padding-top: calc(3.9rem + 1.5rem);
     padding-bottom: 4rem;
+  }
+
+  .mainHome {
+    width: 100%;
+    padding-top: 0;
   }
 }
