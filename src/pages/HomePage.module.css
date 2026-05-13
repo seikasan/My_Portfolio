@@ -307,7 +307,7 @@
 .stripTitle {
   margin-top: 0.5rem;
   font-size: clamp(2rem, 4vw, 3.25rem);
-  line-height: 1;
+  line-height: 1.2;
 }
 
 .statList {

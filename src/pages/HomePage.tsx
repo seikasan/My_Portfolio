@@ -131,7 +131,11 @@ export function HomePage() {
         <Link to="/about" className={styles.aboutStripLink}>
           <div>
             <p className={styles.sectionEyebrow}>About</p>
-            <h2 className={styles.stripTitle}>複数の表現を統合する。</h2>
+            <h2 className={styles.stripTitle}>
+              表現を、
+              <br />
+              ゲームへ。
+            </h2>
           </div>
           <p className={styles.stripText}>
             幼少期から作曲、プログラミング、3D制作、小説、漫画に親しみ、現在はそれらをゲーム制作に統合しています。

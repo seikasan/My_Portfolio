@@ -125,7 +125,7 @@
 .headingTitle {
   color: var(--color-text);
   font-size: clamp(2.1rem, 5vw, 4rem);
-  line-height: 0.98;
+  line-height: 1.2;
 }
 
 .section {

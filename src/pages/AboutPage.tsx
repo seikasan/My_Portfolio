@@ -9,6 +9,7 @@ import {
   skillGroups,
 } from '../data/siteContent';
 import styles from './AboutPage.module.css';
+import type { ReactNode } from 'react';
 
 const skillUsage: Record<string, string> = {
   Unity: 'ゲーム制作、ステージ実装、演出、UI、ギミック制作に使用。',
@@ -29,7 +30,7 @@ function PageHeading({
   description,
 }: {
   eyebrow: string;
-  title: string;
+  title: ReactNode;
   description?: string;
 }) {
   return (
@@ -68,7 +69,13 @@ export function AboutPage() {
       <Reveal as="section" className={styles.creativeBackground}>
         <PageHeading
           eyebrow=""
-          title="複数の表現を統合する。"
+          title={
+            <>
+              表現を、
+              <br />
+              ゲームへ。
+            </>
+          }
         />
         <div className={styles.textStack}>
           <p>
