@@ -182,6 +182,18 @@
   background: rgba(255, 252, 245, 0.62);
   color: var(--color-text-muted);
   text-transform: none;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.toolTag:hover {
+  border-color: color-mix(in srgb, var(--work-accent) 58%, transparent);
+  background: color-mix(in srgb, var(--work-accent) 14%, rgba(255, 252, 245, 0.82));
+  color: var(--work-accent);
+  transform: translateY(-1px);
 }
 
 .visualHeader {
