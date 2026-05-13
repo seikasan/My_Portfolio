@@ -32,7 +32,7 @@
 }
 
 .brandAccent {
-  color: var(--color-accent);
+  color: color-mix(in srgb, var(--color-accent) 82%, var(--color-text));
   font-style: italic;
 }
 

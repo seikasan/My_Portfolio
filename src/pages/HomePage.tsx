@@ -90,7 +90,8 @@ export function HomePage() {
             <p className={styles.eyebrow}>Portfolio — 2026</p>
           </div>
           <h1 className={styles.heroName}>
-            <span>seika</span>
+            <span className={styles.heroNameAccent}>{siteProfile.name.slice(0, 1)}</span>
+            {siteProfile.name.slice(1)}
           </h1>
           <p className={styles.heroTitle}>Game / Music / 3DCG</p>
           <p className={styles.heroBody}>

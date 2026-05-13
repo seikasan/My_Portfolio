@@ -70,6 +70,11 @@
   backdrop-filter: blur(16px);
 }
 
+.heroNameAccent {
+  color: color-mix(in srgb, var(--color-accent) 82%, var(--color-text));
+  font-style: italic;
+}
+
 .eyebrow,
 .sectionEyebrow,
 .tickerItem,
