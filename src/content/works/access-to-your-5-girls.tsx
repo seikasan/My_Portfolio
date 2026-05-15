@@ -1,4 +1,5 @@
 import { SoundCloudEmbed } from '../../components/SoundCloudEmbed';
+import { YouTubeEmbed } from '../../components/YouTubeEmbed';
 import { WorkSpoilerSection } from './WorkSpoilerSection';
 import styles from './WorkRichContent.module.css';
 
@@ -169,6 +170,16 @@ export function AccessToYour5GirlsContent() {
         <h2 className={styles.heading}>概要</h2>
         <Paragraphs paragraphs={overviewParagraphs} />
         <p className={styles.notice}>作品の性質上、一部の解説にはネタバレを含みます。</p>
+      </section>
+
+      <section className={styles.section}>
+        <h2 className={styles.heading}>プレイ映像</h2>
+        <YouTubeEmbed
+          videoUrl="https://youtu.be/gw7KzXnXrf4"
+          title="Access to your 5 Girls プレイ映像"
+          entryLabel="プレイ映像をYouTubeで開く"
+          caption="プレイ映像"
+        />
       </section>
 
       <section className={styles.section}>
