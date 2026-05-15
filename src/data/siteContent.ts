@@ -183,7 +183,7 @@ export const works: WorkEntry[] = [
     category: '3Dアクションゲーム / お菓子',
     period: '2026/02 - 開発中',
     role: ['プログラマー', 'モデリング', 'コンポーザー'],
-    tools: ['Unity', 'C#', 'Blender', 'Shader Graph', 'Studio One'],
+    tools: ['Unity', 'C#', 'Blender', 'Shader Graph', 'Studio One', 'UniRx'],
     teamSize: '8人',
     summary:
       'チョコの「溶ける」「他の食べ物をコーティングできる」といった特徴を遊びに取り入れた、8人チームで開発中のポップなアクションゲームです。',
