@@ -10,6 +10,7 @@ import type {
   WorkEntry,
 } from '../types/content';
 import accessToYour5GirlsCover from '../assets/works/access-to-your-5-girls/cover.png';
+import superBallCover from '../assets/works/super-ball/cover.png';
 import returnFalseCover from '../assets/works/return-false/cover.png';
 import lostOfMusicCover from '../assets/works/lost-of-music/cover.png';
 import chocoTabiTitle from '../assets/works/choco-tabi/title.png';
@@ -195,11 +196,22 @@ export const works: WorkEntry[] = [
     result:
       '2日間でチームとしてゲームを制作し、個人賞を受賞。結果画面、セーブ仕様、画面遷移の設計も担当しました。',
     coverImage: {
-      ...createPosterAsset({ title: 'SUPER BALL!', subtitle: 'Proto Sprint League 2026 / Individual Award', accent: '#D47A35', surface: '#172333', detail: '#7CC6D3', eyebrow: '3 PEOPLE / 2 DAYS' }),
-      alt: 'SUPER BALL! 紹介用タイトル画像（ゲーム画面ではありません）',
+      src: superBallCover,
+      alt: 'SUPER BALL! タイトル画面',
     },
     gallery: [],
-    externalLinks: [],
+    externalLinks: [
+      {
+        label: 'Android版をダウンロード',
+        url: 'https://drive.google.com/file/d/1ELvZKrIJq7uRFrThYRgQO7j_gmHpqBK8/view?usp=drive_link',
+        kind: 'demo',
+      },
+      {
+        label: 'プレイ映像をYouTubeで開く',
+        url: 'https://youtu.be/YdomJ41PSZs',
+        kind: 'demo',
+      },
+    ],
     featured: true,
   },
   {
@@ -309,8 +321,8 @@ export const works: WorkEntry[] = [
     gallery: [],
     externalLinks: [
       {
-        label: '配布ページ',
-        url: 'https://panddclub.org/games',
+        label: 'PandD 2026 Summer をダウンロード',
+        url: 'https://pandd.sakura.ne.jp/panddclub_uploads/files/PandD2026Summer.zip',
         kind: 'demo',
       },
       {
