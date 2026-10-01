@@ -165,7 +165,7 @@
 
 .skillItem {
   display: grid;
-  grid-template-columns: 2.35rem minmax(0, 1fr) auto;
+  grid-template-columns: 2.35rem minmax(0, 1fr);
   gap: 0.85rem;
   align-items: start;
   padding-bottom: 0.85rem;
@@ -195,17 +195,11 @@
   overflow-wrap: anywhere;
 }
 
-.skillMeta,
 .timelinePeriod {
   color: var(--color-text-faint);
   font-family: var(--font-mono);
   font-size: 0.76rem;
   line-height: 1.7;
-}
-
-.skillMeta {
-  justify-self: end;
-  white-space: nowrap;
 }
 
 .timeline {
@@ -240,11 +234,6 @@
 
   .skillItem {
     grid-template-columns: 2.35rem minmax(0, 1fr);
-  }
-
-  .skillMeta {
-    grid-column: 2;
-    justify-self: start;
   }
 
   .timelineItem {

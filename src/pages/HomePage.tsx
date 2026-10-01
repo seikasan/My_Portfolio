@@ -12,8 +12,8 @@ import styles from './HomePage.module.css';
 
 const tickerItems = [
   'Unity / C#',
-  'Studio One 7yr',
-  'Blender 4yr',
+  'Studio One',
+  'Blender',
   'Scenario Writing',
   'Shader Graph',
   'Entities / Burst / Job System',
@@ -23,7 +23,7 @@ const tickerItems = [
   'Aizu University',
 ];
 
-const stats = ['Proto Sprint League 個人賞', 'Unity / C#', '7yr Studio One', 'Comiket Exhibitor'];
+const stats = ['Proto Sprint League 個人賞', 'Unity / C#', 'Game Music', 'Comiket Exhibitor'];
 
 const galleryOrder = [
   'super-ball',

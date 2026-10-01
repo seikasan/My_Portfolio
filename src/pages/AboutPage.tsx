@@ -11,20 +11,6 @@ import {
 import styles from './AboutPage.module.css';
 import type { ReactNode } from 'react';
 
-const skillUsage: Record<string, string> = {
-  Unity: 'ゲーム・演出・UI・制作支援ツールの開発に使用。',
-  'C#': 'Unityゲームと自作ライブラリの設計・実装に使用。',
-  Blender: 'ちょこ旅の小物、背景素材、タイトル周りの3D素材制作に使用。',
-  'Studio One': 'ゲームBGM、ボカロ曲、場面に合わせた編曲制作に使用。',
-  GitHub: 'チーム開発、自作Unityライブラリ、制作ツールの管理に使用。',
-  Java: '授業とインターンで使用。Spring / Thymeleaf / MySQLによるWebアプリを制作。',
-  TypeScript: 'ReactポートフォリオやWebツールの実装に使用。',
-  JavaScript: 'チョコ旅マップエディターなど、軽量な制作支援ツールに使用。',
-  HTML: 'Webツールやポートフォリオの画面構成に使用。',
-  CSS: 'ポートフォリオや制作支援ツールのUI表現に使用。',
-  'C++': 'Siv3D作品などのゲーム制作で使用。',
-};
-
 function PageHeading({
   eyebrow,
   title,
@@ -120,12 +106,9 @@ export function AboutPage() {
                     <span className={styles.skillContent}>
                       <span className={styles.skillName}>{item.name}</span>
                       <span className={styles.skillNote}>
-                        {skillUsage[item.name] ?? item.note ?? '制作の中で必要に応じて使用。'}
+                        {item.note ?? '制作の中で必要に応じて使用。'}
                       </span>
                     </span>
-                    {item.experience ? (
-                      <span className={styles.skillMeta}>{item.experience}</span>
-                    ) : null}
                   </li>
                 ))}
               </ul>

@@ -79,16 +79,16 @@ export const aboutSummary =
 export const skillGroups: SkillGroup[] = [
   {
     title: 'Languages',
-    description: '制作や授業で使用している言語です。',
+    description: '制作・学習で扱っている内容です。',
     items: [
-      { name: 'C', experience: '2年', logoId: 'c' },
-      { name: 'C#', experience: '2年', logoId: 'csharp' },
-      { name: 'Java', note: '授業・SpringによるWebアプリ制作', logoId: 'java' },
-      { name: 'C++', note: '授業で少し使用', logoId: 'cplusplus' },
-      { name: 'HTML', note: '授業で少し使用', logoId: 'html5' },
-      { name: 'CSS', note: '授業で少し使用', logoId: 'css' },
-      { name: 'JavaScript', note: '授業で少し使用', logoId: 'javascript' },
-      { name: 'TypeScript', note: '授業で少し使用', logoId: 'typescript' },
+      { name: 'C', note: '授業で基本的なプログラムを作成。', logoId: 'c' },
+      { name: 'C#', note: 'ゲームロジック、自作ライブラリ、並列処理の設計・実装。', logoId: 'csharp' },
+      { name: 'Java', note: 'Spring / Thymeleaf / MySQLによるWebアプリの制作。', logoId: 'java' },
+      { name: 'C++', note: '授業で基礎的な文法を学習。', logoId: 'cplusplus' },
+      { name: 'HTML', note: 'ポートフォリオ・Webツールの画面構成。', logoId: 'html5' },
+      { name: 'CSS', note: 'ポートフォリオ・Webツールのレイアウトと装飾。', logoId: 'css' },
+      { name: 'JavaScript', note: 'ちょこ旅マップエディターなどの制作支援ツールの実装。', logoId: 'javascript' },
+      { name: 'TypeScript', note: 'Reactを使ったポートフォリオの実装。', logoId: 'typescript' },
       { name: 'VBA', note: '趣味で少し使用', logoId: 'vba' },
     ],
   },
@@ -96,10 +96,10 @@ export const skillGroups: SkillGroup[] = [
     title: 'Tools',
     description: '制作環境として継続的に使っているツールです。',
     items: [
-      { name: 'Studio One', experience: '7年', logoId: 'studioOne' },
-      { name: 'Blender', experience: '4年', logoId: 'blender' },
-      { name: 'Unity', note: 'ゲーム・演出・UI・制作支援ツールの開発に使用。', logoId: 'unity' },
-      { name: 'GitHub', experience: '2年', logoId: 'github' },
+      { name: 'Studio One', note: 'ゲームBGM、ボカロ曲、インスト楽曲の作曲・編曲。', logoId: 'studioOne' },
+      { name: 'Blender', note: 'ゲーム用の小物モデル・背景素材・アニメーション制作。', logoId: 'blender' },
+      { name: 'Unity', note: '個人・チームでのゲーム制作、設計、制作支援ツールの開発。', logoId: 'unity' },
+      { name: 'GitHub', note: 'チーム制作・自作ライブラリのソース管理。', logoId: 'github' },
     ],
   },
   {
@@ -129,31 +129,6 @@ export const educationHistory: HistoryEntry[] = [
 
 export const activityHistory: HistoryEntry[] = [
   {
-    period: '2026/10 予定',
-    title: '会津大学 学祭展示に向けて制作中',
-    description: '3Dリズムアクション × ローグライト作品を制作中。',
-  },
-  {
-    period: '2026/08/29 - 30',
-    title: 'CyberAgent Proto Sprint League 2026 個人賞受賞',
-    description: '3人チーム・2日間で『SUPER BALL!』を制作。リーダー・設計・進行管理を担当。',
-  },
-  {
-    period: '2026/08/17 - 21',
-    title: 'インターン',
-    description: '5日間のインターンで、Java / Spring / MySQLによるWebアプリを制作。',
-  },
-  {
-    period: 'サークル活動',
-    title: 'Unity勉強会 講師',
-    description: 'チーム制作の相談役と、全3回のUnity勉強会の講師を担当。',
-  },
-  {
-    period: '2026/08',
-    title: '夏コミ',
-    description: '『ちょこ旅』を頒布。',
-  },
-  {
     period: '2024/10',
     title: '会津大学 文化祭',
     description: '展示',
@@ -161,12 +136,12 @@ export const activityHistory: HistoryEntry[] = [
   {
     period: '2024/12',
     title: 'コミックマーケット105',
-    description: '自主制作ゲーム展示・頒布',
+    description: '自主制作ゲーム『Lost of Music』展示・頒布',
   },
   {
     period: '2025/08',
     title: 'コミックマーケット106',
-    description: '自主制作ゲーム展示・頒布',
+    description: '自主制作ゲーム『return false;』展示・頒布',
   },
   {
     period: '2025/10',
@@ -176,7 +151,27 @@ export const activityHistory: HistoryEntry[] = [
   {
     period: '2025/12',
     title: 'コミックマーケット107',
-    description: '自主制作ゲーム展示・頒布',
+    description: '自主制作ゲーム『Access to your 5 Girls』展示・頒布',
+  },
+  {
+    period: '2026/08',
+    title: 'コミックマーケット108',
+    description: '自主制作ゲーム『ちょこ旅』展示・頒布',
+  },
+  {
+    period: '2026/08/17 - 21',
+    title: 'インターン',
+    description: '5日間のインターンで、Java / Spring / MySQLによるWebアプリを制作。',
+  },
+  {
+    period: '2026/08/29 - 30',
+    title: 'CyberAgent Proto Sprint League 2026 個人賞受賞',
+    description: '3人チーム・2日間で『SUPER BALL!』を制作。設計・進行管理を担当。',
+  },
+  {
+    period: '2026/10 予定',
+    title: '会津大学 学祭展示に向けて制作中',
+    description: '3Dリズムアクション × ローグライト作品を制作中。',
   },
 ];
 
@@ -313,7 +308,7 @@ export const works: WorkEntry[] = [
     challenge:
       'プログラムでは、ノーコードで敵やギミックを作れるアクタースクリプト群を主に担当しました。ステートマシン、View、Module を Inspector から組み替えられるようにし、二層構造ステージやレーン切り替え、専用マップエディターなども制作しています。',
     result:
-      '2026年8月に開発終了し、夏コミで頒布。配布ページも公開されています。小物モデルやシェーダー、BGM「テンパリング・タイム！！」も制作しました。',
+      '2026年8月に開発終了し、コミックマーケット108で頒布。配布ページも公開されています。小物モデルやシェーダー、BGM「テンパリング・タイム！！」も制作しました。',
     coverImage: {
       src: chocoTabiTitle,
       alt: 'ちょこ旅 タイトル画面',
