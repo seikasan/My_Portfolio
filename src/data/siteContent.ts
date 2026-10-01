@@ -25,9 +25,9 @@ export const siteProfile: SiteProfile = {
   },
   heroTitle: 'Game / Music / 3DCG',
   heroBody:
-    '作曲、プログラミング、3D制作を軸にゲームを制作する学生クリエイターです。',
+    'Unityでのゲーム制作を中心に、プログラミング、音楽、3D制作に取り組んでいます。',
   intro:
-    '幼少期から続けてきた複数の表現を、現在はゲームというかたちで結び直しています。プロフィールの詳細は About ページへ。',
+    'ゲームクライアントエンジニアを志望する会津大学生です。チーム制作では設計や進行管理も担当し、遊びの手触りを大切にしています。',
   contactNote:
     '下記のアドレスにお気軽にご連絡ください。',
   links: [
@@ -73,7 +73,7 @@ export const sectionHeadingTones: Record<SectionHeadingToneKey, HeadingTone> = {
 };
 
 export const aboutSummary =
-  '幼少期から作曲、小説、プログラミング、漫画、3D制作、動画制作に親しみ、それぞれ別々に続けてきた経験を、現在はゲーム制作に統合しています。';
+  '会津大学3年・CG系研究室所属。ゲームクライアントエンジニアを志望し、Unityでのチーム制作と自作ライブラリの開発に取り組んでいます。';
 
 export const skillGroups: SkillGroup[] = [
   {
@@ -82,7 +82,7 @@ export const skillGroups: SkillGroup[] = [
     items: [
       { name: 'C', experience: '2年', logoId: 'c' },
       { name: 'C#', experience: '2年', logoId: 'csharp' },
-      { name: 'Java', experience: '1年', logoId: 'java' },
+      { name: 'Java', note: '授業・SpringによるWebアプリ制作', logoId: 'java' },
       { name: 'C++', note: '授業で少し使用', logoId: 'cplusplus' },
       { name: 'HTML', note: '授業で少し使用', logoId: 'html5' },
       { name: 'CSS', note: '授業で少し使用', logoId: 'css' },
@@ -97,8 +97,18 @@ export const skillGroups: SkillGroup[] = [
     items: [
       { name: 'Studio One', experience: '7年', logoId: 'studioOne' },
       { name: 'Blender', experience: '4年', logoId: 'blender' },
-      { name: 'Unity', experience: '2年', logoId: 'unity' },
+      { name: 'Unity', note: 'ゲーム・演出・UI・制作支援ツールの開発に使用。', logoId: 'unity' },
       { name: 'GitHub', experience: '2年', logoId: 'github' },
+    ],
+  },
+  {
+    title: 'Unity Development',
+    description: '実際のゲーム制作と自作基盤で使っている技術です。',
+    items: [
+      { name: 'VContainer / UniTask / R3', note: '依存関係の組み立て、非同期処理、入力・状態の購読に使用。', logoId: 'unity' },
+      { name: 'Input System / Addressables', note: '入力とシーン・アセットの読み込みに使用。Input SystemとR3の連携拡張も自作。', logoId: 'unity' },
+      { name: 'Cinemachine / LitMotion / FMOD', note: 'カメラ、UIアニメーション、音のフィードバックに使用。', logoId: 'unity' },
+      { name: 'Entities / Burst / Job System', note: 'EntitiesEventStreamでメモリ配置と並列書き込みを設計・実装。', logoId: 'unity' },
     ],
   },
 ];
@@ -112,11 +122,36 @@ export const educationHistory: HistoryEntry[] = [
   {
     period: '2024 -',
     title: '会津大学',
-    description: '2024年入学',
+    description: '2024年入学 / 3年・CG系研究室所属',
   },
 ];
 
 export const activityHistory: HistoryEntry[] = [
+  {
+    period: '2026/10 予定',
+    title: '会津大学 学祭展示に向けて制作中',
+    description: '3Dリズムアクション × ローグライト作品を制作中。',
+  },
+  {
+    period: '2026/08/29 - 30',
+    title: 'CyberAgent Proto Sprint League 2026 個人賞受賞',
+    description: '3人チーム・2日間で『SUPER BALL!』を制作。リーダー・設計・進行管理を担当。',
+  },
+  {
+    period: '2026/08/17 - 21',
+    title: 'インターン',
+    description: '5日間のインターンで、Java / Spring / MySQLによるWebアプリを制作。',
+  },
+  {
+    period: 'サークル活動',
+    title: 'Unity勉強会 講師',
+    description: 'チーム制作の相談役と、全3回のUnity勉強会の講師を担当。',
+  },
+  {
+    period: '2026/08',
+    title: '夏コミ',
+    description: '『ちょこ旅』を頒布。',
+  },
   {
     period: '2024/10',
     title: '会津大学 文化祭',
@@ -145,20 +180,96 @@ export const activityHistory: HistoryEntry[] = [
 ];
 
 export const works: WorkEntry[] = [
-    {
+  {
+    slug: 'super-ball',
+    title: 'SUPER BALL!',
+    category: '1画面アクションゲーム',
+    period: '2026/08/29 - 30',
+    role: ['設計・実装', '進行管理'],
+    tools: ['Unity', 'VContainer', 'UniTask', 'R3', 'Cinemachine', 'FMOD'],
+    teamSize: '3人',
+    summary:
+      'バウンドするボールを左右スワイプで操作するアクションゲーム。Proto Sprint League 2026で3人チーム・2日間で制作し、個人賞を受賞しました。',
+    challenge:
+      'クラス設計、タスク分割、実装順序を整理。事前実装禁止のため、事前期間は詳細設計に充て、当日の判断を減らしました。',
+    result:
+      '2日間でチームとしてゲームを制作し、個人賞を受賞。結果画面、セーブ仕様、画面遷移の設計も担当しました。',
+    coverImage: {
+      ...createPosterAsset({ title: 'SUPER BALL!', subtitle: 'Proto Sprint League 2026 / Individual Award', accent: '#D47A35', surface: '#172333', detail: '#7CC6D3', eyebrow: '3 PEOPLE / 2 DAYS' }),
+      alt: 'SUPER BALL! 紹介用タイトル画像（ゲーム画面ではありません）',
+    },
+    gallery: [],
+    externalLinks: [],
+    featured: true,
+  },
+  {
+    slug: 'entities-event-stream',
+    title: 'Entities Event Stream',
+    category: 'Unity Library',
+    period: '2026/07',
+    role: ['設計・実装'],
+    tools: ['Unity', 'Entities', 'C#', 'Burst', 'Job System', 'Source Generator'],
+    teamSize: '個人制作',
+    summary:
+      'Unity Entities向けのイベントストリーム。並列書き込みと、イベントをコピーせずに読み取れる仕組みを実装しています。',
+    challenge:
+      'workerごとに書き込み領域を分け、読み手ごとに独立した読み取り位置を管理。メモリ配置と並列処理を意識して設計しました。',
+    result:
+      'Source Generatorによる登録・ライフサイクル生成と、不正な書き込みの検出を実装。Unity Entities向けに公開・開発しています。',
+    coverImage: {
+      ...createPosterAsset({ title: 'EntitiesEventStream', subtitle: 'Unity Entities / Parallel Event Stream', accent: '#315F86', surface: '#101820', detail: '#89D0A2', eyebrow: 'UNITY LIBRARY / IN DEVELOPMENT' }),
+      alt: 'EntitiesEventStream 紹介用タイトル画像',
+    },
+    gallery: [],
+    externalLinks: [{ label: 'GitHub Repository', url: 'https://github.com/seikasan/EntitiesEventStream', kind: 'source' }],
+    featured: true,
+  },
+  {
+    slug: 'my-extensions',
+    title: 'My Extensions',
+    category: 'Unity Library / 拡張集',
+    period: '2026/07 - 開発中',
+    role: ['設計・実装'],
+    tools: ['Unity', 'C#', 'Input System', 'R3', 'UniTask'],
+    teamSize: '個人制作',
+    summary: '自身のUnity開発で使う拡張の詰め合わせ。入力、購読管理、シーン読み込み、非同期処理を扱いやすくする機能をまとめています。',
+    challenge: 'ゲーム制作で繰り返し使う処理や、既存APIで書きづらい部分を、自分の使い方に合わせた拡張として整理しています。',
+    result: 'R3、InputSystem.R3、Scenes、UniTaskの拡張を公開。自身のプロジェクトで使いながら更新しています。',
+    coverImage: createPosterAsset({ title: 'MyExtensions', subtitle: 'Extensions for My Unity Projects', accent: '#315F86', surface: '#101820', detail: '#7CC6D3', eyebrow: 'UNITY LIBRARY' }),
+    gallery: [],
+    externalLinks: [{ label: 'GitHub Repository', url: 'https://github.com/seikasan/MyExtensions', kind: 'source' }],
+    featured: false,
+  },
+  {
+    slug: 'clean-foundation',
+    title: 'CleanFoundation',
+    category: 'Unity Library',
+    period: '2026/09',
+    role: ['設計・実装'],
+    tools: ['Unity', 'C#'],
+    teamSize: '個人制作',
+    summary: 'Domain層をUnityEngineに依存させずに、Vector3などの値型を使うためのライブラリです。',
+    challenge: 'Domain層で必要なベクトルや回転などの値型・数学処理を、Pure C#で実装しています。',
+    result: 'Domain層ではCleanFoundationの型を使用し、Unityとの接続箇所では対応するUnityEngine型へ変換できます。',
+    coverImage: createPosterAsset({ title: 'CleanFoundation', subtitle: 'Shared Foundation for Unity Projects', accent: '#2F6F5E', surface: '#132018', detail: '#E0A95B', eyebrow: 'UNITY LIBRARY' }),
+    gallery: [],
+    externalLinks: [{ label: 'GitHub Repository', url: 'https://github.com/seikasan/CleanFoundation', kind: 'source' }],
+    featured: false,
+  },
+  {
     slug: 'my-architecture',
     title: 'MyArchitecture',
     category: 'GitHub Repository / Architecture',
-    period: '2026/05 - 開発中',
+    period: '2026/05 - 2026/07',
     role: ['企画・実装'],
     tools: ['Unity', 'C#', 'VContainer', 'MessagePipe', 'UniTask', 'R3', 'QFramework', 'Roslyn'],
     teamSize: '個人制作',
     summary:
-      'MyArchitecture は、Unity でゲームを作るときに読みやすいコードになるように作っている自分用の軽量アーキテクチャです。',
+      'Unity向けの自作アーキテクチャ。責務分割とコード生成によって、チームで読みやすく、誤操作を防ぎやすいコードを目指しました。',
     challenge:
       'QFramework や VContainer を使う中で、規約としては分かっていても実装上できてしまう操作が事故につながると感じました。Presenter に読み取り専用 interface を渡すなど、間違えにくい構造をコード側で作ることを意識しています。',
     result:
-      'まだ開発途中ですが、Command / Query / Event / ViewSignal、購読ライフタイム管理、Entity などを通して、チーム制作でも追いやすい Unity 向け設計を検証しています。',
+      '読み取り専用Modelの生成、Command / Query、購読のライフタイム管理などを検証。2026年7月に開発を終了しました。',
     coverImage: createPosterAsset({
       title: 'MyArchitecture',
       subtitle: 'GitHub Repository',
@@ -180,23 +291,28 @@ export const works: WorkEntry[] = [
   {
     slug: 'choco-tabi',
     title: 'ちょこ旅',
-    category: '3Dアクションゲーム / お菓子',
-    period: '2026/02 - 開発中',
-    role: ['プログラマー', 'モデリング', 'コンポーザー'],
+    category: '2.5D横スクロールゲーム / お菓子',
+    period: '2026/02 - 2026/08',
+    role: ['企画', 'PM補佐', '設計・プログラム', 'モデリング', 'コンポーザー'],
     tools: ['Unity', 'C#', 'Blender', 'Shader Graph', 'Studio One', 'UniRx'],
     teamSize: '8人',
     summary:
-      'チョコの「溶ける」「他の食べ物をコーティングできる」といった特徴を遊びに取り入れた、8人チームで開発中のポップなアクションゲームです。',
+      'チョコの形態切り替えを使ってお菓子の世界を冒険する、8人チーム制作の2.5D横スクロールゲーム。企画・PM補佐・設計・プログラム・音楽などを担当しました。',
     challenge:
       'プログラムでは、ノーコードで敵やギミックを作れるアクタースクリプト群を主に担当しました。ステートマシン、View、Module を Inspector から組み替えられるようにし、二層構造ステージやレーン切り替え、専用マップエディターなども制作しています。',
     result:
-      'モデリングではホイップクリーム、キャンディー、クッキー、ケーキブロックなどを制作し、Shader Graph でわたあめや水面表現も作りました。サウンドではお菓子の世界観に合う約3分のループBGMを制作しています。',
+      '2026年8月に開発終了し、夏コミで頒布。配布ページも公開されています。小物モデルやシェーダー、BGM「テンパリング・タイム！！」も制作しました。',
     coverImage: {
       src: chocoTabiTitle,
       alt: 'ちょこ旅 タイトル画面',
     },
     gallery: [],
     externalLinks: [
+      {
+        label: '配布ページ',
+        url: 'https://panddclub.org/games',
+        kind: 'demo',
+      },
       {
         label: 'SoundCloud Playlist',
         url: 'https://soundcloud.com/seika-461144239/sets/syzq352z22qn',
@@ -214,9 +330,9 @@ export const works: WorkEntry[] = [
     tools: ['Unity', 'C#', 'QFramework', 'VRoid Studio'],
     teamSize: '個人制作',
     summary:
-      'アニメ調のキャラクターが雨の降った夜の都会を歩き回る実験的な3D散策ゲームです。QFramework の使い方を知ることや、アニメキャラのレンダリング、雰囲気を確かめることを重視して制作しました。',
+      '雨の降る夜の街をアニメ調のキャラクターが歩く、実験的な3D散策ゲーム。QFrameworkの練習として制作しました。',
     challenge:
-      'QFramework を使った試作です。',
+      'QFrameworkを使い、キャラクター操作とシーンの構成を試しました。VRoid Studioのモデルをトゥーンレンダリングし、夜の街の雰囲気を検証しました。',
     result:
       'VRoid Studio で制作した 3Dモデルを Unity でトゥーンレンダリングし、夜の街の空気感とキャラクターの見え方をまとめました。詳細ページではプレイ映像を掲載しています。',
     coverImage: {
@@ -231,7 +347,7 @@ export const works: WorkEntry[] = [
     slug: 'choco-map-maker',
     title: '🍫ちょこ旅マップエディター',
     category: '制作支援ツール / ステージ構想',
-    period: '2026/03/01',
+    period: '2026/03',
     role: ['企画・実装'],
     tools: ['JavaScript', 'HTML', 'CSS', 'Gemini', 'ChatGPT'],
     teamSize: '個人制作',
@@ -268,7 +384,7 @@ export const works: WorkEntry[] = [
     challenge:
       'プロット設計、シナリオ構成、キャラクター会話・テキストなど計20万字以上の執筆に加え、通常BGM1曲とヒロイン固有BGM5曲を制作しました。表向きの印象と内面のずれ、伏線、キャラクター間の接続を文章と音楽の両方で揃えて設計しています。',
     result:
-      '詳細ページでは、花のモチーフによる伏線設計、各ヒロインBGMの意図、ネタバレ付き解説、SoundCloud の埋め込み再生をまとめて確認できます。',
+      '詳細ページでは、花のモチーフによる伏線設計、各ヒロインBGMの意図、ネタバレ付き解説、楽曲試聴を掲載しています。',
     coverImage: {
       src: accessToYour5GirlsCover,
       alt: 'Access to your 5 Girls💜🩷💛🩵🤍 メインビジュアル',
@@ -309,7 +425,7 @@ export const works: WorkEntry[] = [
     gallery: [],
     externalLinks: [
       {
-        label: 'PandD 2024 Summer をダウンロード',
+        label: 'PandD 2025 Summer をダウンロード',
         url: 'https://pandd.sakura.ne.jp/games/comiket/PandD2025Summer.zip',
         kind: 'demo',
       },

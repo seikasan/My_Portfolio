@@ -12,11 +12,12 @@ import styles from './AboutPage.module.css';
 import type { ReactNode } from 'react';
 
 const skillUsage: Record<string, string> = {
-  Unity: 'ゲーム制作、ステージ実装、演出、UI、ギミック制作に使用。',
-  'C#': 'Unityゲームのプレイヤー、敵、アクター、ツール連携の実装に使用。',
+  Unity: 'ゲーム・演出・UI・制作支援ツールの開発に使用。',
+  'C#': 'Unityゲームと自作ライブラリの設計・実装に使用。',
   Blender: 'ちょこ旅の小物、背景素材、タイトル周りの3D素材制作に使用。',
   'Studio One': 'ゲームBGM、ボカロ曲、場面に合わせた編曲制作に使用。',
-  GitHub: 'チーム開発、自作アーキテクチャ、制作ツールの管理に使用。',
+  GitHub: 'チーム開発、自作Unityライブラリ、制作ツールの管理に使用。',
+  Java: '授業とインターンで使用。Spring / Thymeleaf / MySQLによるWebアプリを制作。',
   TypeScript: 'ReactポートフォリオやWebツールの実装に使用。',
   JavaScript: 'チョコ旅マップエディターなど、軽量な制作支援ツールに使用。',
   HTML: 'Webツールやポートフォリオの画面構成に使用。',
@@ -85,6 +86,12 @@ export function AboutPage() {
           <p>
             画面の見え方、BGMの空気、キャラクターの会話、遊びのルールを同じ作品世界の一部として扱い、
             自分で作れる範囲を広げながら制作しています。
+          </p>
+          <p>
+            ゲームの設計だけでなく、入力に対する音や画面の反応を制作初期から考え、遊びの手触りを大切にしています。
+          </p>
+          <p>
+            自作ライブラリの開発では、メモリ配置や並列処理にも取り組んでいます。
           </p>
         </div>
       </Reveal>

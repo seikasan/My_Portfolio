@@ -6,8 +6,16 @@ import { ReturnFalseContent } from './return-false';
 import { LostOfMusicContent } from "./lost-of-music";
 import { MyArchitectureContent } from './my-architecture';
 import { LylaContent } from './lyla';
+import { SuperBallContent } from './super-ball';
+import { EntitiesEventStreamContent } from './entities-event-stream';
+import { MyExtensionsContent } from './my-extensions';
+import { CleanFoundationContent } from './clean-foundation';
 
 const workContentRegistry: Record<string, ComponentType | undefined> = {
+  'super-ball': SuperBallContent,
+  'entities-event-stream': EntitiesEventStreamContent,
+  'my-extensions': MyExtensionsContent,
+  'clean-foundation': CleanFoundationContent,
   'choco-map-maker': ChocoMapMakerContent,
   'choco-tabi': ChocoTabiContent,
   'my-architecture': MyArchitectureContent,

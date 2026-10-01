@@ -16,19 +16,24 @@ const tickerItems = [
   'Blender 4yr',
   'Scenario Writing',
   'Shader Graph',
-  'QFramework',
+  'Entities / Burst / Job System',
   'VContainer',
   'Vocaloid',
   'Comiket Exhibitor',
   'Aizu University',
 ];
 
-const stats = ['7+ Works', '7yr Studio One', '4yr Blender', 'Comiket Exhibitor'];
+const stats = ['Proto Sprint League 個人賞', 'Unity / C#', '7yr Studio One', 'Comiket Exhibitor'];
 
 const galleryOrder = [
+  'super-ball',
   'choco-tabi',
-  'my-architecture',
   'access-to-your-5-girls',
+  // Standard: latest development date, newest first.
+  'my-extensions',
+  'clean-foundation',
+  'my-architecture',
+  'entities-event-stream',
   'lyla',
   'choco-map-maker',
   'return-false',
@@ -100,17 +105,14 @@ export function HomePage() {
               width="48"
               height="48"
             />
-            <p className={styles.eyebrow}>Portfolio — 2026</p>
+            <p className={styles.eyebrow}>Portfolio — 2026.10</p>
           </div>
           <h1 className={styles.heroName}>
             <span className={styles.heroNameAccent}>{siteProfile.name.slice(0, 1)}</span>
             {siteProfile.name.slice(1)}
           </h1>
-          <p className={styles.heroTitle}>Game / Music / 3DCG</p>
-          <p className={styles.heroBody}>
-            ゲーム、音楽、3D、物語をまたいで制作しています。<br />
-            企画、実装、音、モデリング、文章をつなげて作品にします。
-          </p>
+          <p className={styles.heroTitle}>{siteProfile.heroTitle}</p>
+          <p className={styles.heroBody}>{siteProfile.heroBody}</p>
           <div className={styles.heroActions}>
             <button
               type="button"
@@ -151,8 +153,7 @@ export function HomePage() {
             </h2>
           </div>
           <p className={styles.stripText}>
-            幼少期から作曲、プログラミング、3D制作、小説、漫画に親しみ、現在はそれらをゲーム制作に統合しています。
-            作品のルールだけでなく、音、画面、会話、手触りまで含めて設計することを大切にしています。
+            {siteProfile.intro}
           </p>
           <div className={styles.statList}>
             {stats.map((stat) => (
@@ -169,7 +170,7 @@ export function HomePage() {
         <Reveal className={styles.sectionHeader}>
           <h2 className={styles.sectionTitle}>Works</h2>
           <p className={styles.sectionDescription}>
-            ゲーム、制作支援ツール、シナリオ、音楽制作を含む作品をまとめています。
+            ゲームと、その制作を支えるライブラリ・ツールをまとめています。
           </p>
         </Reveal>
         <div className={styles.worksGallery}>

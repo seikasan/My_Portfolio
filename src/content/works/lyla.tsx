@@ -2,11 +2,11 @@ import { YouTubeEmbed } from '../../components/YouTubeEmbed';
 import styles from './WorkRichContent.module.css';
 
 const overviewParagraphs = [
-  'Lyla は、雨の降った夜の都会をアニメ調のキャラクターが歩き回る実験的な3D散策ゲームです。ツールの使い方を学ぶための作品として制作しました。',
+  'Lyla は、雨の降る夜の街をアニメ調のキャラクターが歩く、実験的な3D散策ゲームです。QFrameworkの練習として制作し、開発を終了しました。',
 ];
 
 const productionParagraphs = [
-  '制作では QFramework を使い、Unity 上での構成や実装フローを試しました。キャラクター操作やシーンの見え方を組み立てながら、フレームワークを使った開発の感触を確かめることができました。',
+  'QFrameworkを使い、キャラクター操作やシーンの構成を試しました。フレームワークを使った開発の流れを学ぶよい練習になりました。',
   'Lyla の 3Dモデルは VRoid Studio で制作しました。Unity ではトゥーンレンダリングを使い、現代的な見え方を目指しました。',
 ];
 
@@ -41,7 +41,7 @@ export function LylaContent() {
           videoUrl="https://youtu.be/nGjPQEkK-gQ"
           title="Lyla プレイ映像"
           entryLabel="プレイ映像をYouTubeで開く"
-          caption="雨の降った夜の都会を歩くプレイ映像"
+          caption="雨の降る夜の街を歩くプレイ映像"
         />
       </section>
     </article>

@@ -25,24 +25,24 @@ const defaultPresentation: WorkPresentation = {
 };
 
 const presentations: Record<string, WorkPresentation> = {
-  'choco-tabi': {
+  'super-ball': {
     variant: 'featured',
+    tone: {
+      accent: '#91483a',
+      accent2: '#d49a53',
+      soft: 'rgba(145, 72, 58, 0.14)',
+      surface: '#fff5e4',
+      gradient: 'linear-gradient(135deg, rgba(145, 72, 58, 0.2), rgba(212, 154, 83, 0.2))',
+    },
+  },
+  'choco-tabi': {
+    variant: 'medium',
     tone: {
       accent: '#8b4f2a',
       accent2: '#d49a53',
       soft: 'rgba(139, 79, 42, 0.16)',
       surface: '#fff5e4',
       gradient: 'linear-gradient(135deg, rgba(139, 79, 42, 0.22), rgba(212, 154, 83, 0.22))',
-    },
-  },
-  'my-architecture': {
-    variant: 'medium',
-    tone: {
-      accent: '#263b63',
-      accent2: '#c5a257',
-      soft: 'rgba(38, 59, 99, 0.13)',
-      surface: '#f5f7fb',
-      gradient: 'linear-gradient(135deg, rgba(38, 59, 99, 0.2), rgba(197, 162, 87, 0.18))',
     },
   },
   'access-to-your-5-girls': {
@@ -53,6 +53,26 @@ const presentations: Record<string, WorkPresentation> = {
       soft: 'rgba(112, 68, 109, 0.14)',
       surface: '#fff4f8',
       gradient: 'linear-gradient(135deg, rgba(112, 68, 109, 0.18), rgba(200, 131, 155, 0.2))',
+    },
+  },
+  'my-architecture': {
+    variant: 'standard',
+    tone: {
+      accent: '#263b63',
+      accent2: '#c5a257',
+      soft: 'rgba(38, 59, 99, 0.13)',
+      surface: '#f5f7fb',
+      gradient: 'linear-gradient(135deg, rgba(38, 59, 99, 0.2), rgba(197, 162, 87, 0.18))',
+    },
+  },
+  'entities-event-stream': {
+    variant: 'standard',
+    tone: {
+      accent: '#315f86',
+      accent2: '#2f6f5e',
+      soft: 'rgba(49, 95, 134, 0.13)',
+      surface: '#f5f7fb',
+      gradient: 'linear-gradient(135deg, rgba(49, 95, 134, 0.2), rgba(47, 111, 94, 0.18))',
     },
   },
   lyla: {
