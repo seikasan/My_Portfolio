@@ -78,7 +78,6 @@ export type SkillLogoId =
 
 export interface SkillEntry {
   name: string;
-  experience?: string;
   note?: string;
   logoId: SkillLogoId;
 }
